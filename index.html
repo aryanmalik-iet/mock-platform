@@ -117,7 +117,7 @@
         #quizInterface {
             display: flex;
             flex-direction: row; 
-            height: calc(100vh - 70px); 
+            min-height: calc(100vh - 70px);
         }
         .question {
             white-space: pre-line;
@@ -125,7 +125,8 @@
 
         /* Left Panel: Questions and Controls */
         .main-quiz-panel {
-            flex-grow: 1;
+            flex: 1 1 auto;
+            min-width: 0;
             display: flex;
             flex-direction: column;
             background: #fff;
@@ -276,26 +277,62 @@
         /* === RESPONSIVENESS === */
         
         @media (max-width: 900px) {
-            /* Mobile Portrait: Hide palette, show toggle button */
-            #palettePanel { display: none; }
-            .main-quiz-panel { width: 100%; }
-            .menu-toggle { display: inline-block; } 
-            .user-form { height: 100vh; }
 
-            /* Navigation and main panel stacking */
-            .main-quiz-panel {
-                order: 2;
-                padding-bottom: 60px; 
-            }
-            .navigation {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                z-index: 10;
-                padding: 8px 10px;
-            }
-            .progress { display: none; }
+    #quizInterface {
+        flex-direction: column;
+    }
+
+    .main-quiz-panel {
+        width: 100%;
+        border-right: none;
+        padding-bottom: 70px; /* space for fixed nav */
+    }
+
+    #palettePanel {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 80%;
+        max-width: 280px;
+        height: calc(100vh - 60px);
+        background: #ffffff;
+        box-shadow: -3px 0 10px rgba(0,0,0,0.25);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        display: flex;
+    }
+
+    #palettePanel.visible {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .progress {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .palette-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .palette-item {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+    }
+}
             
             /* Mobile Landscape: Show palette as sidebar */
             @media (orientation: landscape) {
@@ -319,16 +356,16 @@
                  #palettePanel.visible {
                     display: flex;
                     position: fixed;
-                    top: 55px; 
+                    top: 60px; 
                     right: 0;
-                    height: calc(100% - 115px); 
+                    height: calc(100vh - 60px); 
                     z-index: 9;
                     background: #f8f8f8;
                     width: 80%;
                     box-shadow: -3px 0 8px rgba(0,0,0,0.2);
                 }
             }
-        }
+        
 
         /* ADMIN PANEL ENHANCEMENTS */
         .response-report {
