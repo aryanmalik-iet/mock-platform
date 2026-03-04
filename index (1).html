@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CUET PG – Full Mock Test</title>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        /* BASE & TYPOGRAPHY */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f0f2f5; 
+            min-height: 100vh;
+            padding-top: 90px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* --- LANDING PAGE AND ADMIN PANEL (ORIGINAL LOOK) --- */
+        .header { text-align:center;background:#fff;padding:40px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);margin-top:20px; border-top:5px solid #e74c3c; }
+        .govt-logo{width:80px;height:80px;background:#e74c3c;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:bold;}
+        .header h1{color:#2c3e50;margin-bottom:10px;font-size:2.4em;font-weight:bold;text-transform:uppercase;letter-spacing:1px;}
+        .header h2{color:#e74c3c;font-weight:bold;margin-bottom:10px;font-size:1.3em;}
+        .header .subtitle{color:#7f8c8d;font-size:1.1em;margin-bottom:20px;font-style:italic;}
+        .exam-info { background: #f8f9fa; padding: 25px 30px; border-radius: 12px; margin: 20px 0; border-left: 6px solid #3498db; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2); max-width: 100%; text-align: left; font-size: 16px; line-height: 1.6; color: #2c3e50; }
+        .exam-info h3 { color: #2c3e50; margin-bottom: 15px; font-weight: 700; font-size: 1.5em; text-align: left; }
+        .exam-info ul { list-style: none; padding-left: 20px; margin: 0; }
+        .exam-info li { margin: 8px 0; padding-left: 20px; position: relative; text-align: left; }
+        .exam-info li:before { content: "•"; color: #3498db; font-weight: bold; position: absolute; left: 0; top: 50%; transform: translateY(-50%); font-size: 18px; }
+
+        .btn{background:linear-gradient(45deg,#3498db,#2980b9);color:white;border:none;padding:18px 35px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;transition:all 0.3s ease;margin:10px;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+        .btn-admin{background:linear-gradient(45deg,#e74c3c,#c0392b);}
+        
+        /* GENERAL UTILITIES */
+        .modal { display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);backdrop-filter:blur(5px);}
+        .modal-content { background-color:#fff;margin:10% auto;padding:40px;border-radius:12px;width:90%;max-width:500px;box-shadow:0 10px 40px rgba(0,0,0,0.3);border-top:5px solid #e74c3c;}
+        .modal h3{margin-bottom:25px;color:#2c3e50;font-size:1.5em;}
+        .modal input{width:100%;padding:15px;margin:15px 0;border:2px solid #ddd;border-radius:6px;font-size:16px;}
+        .close{color:#aaa;float:right;font-size:32px;font-weight:bold;cursor:pointer;margin-top:-15px;}
+        .close:hover{color:#e74c3c;}
+        .error-message{background:#f8d7da;color:#721c24;padding:15px;border-radius:8px;text-align:center;margin-top:10px;border:1px solid #f5c6cb;}
+        .admin-panel{display:none;background:#fff;padding:40px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);border-top:5px solid #e74c3c;}
+        .response-table{border-collapse:collapse;margin-top:20px;font-size:14px; width: 100%;}
+        .response-table th, .response-table td{border:1px solid #ddd;padding:12px;text-align:left;}
+        .response-table th{background:linear-gradient(45deg,#2c3e50,#34495e);color:white;font-weight:bold;}
+        .response-table tr:nth-child(even){background-color:#f9f9f9;}
+        /* END OF LANDING PAGE STYLES */
+
+
+        /* === NEW SSC EXAM INTERFACE STYLES === */
+
+        .quiz-container {
+            display: none;
+            background: #f0f2f5; 
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            min-height: 98vh; 
+        }
+
+        /* Top Header Bar */
+       .exam-header {
+    background: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 3px solid #f39c12;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+        .exam-title { font-size: 1.1em; font-weight: bold; }
+
+        /* Timer Block */
+        .timer-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .timer-container {
+            background: #34495e;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1em;
+            text-align: center;
+            border: 2px solid #e74c3c;
+        }
+        .timer-display { font-size: 1.2em; font-weight: bold; }
+        .timer-warning { background: #e74c3c !important; color: white !important; border-color: #f39c12 !important; animation: pulse 1s infinite; }
+        .timer-critical { background: #dc3545 !important; animation: flash 0.5s infinite; }
+        @keyframes pulse{0%{opacity:1;}50%{opacity:0.8;}100%{opacity:1;}}
+        @keyframes flash{0%{opacity:1;}50%{opacity:0.5;}100%{opacity:1;}}
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none; 
+            background: none;
+            border: 1px solid white;
+            color: white;
+            font-size: 24px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* Main Test Layout */
+        #quizInterface {
+            display: flex;
+            flex-direction: row; 
+            min-height: calc(100vh - 70px);
+        }
+        
+
+        /* Left Panel: Questions and Controls */
+        .main-quiz-panel {
+            flex: 1 1 auto;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-right: 1px solid #ddd;
+        }
+        #questionsContainer {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto; 
+            display: none; /* Hidden until quiz starts */
+        }
+        /* Sign-in Form Styles (Center Aligned) */
+        .user-form {
+            background: #ecf0f1; 
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%; 
+        }
+        .user-form h3 { font-size: 1.5em; margin-bottom: 30px; color: #2c3e50; }
+        .user-form input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            width: 80%;
+            max-width: 300px;
+        }
+        .profile-mockup {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            background: #bdc3c7;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #7f8c8d;
+        }
+        
+        /* Question Card */
+        .question-container {
+            border: none;
+            padding: 0;
+            display: none; 
+        }
+        .question-container.active {
+            display: block; 
+        }
+        .question {
+            background: white;
+            border: 1px solid #bdc3c7; 
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .question-header {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f39c12;
+            display: block; 
+        }
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+       .options { list-style: none; }
+
+.option {
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.4;
+    transition: 0.15s ease;
+}
+
+.option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex-shrink: 0;
+    transform: translateY(-1px);   /* subtle correction */
+}
+
+.option:hover {
+    background: #e6e6e6;
+    border-color: #999;
+}
+
+.option.selected {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+    font-weight: 500;
+}
+
+.option.selected label {
+    color: white;
+}
+        
+        /* Navigation Bar (Fixed Bottom on Mobile) */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #34495e; 
+            color: white;
+            border-top: 1px solid #2c3e50;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .progress { font-size: 1em; font-weight: bold; color: white; }
+        .btn-nav { padding: 10px 15px; font-size: 14px; background: #28a745; }
+        #submitBtn { background: #dc3545 !important; }
+
+        /* Right Panel: Question Palette */
+        #palettePanel {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 250px;
+    height: calc(100vh - 60px);
+
+    background: #ecf0f1;
+    border-left: 1px solid #ddd;
+
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: auto;
+
+    box-shadow: -3px 0 10px rgba(0,0,0,0.25);
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+        .palette-header { font-size: 1.1em; font-weight: bold; margin-bottom: 15px; color: #333; text-decoration: underline; }
+        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; }
+        .palette-item {
+            width: 35px; height: 30px; display: flex; align-items: center; justify-content: center;
+            border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; border: 1px solid #ccc;
+        }
+        /* Palette Colors */
+        .palette-default { background: #fff; color: #333; border: 1px solid #999; } 
+        .palette-answered { background: #28a745; color: white; border-color: #28a745; } 
+        .palette-unanswered { background: #e74c3c; color: white; border-color: #e74c3c; } 
+        .palette-current { background: #f39c12; color: white; border-color: #f39c12; box-shadow: 0 0 5px #f39c12; } 
+
+        /* === RESPONSIVENESS === */
+
+        @media (max-width: 600px) {
+    .option {
+        font-size: 14px;
+        padding: 9px 10px;
+    }
+
+    .question-text {
+        font-size: 15px;
+    }
+}
+        
+        @media (max-width: 900px) {
+
+    #quizInterface {
+        flex-direction: column;
+    }
+
+    .main-quiz-panel {
+        width: 100%;
+        border-right: none;
+        padding-bottom: 70px; /* space for fixed nav */
+    }
+    
+
+    #palettePanel {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 80%;
+        max-width: 280px;
+        height: calc(100vh - 60px);
+        background: #ffffff;
+        box-shadow: -3px 0 10px rgba(0,0,0,0.25);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        display: flex;
+    }
+
+    #palettePanel.visible {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .progress {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .palette-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .palette-item {
+        width: 32px;
+        height: 29px;
+        font-size: 13px;
+    }
+}
+            
+            /* Mobile Landscape: Show palette as sidebar */
+            @media (orientation: landscape) {
+                #quizInterface { flex-direction: row; height: calc(100vh - 70px); }
+                #palettePanel {
+                    display: flex; 
+                    width: 200px;
+                    min-width: 200px;
+                    order: 2;
+                    height: 100%;
+                }
+                .main-quiz-panel {
+                    width: calc(100% - 200px);
+                    order: 1;
+                }
+                .menu-toggle { display: none; }
+            }
+
+            /* Mobile Portrait: Palette Overlay */
+            @media (orientation: portrait) {
+                 #palettePanel.visible {
+                    display: flex;
+                    position: fixed;
+                    top: 60px; 
+                    right: 0;
+                    height: calc(100vh - 60px); 
+                    z-index: 9;
+                    background: #f8f8f8;
+                    width: 80%;
+                    box-shadow: -3px 0 8px rgba(0,0,0,0.2);
+                }
+            }
+        
+
+        /* ADMIN PANEL ENHANCEMENTS */
+        .response-report {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        /* Column Toggle Bar Styling */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            gap: 15px;
+            background: #f8f8f8; /* Light background for the bar */
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        .toolbar label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #34495e;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .toolbar input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        /* Hide the print button in the toolbar on the main page */
+        .toolbar .print-btn {
+            display: none; 
+        }
+
+        
+        /* DECORATED RESULT SUMMARY */
+        .summary-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #f8f9fa, #ecf0f1);
+            border-radius: 10px;
+            border: 2px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .summary-details p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 200;
+            padding: 5px 0;
+            border-left: 3px solid #3498db; 
+            padding-left: 10px;
+        }
+        .summary-details strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        .test-title {
+            color: #e74c3c;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            padding-bottom: 5px;
+            border-bottom: 2px dashed #e74c3c;
+        }
+        /* Status Coloring for better visual reports */
+        .summary-details p:nth-child(4) strong { color: #002290;  } /* Score */
+        .summary-details p:nth-child(5) strong { color: #28a745; } /* Percentage */
+        .summary-details p:nth-child(6) strong { color: #28a745; } /* Correct */
+        .summary-details p:nth-child(7) strong { color: #e74c3c; } /* Incorrect */
+        .summary-details p:nth-child(8) strong { color: #f39c12; } /* Unattempted */
+
+        /* Hidden columns CSS for toggling */
+        .response-table .hidden,
+        .response-table th.hidden {
+            display: none !important;
+        }
+        
+        /* --- PRINT MEDIA QUERIES (Simple and Robust) --- */
+        @media print {
+            /* Hide all admin panel buttons and controls */
+            .admin-panel > div:not(#responsesContainer) { display: none !important; }
+            .admin-panel > h2 { display: none !important; }
+
+            /* Hide the container buttons above the responses (Download/Clear buttons) */
+            .admin-panel > div:first-child { display: none !important; }
+
+            /* Hide the toolbar for column toggling */
+            .toolbar { display: none !important; }
+            
+            /* Ensure the responses container is visible */
+            #responsesContainer { display: block !important; padding: 0; margin: 0; }
+            
+            /* Remove any decorative background/shadows for clean print */
+            .response-report {
+                border: none;
+                box-shadow: none;
+                page-break-after: always; /* Ensure reports don't overlap */
+            }
+            .summary-details {
+                background: #fff;
+                border: 1px solid #ccc;
+                box-shadow: none;
+            }
+
+            /* Ensure MathJax elements print correctly */
+            .math-question * {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="landingPage">
+            <div class="header">
+               <div class="govt-logo" style="background:#003366;border-radius:0;">NTA</div>
+                <h1>National Testing Agency (NTA)</h1>
+                <h2>CUET PG – Full Mock Test 1</h2>
+                <p class="subtitle">Common University Entrance Test (Postgraduate)</p>
+                <div class="exam-info">
+                    <h3>Examination Instructions:</h3>
+                    <ul>
+                        <li>Total Questions: 75</li>
+                        <li>Maximum Marks: 300</li>
+                        <li>Time Duration: <strong>1 Hour 15 Minutes</strong></li>
+                        <li><strong style="color: #dc3545;">⚠️ Test will auto-submit when time expires</strong></li>
+                        <li>Marking Scheme: +4 for correct, -1 for incorrect, 0 for unattempted</li>
+                        <li>Do not refresh the page during the examination</li>
+                    </ul>
+                </div>
+                <button class="btn" onclick="startTest()">Start Examination</button>
+                <button class="btn btn-admin" onclick="openAdminModal()">Open Admin Panel</button>
+            </div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+            <div class="exam-header">
+                <div class="exam-title">SSC CHSL - Mathematics Practice Test</div>
+                <div class="timer-group">
+                    <button class="menu-toggle" onclick="togglePalette()">☰</button>
+                    <div class="timer-container" id="timerContainer">
+                        <div class="timer-label">TIME REMAINING</div>
+                        <div class="timer-display" id="timerDisplay">01:15:00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quizInterface">
+                <div class="main-quiz-panel">
+                    
+                    <div id="userForm" class="user-form">
+                        <div class="profile-mockup">
+                            <div class="profile-pic">👤</div>
+                            <h3 style="color:#2c3e50;">Enter Candidate Name</h3>
+                        </div>
+                        <input type="text" id="userName" placeholder="Enter your Name" required>
+                        <button class="btn" onclick="startQuiz()" style="background:#28a745; width:80%; max-width: 300px; margin-top: 25px;">Begin Examination</button>
+                    </div>
+
+                    <div id="autoSubmitWarning" class="auto-submit-warning" style="display: none;">
+                        ⚠️ WARNING: Test will be automatically submitted in less than 2 minutes!
+                    </div>
+
+                    <div id="questionsContainer"></div>
+
+                    <div class="navigation" id="navigation" style="display: none;">
+                        <button class="btn-nav" id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+                        <div class="progress" id="progress">Question 1 of 13</div>
+                        <button class="btn-nav" id="nextBtn" onclick="nextQuestion()">Next</button>
+                        <button class="btn-nav" id="submitBtn" onclick="submitTest()" style="display: none;">Submit Test</button>
+                    </div>
+                </div>
+
+                <div id="palettePanel" class="question-palette">
+                    <div class="palette-header">Question Palette</div>
+                    <div class="palette-grid" id="paletteGrid">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="adminPanel" class="admin-panel">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">Admin Panel - User Responses</h2>
+            <div style="margin-bottom: 20px;">
+                <button class="btn" onclick="downloadRawDataCSV()" style="background: #3498db;">Download Raw Data (CSV)</button>
+                <button class="btn" onclick="downloadResultsCSV()" style="background: #27ae60;">Download Final Results (CSV)</button>
+                <button class="btn" onclick="clearAllResponses()" style="background: #e74c3c;">Clear All Data</button>
+                <button class="btn" onclick="goHome()">Back to Home</button>
+                <button class="btn" onclick="printReport()" style="background: #f39c12;">Print Report</button> 
+            </div>
+            <div id="responsesContainer">
+                <p>No responses yet.</p>
+            </div>
+            <div style="margin-top:12px;color:#666;font-size:13px;">
+                <strong>Note:</strong> Data is stored in JSONBin.
+            </div>
+        </div>
+        
+        <div id="successMessage" style="display: none;" class="success-message">
+            <h3>✅ Test Submitted Successfully!</h3>
+            <p>Your responses have been recorded successfully. <br>You can check your score on the admin panel.</p>
+            <button class="btn" onclick="goHome()" style="margin-top: 20px; background: white; color: #2c3e50;">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('passwordModal')">&times;</span>
+            <h3 id="modalTitle">Enter Test PIN</h3>
+            <input type="password" id="testPinInput" placeholder="Enter 6-Digit PIN" maxlength="6">
+            <div id="pinError" class="error-message" style="display: none;">Incorrect 6-Digit PIN!</div>
+            <button class="btn" id="pinSubmitBtn" onclick="checkTestPin()">Start Test</button>
+        </div>
+    </div>
+
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('adminModal')">&times;</span>
+            <h3>Admin Access</h3>
+            <input type="password" id="adminPassword" placeholder="Enter admin password">
+            <div id="passwordError" class="error-message" style="display: none;">Incorrect password!</div>
+            <button class="btn" onclick="checkAdminPassword()">Login</button>
+        </div>
+    </div>
+
+   <script>
+        /************************
+         * JSONBin configuration
+         ************************/
+        const JSONBIN_ID = '68d903e243b1c97be952d590';
+        const JSONBIN_MASTER_KEY = '$2a$10$XZzc.4ipvMjGFeEh9J/7cuffWTZGYXoXCkJjMDjZ1wCgz.BGJ3Cse';
+        const JSONBIN_BASE = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+        const TEST_PIN = '112244'; 
+        const SAVE_INTERVAL_SECONDS = 10;
+        const TOTAL_EXAM_TIME = 75 * 60; 
+        const CRITICAL_TIME_THRESHOLD = 10 * 60; 
+        
+       
+        // Questions data 
+        const questions = 
+            
+            [
+              
+  {
+    "question": "Asymmetrical features of federalism in India include :<br><br>A. Fifth Schedule<br>B. Sixth Schedule<br>C. Article 371 A<br>D. Article 371 G<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B and C",
+      "Only B, C and D",
+      "A, B, C and D",
+      "Only A, B and D"
+    ],
+    "correct": 2,
+    "ques_no": 1
+  },
+  {
+    "question": "Which of the Constitutional provisions doesn’t/don’t come within the legislative jurisdiction of the Legislature of a State?<br><br>A. Matters relating to clause 3 of article 16<br>B. Matters relating to article 32<br>C. Matters relating to article 33<br>D. Matters relating to article 34<br>E. Matters relating to clause 4 of article 16<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B, C and D",
+      "Only B, C and E",
+      "Only A, C, D and E",
+      "Only A, B, D and E"
+    ],
+    "correct": 0,
+    "ques_no": 2
+  },
+  {
+    "question": "Reservation of seats for the Scheduled Castes and Scheduled Tribes in the House of the People is provided under which article of the Constitution?",
+    "options": [
+      "Article 164",
+      "Article 243 D",
+      "Article 243 T",
+      "Article 334"
+    ],
+    "correct": [0,1,2,3],
+    "ques_no": 3
+  },
+  {
+    "question": "Which of the following articles were not inserted by the Forty-second Constitutional Amendment Act, 1976?<br><br>A. Article 21A<br>B. Article 31A<br>C. Article 39A<br>D. Article 43A<br>E. Article 48A<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A and B",
+      "Only B and C",
+      "Only C and D",
+      "Only D and E"
+    ],
+    "correct": 0,
+    "ques_no": 4
+  },
+  {
+    "question": "Who in the Constituent Assembly, said that ‘the Doctrine of Independence was not to be raised to the level of a dogma so as to enable the judiciary to function as a kind of Super Legislature’?",
+    "options": [
+      "N. Madhava Rao",
+      "K.M. Munshi",
+      "N.G. Ayyangar",
+      "A.K. Ayyar"
+    ],
+    "correct": 3,
+    "ques_no": 5
+  },
+  {
+    "question": "The Parliament of India consists of :<br><br>A. The House of the People<br>B. The Council of States<br>C. The President<br>D. The Prime Minister<br>E. The Speaker<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B and C",
+      "Only B, C and D",
+      "Only C, D and E",
+      "Only A, B and E"
+    ],
+    "correct": 0,
+    "ques_no": 6
+  },
+  {
+    "question": "Which of the following is/are correct ?<br><br>A. Article 143 provides for the power of President to consult Supreme Court.<br>B. The opinion of the Supreme Court is not binding.<br>C. The Supreme Court is not bound to give opinion on the subject so referred.<br>D. The Supreme Court would respectfully decline to answer with reference if it is improper, inadvisable and undesirable.<br>E. The Supreme Court is bound to give opinion.<br><br>Choose the most appropriate answer from the options given below :",
+    "options": [
+      "Only A, B and C",
+      "Only B, C and D",
+      "Only B, C, D and E",
+      "Only A, B, C, D"
+    ],
+    "correct": [0,1,2,3],
+    "ques_no": 7
+  },
+  {
+    "question": "Parliament may by law :<br><br>A. extend the jurisdiction of a High Court<br>B. establish a common High Court for two or more States<br>C. constitute a High Court for a Union Territory<br>D. establish administrative tribunal for each State<br>E. appoint judges of the High Courts<br><br>Choose the most appropriate answer from the options given below :",
+    "options": [
+      "Only A, B, C and D",
+      "Only B, C, D and E",
+      "Only A, B, D and E",
+      "Only A, C, D and E"
+    ],
+    "correct": 0,
+    "ques_no": 8
+  },
+  {
+    "question": "Which Constitutional Amendment lowered the voting age from 21 years to 18 years ?",
+    "options": [
+      "55th Amendment Act, 1987",
+      "61st Amendment Act, 1988",
+      "64th Amendment Act, 1990",
+      "65th Amendment Act, 1990"
+    ],
+    "correct": 1,
+    "ques_no": 9
+  },
+  {
+    "question": "The Constitution (Forty-Second Amendment) Act, 1976 added three words to the Preamble of the Constitution of India.<br><br>A. Socialist<br>B. Secular<br>C. Integrity<br>D. Unity<br>E. Federal<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B and C",
+      "Only B, C and D",
+      "Only C, D and E",
+      "Only A, C and E"
+    ],
+    "correct": 0,
+    "ques_no": 10
+  },
+  {
+    "question": "Which was the first reported case of Public Interest Litigation (PIL) seeking relief for the under trials in jails ?",
+    "options": [
+      "Anil Yadav Vs State of Bihar, 1981",
+      "Hussainara Khatoon Vs State of Bihar, 1979",
+      "Khatri Vs State of Bihar, 1981",
+      "Veena Sethi Vs State of Bihar, 1982"
+    ],
+    "correct": 1,
+    "ques_no": 11
+  },
+  {
+    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>Power of judicial review is considered as part of the basic structure of the Constitution.<br><br>Reason R :<br>The Supreme Court is endowed with the power of judicial review to ensure judicial independence and protection of rights.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
+    "options": [
+      "Both A and R are correct and R is the correct explanation of A",
+      "Both A and R are correct but R is not the correct explanation of A",
+      "A is correct but R is not correct",
+      "A is not correct but R is correct"
+    ],
+    "correct": 0,
+    "ques_no": 12
+  },
+  {
+    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>The powers within the Supervisory Jurisdiction of the High Courts are both administrative and judicial in nature.<br><br>Reason R :<br>Article 227(1) gives the High Courts power of Superintendence over all courts and tribunals within their territorial and constitutional jurisdiction.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
+    "options": [
+      "Both A and R are correct and R is the correct explanation of A",
+      "Both A and R are correct but R is not the correct explanation of A",
+      "A is correct but R is not correct",
+      "A is not correct but R is correct"
+    ],
+    "correct": 0,
+    "ques_no": 13
+  },
+  {
+    "question": "Which Fundamental Rights are available to all persons?<br><br>A. Protection in respect of conviction for offences (Article 20)<br>B. Protection of life and personal liberty (Article 21)<br>C. Protection against arrest and detention in certain cases (Article 22)<br>D. Freedom of religion (Article 25 – 28)<br>E. Prohibition of discrimination on grounds of religion, race, caste or place of birth (Article 15)<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only B, C and D",
+      "Only A, B and D",
+      "Only B, C, D and E",
+      "Only A, B, C and D"
+    ],
+    "correct": 3,
+    "ques_no": 14
+  },
+  {
+    "question": "Which Constitutional Amendment ended the Parts A, B and C categories of States and implemented the States Reorganisation Scheme?",
+    "options": [
+      "The Constitution (Fourth Amendment) Act, 1955",
+      "The Constitution (Fifth Amendment) Act, 1955",
+      "The Constitution (Sixth Amendment) Act, 1956",
+      "The Constitution (Seventh Amendment) Act, 1956"
+    ],
+    "correct": 3,
+    "ques_no": 15
+  },
+  
+  {
+    "question": "Which Constitutional Amendment abolished the privy purses and privileges of former rulers of Princely States?",
+    "options": [
+      "The Constitution (Twenty-fourth Amendment) Act, 1971",
+      "The Constitution (Twenty-fifth Amendment) Act, 1971",
+      "The Constitution (Twenty-sixth Amendment) Act, 1971",
+      "The Constitution (Twenty-seventh Amendment) Act, 1971"
+    ],
+    "correct": 2,
+    "ques_no": 16
+  },
+  {
+    "question": "Which powers and responsibilities are not endowed by the Constitution to the Panchayats ?",
+    "options": [
+      "The preparation of plans for economic development",
+      "The implementation of schemes for economic development and social justice",
+      "Agriculture, including agricultural extension",
+      "Regulation of slaughter houses and tanneries"
+    ],
+    "correct": 3,
+    "ques_no": 17
+  },
+  {
+    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>Ministers shall hold office during the pleasure of the President.<br><br>Reason R :<br>The Council of Ministers shall be collectively responsible to the House of the People.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
+    "options": [
+      "Both A and R are correct and R is the correct explanation of A",
+      "Both A and R are correct but R is not the correct explanation of A",
+      "A is correct but R is not correct",
+      "A is not correct but R is correct"
+    ],
+    "correct": 1,
+    "ques_no": 18
+  },
+  {
+    "question": "Which of the following is incorrect about a Money Bill?",
+    "options": [
+      "The bill deals with all or any provisions under article 110 of the Constitution.",
+      "The Money Bill has to be certified by the Speaker of the House of the People.",
+      "The Money Bill has to be introduced in the House of the People first.",
+      "Both the Houses of the Parliament enjoy equal powers with respect to a Money Bill."
+    ],
+    "correct": 3,
+    "ques_no": 19
+  },
+  {
+    "question": "Who explains party systems in India in terms of democratisation and decay?",
+    "options": [
+      "K.C. Suri",
+      "Yogendra Yadav",
+      "James Manor",
+      "Morris Jones"
+    ],
+    "correct": 2,
+    "ques_no": 20
+  },
+  {
+    "question": "Which of the following statements is/are correct ?<br><br>A. Some nations lack states<br>B. Some states lack national identity<br>C. Some nations occupy more than one state<br>D. Some states contain more than one nation<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A",
+      "Only B and D",
+      "Only C and D",
+      "Only A, B, C and D"
+    ],
+    "correct": 3,
+    "ques_no": 21
+  },
+  {
+    "question": "Who, amongst the following political philosophers can be associated with the idea of ‘Luck egalitarianism’ ?",
+    "options": [
+      "John Rawls",
+      "Cohen",
+      "Robert Nozick",
+      "Ronald Dworkin"
+    ],
+    "correct": [1,3],
+    "ques_no": 22
+  },
+  {
+    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>Problems of global environmental change pose serious challenges to democratic political systems, as they currently exist.<br><br>Reason R :<br>We need a thicker conception of citizenship, like environmental citizenship that obligates citizens to inculcate environmentally sensitive behaviour.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
+    "options": [
+      "Both A and R are correct and R is the correct explanation of A",
+      "Both A and R are correct but R is not the correct explanation of A",
+      "A is correct but R is not correct",
+      "A is not correct but R is correct"
+    ],
+    "correct": 1,
+    "ques_no": 23
+  },
+  {
+    "question": "The author of ‘Essay on Toleration’ is",
+    "options": [
+      "Locke",
+      "Rousseau",
+      "J.S. Mill",
+      "Kant"
+    ],
+    "correct": 0,
+    "ques_no": 24
+  },
+  {
+    "question": "Who among the following theorists is known for his work on ‘The theory of resources equality’ ?",
+    "options": [
+      "Amartya Sen",
+      "Ronald Dworkin",
+      "Jagdish Bhagwati",
+      "Abhijit Banerjee"
+    ],
+    "correct": 1,
+    "ques_no": 25
+  },
+  {
+    "question": "Who described ‘Democracy as the tyranny of the majority’ ?",
+    "options": [
+      "Tocqueville",
+      "David Held",
+      "Habermas",
+      "Carole Pateman"
+    ],
+    "correct": 0,
+    "ques_no": 26
+  },
+  {
+    "question": "Given below are two statements :<br><br>Statement I :<br>Thin multiculturalism views some cultural differences as occurring between liberals and non-liberals.<br><br>Statement II :<br>Thick multiculturalism views all cultural differences as disagreements between groups that already agree on liberal values.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
+    "options": [
+      "Both Statement I and Statement II are correct",
+      "Both Statement I and Statement II are incorrect",
+      "Statement I is correct but Statement II is incorrect",
+      "Statement I is incorrect but Statement II is correct"
+    ],
+    "correct": 1,
+    "ques_no": 27
+  },
+  {
+    "question": "Match List I with List II :<br><br>List I<br>A. Simone de Beauvoir<br>B. Betty Friedan<br>C. Germaine Greer<br>D. S. Moller Okin<br><br>List II<br>I. The Female Eunuch<br>II. Justice, Gender and the Family<br>III. The Feminine Mystique<br>IV. The Second Sex<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "A-I, B-III, C-II, D-IV",
+      "A-IV, B-III, C-I, D-II",
+      "A-II, B-IV, C-I, D-III",
+      "A-IV, B-III, C-II, D-I"
+    ],
+    "correct": 3,
+    "ques_no": 28
+  },
+  {
+    "question": "Given below are two statements :<br><br>Statement I :<br>Liberal feminists argue for laws that give women formal equality of opportunity and freedom from discrimination.<br><br>Statement II :<br>For radical feminists, the prevalence of violence against women is part and parcel of sex-inequality.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
+    "options": [
+      "Both Statement I and Statement II are correct",
+      "Both Statement I and Statement II are incorrect",
+      "Statement I is correct but Statement II is incorrect",
+      "Statement I is incorrect but Statement II is correct"
+    ],
+    "correct": 0,
+    "ques_no": 29
+  },
+  {
+    "question": "Which of the following is/are correct explanation of Ronald Dworkin’s idea of ‘Rights as Trumps’?<br><br>A. Norms of the society take precedence over basic individual rights.<br>B. Interests of the whole community can trump individual rights.<br>C. Basic rights of individuals take moral and legal precedence over other norms.<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A",
+      "Only B",
+      "Only C",
+      "A, B and C"
+    ],
+    "correct": 2,
+    "ques_no": 30
+  },
+  
+  {
+    "question": "Given below are two statements :<br><br>Statement I :<br>Jeremy Bentham, the founder of utilitarianism, ridiculed natural rights as a pernicious fiction.<br><br>Statement II :<br>Human rights are believed to have been derived from the idea of natural law.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
+    "options": [
+      "Both Statement I and Statement II are correct",
+      "Both Statement I and Statement II are incorrect",
+      "Statement I is correct but Statement II is incorrect",
+      "Statement I is incorrect but Statement II is correct"
+    ],
+    "correct": 0,
+    "ques_no": 31
+  },
+  {
+    "question": "\"If your aim is liberty in democracy, then you must teach people the art of being free and of governing themselves.\" Who gave this statement ?",
+    "options": [
+      "Bertrand Russell",
+      "Aldous Huxley",
+      "Fichte",
+      "David Held"
+    ],
+    "correct": 1,
+    "ques_no": 32
+  },
+  {
+    "question": "Which of the following constitutes the core principles of ‘Utilitarianism’ ?<br><br>A. Concept of utility<br>B. Greatest good of the greatest number<br>C. Laissez-Faire<br>D. Maximum happiness of maximum number of people<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A and B",
+      "Only A, B and C",
+      "Only A, B, C and D",
+      "Only A, B and D"
+    ],
+    "correct": 3,
+    "ques_no": 33
+  },
+  {
+    "question": "Who among the following defined \"Citizenship as full and equal membership in Political Community\" ?",
+    "options": [
+      "Derek Heater",
+      "T.H. Marshall",
+      "Will Kymlicka",
+      "Iris Young"
+    ],
+    "correct": 1,
+    "ques_no": 34
+  },
+  {
+    "question": "Who among the following advocates the ‘Entitlement theory of Justice’ ?",
+    "options": [
+      "Kant",
+      "Michael Sandel",
+      "Robert Nozick",
+      "Michael Walzer"
+    ],
+    "correct": 2,
+    "ques_no": 35
+  },
+  {
+    "question": "John Rawls is",
+    "options": [
+      "A Utilitarian",
+      "A Social Contractarian",
+      "A Perfectionist",
+      "A Marxist"
+    ],
+    "correct": 1,
+    "ques_no": 36
+  },
+  {
+    "question": "The word ‘ideology’ was coined by",
+    "options": [
+      "de Tracy",
+      "Karl Marx",
+      "Fukuyama",
+      "D. Bell"
+    ],
+    "correct": 0,
+    "ques_no": 37
+  },
+  {
+    "question": "The author of ‘Nicomachean Ethics’ is",
+    "options": [
+      "Plato",
+      "Aristotle",
+      "Socrates",
+      "Hobbes"
+    ],
+    "correct": 1,
+    "ques_no": 38
+  },
+  {
+    "question": "Who among the following used the concept of ‘Oceanic Circle’ ?",
+    "options": [
+      "J.L. Nehru",
+      "B.R. Ambedkar",
+      "Mahatma Gandhi",
+      "Jayprakash Narayan"
+    ],
+    "correct": 2,
+    "ques_no": 39
+  },
+  {
+    "question": "The work ‘Who were the Shudras’ is associated with",
+    "options": [
+      "Periyar",
+      "Ambedkar",
+      "John Dewey",
+      "Mahatma Gandhi"
+    ],
+    "correct": 1,
+    "ques_no": 40
+  },
+  {
+    "question": "The term ‘Original Position’ is associated with",
+    "options": [
+      "Brian Barry",
+      "John Rawls",
+      "S. Moller Okin",
+      "Michael Walzer"
+    ],
+    "correct": 1,
+    "ques_no": 41
+  },
+  {
+    "question": "‘Leviathan’ was written by",
+    "options": [
+      "Locke",
+      "Hobbes",
+      "J.S. Mill",
+      "Rousseau"
+    ],
+    "correct": 1,
+    "ques_no": 42
+  },
+  {
+    "question": "Who among the following defined \"Politics as the Authoritative Allocation of Values\"",
+    "options": [
+      "Harold Lasswell",
+      "David Easton",
+      "Adrian Leftwich",
+      "Ian Bell"
+    ],
+    "correct": 1,
+    "ques_no": 43
+  },
+  {
+    "question": "Who among the following is considered as a ‘reluctant democrat’ ?",
+    "options": [
+      "J.S. Mill",
+      "J.J. Rousseau",
+      "Thomas Hobbes",
+      "J. Locke"
+    ],
+    "correct": 0,
+    "ques_no": 44
+  },
+  {
+    "question": "\"The Saptang Theory of State\" is associated with",
+    "options": [
+      "Kautilya",
+      "R.S. Sharma",
+      "J.P. Narayan",
+      "M.N. Roy"
+    ],
+    "correct": 0,
+    "ques_no": 45
+  },
+  
+  {
+    "question": "‘Hindutva : Who is a Hindu’ was written by :",
+    "options": [
+      "Savarkar",
+      "Golwalkar",
+      "Lala Lajpat Rai",
+      "Bipin Chandra Pal"
+    ],
+    "correct": 0,
+    "ques_no": 46
+  },
+  {
+    "question": "The concept of ‘Complex Equality’ was given by",
+    "options": [
+      "John Rawls",
+      "Michael Walzer",
+      "Ronald Dworkin",
+      "David Miller"
+    ],
+    "correct": 1,
+    "ques_no": 47
+  },
+  {
+    "question": "Isaiah Berlin is the author of",
+    "options": [
+      "Taking Rights Seriously",
+      "Four Essays on Liberty",
+      "The Constitution of Liberty",
+      "What’s Wrong with Negative Liberty ?"
+    ],
+    "correct": 1,
+    "ques_no": 48
+  },
+  {
+    "question": "\"Considerations on Representative Government\" was authored by :",
+    "options": [
+      "Plato",
+      "James Mill",
+      "J.S. Mill",
+      "John Locke"
+    ],
+    "correct": 2,
+    "ques_no": 49
+  },
+  {
+    "question": "The United Nations is",
+    "options": [
+      "A Multinational Corporation",
+      "An International Organisation",
+      "A Non-Governmental Organisation",
+      "A business entity"
+    ],
+    "correct": 1,
+    "ques_no": 50
+  },
+  {
+    "question": "Major wars between India and Pakistan took place in",
+    "options": [
+      "1947 – 48, 1965 and 1971",
+      "1962 and 1965",
+      "1962 and 1999",
+      "1965 and 1999"
+    ],
+    "correct": 0,
+    "ques_no": 51
+  },
+  {
+    "question": "Who among the following thinkers is known for Realism in International Relations ?",
+    "options": [
+      "Hans J. Morgenthau",
+      "Robert O. Keohane",
+      "Joseph Nye",
+      "Immanuel Wallerstein"
+    ],
+    "correct": 0,
+    "ques_no": 52
+  },
+  {
+    "question": "SAARC was founded in the year",
+    "options": [
+      "1991",
+      "1985",
+      "1950",
+      "1965"
+    ],
+    "correct": 1,
+    "ques_no": 53
+  },
+  {
+    "question": "Two superpowers during the Cold War were",
+    "options": [
+      "USA and Russia",
+      "UK and Russia",
+      "USA and USSR",
+      "UK and France"
+    ],
+    "correct": 2,
+    "ques_no": 54
+  },
+  {
+    "question": "Which of the following is not a key feature of India’s Act East policy ?",
+    "options": [
+      "To boost its economic and strategic security",
+      "To develop strong relations with Indo-Pacific nations",
+      "To emerge as a regional superpower",
+      "To secure access to capital, technology, energy and markets"
+    ],
+    "correct": 2,
+    "ques_no": 55
+  },
+  {
+    "question": "Match List I with List II :<br><br>List I (Treaty)<br>A. Geneva Protocol<br>B. Nuclear Non-Proliferation Treaty<br>C. ABM Treaty<br>D. SALT II Treaty<br><br>List II (Year)<br>I. 1968<br>II. 1925<br>III. 1979<br>IV. 1972<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "A-I, B-II, C-III, D-IV",
+      "A-II, B-I, C-IV, D-III",
+      "A-III, B-I, C-IV, D-II",
+      "A-I, B-II, C-IV, D-III"
+    ],
+    "correct": 2,
+    "ques_no": 56
+  },
+  {
+    "question": "Match List I with List II :<br><br>List I (Name of Author/Thinker)<br>A. Machiavelli<br>B. Thucydides<br>C. Hans J. Morgenthau<br>D. Kenneth Waltz<br><br>List II (Name of Book)<br>I. Theory of International Politics<br>II. Politics Among Nations<br>III. The Prince<br>IV. The Peloponnesian War<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "A-I, B-II, C-III, D-IV",
+      "A-III, B-IV, C-II, D-I",
+      "A-II, B-IV, C-I, D-III",
+      "A-IV, B-III, C-II, D-I"
+    ],
+    "correct": 1,
+    "ques_no": 57
+  },
+  {
+    "question": "Arrange the following Cold War events chronologically from the earliest to the latest.<br><br>A. Cuban Missile Crisis<br>B. Suez Crisis<br>C. Soviet intervention in Afghanistan<br>D. Vietnam War<br>E. Korean War<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "E, A, B, D, C",
+      "E, B, A, D, C",
+      "B, E, A, C, D",
+      "B, E, A, D, C"
+    ],
+    "correct": 1,
+    "ques_no": 58
+  },
+  {
+    "question": "Which of the following statements about NAM are correct ?<br><br>A. NAM represented the concerns, interests and aspirations of the developing countries.<br>B. Emerged in the context of a wave of decolonization after the Second World War.<br>C. India was one of the founding members of NAM.<br>D. The relevance of NAM after the end of Cold War is being debated.<br>E. NAM supported the policy of imperialism.<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B, C and E",
+      "Only A, B, C and D",
+      "Only A, B, D and E",
+      "Only A, C, D and E"
+    ],
+    "correct": 1,
+    "ques_no": 59
+  },
+  {
+    "question": "Who is the author of the book \"Engaging India : Diplomacy, Democracy and the Bomb\" ?",
+    "options": [
+      "Jaswant Singh",
+      "Strobe Talbott",
+      "C. Raja Mohan",
+      "Harsh V. Pant"
+    ],
+    "correct": 1,
+    "ques_no": 60
+  },
+  
+  {
+    "question": "The US-Indian Nuclear Cooperation Approval and Nonproliferation Enhancement Act was signed in the year",
+    "options": [
+      "2005",
+      "2001",
+      "2008",
+      "2020"
+    ],
+    "correct": 2,
+    "ques_no": 61
+  },
+  {
+    "question": "Woodrow Wilson’s 14 points stressed the importance of",
+    "options": [
+      "Self-help in International Relations",
+      "Security Dilemma in International Relations",
+      "Traditional Morality in International Relations",
+      "Collective Security in International Relations"
+    ],
+    "correct": 3,
+    "ques_no": 62
+  },
+  {
+    "question": "The purpose of the US Marshall Plan was",
+    "options": [
+      "To extend economic loans to war-torn countries in Europe",
+      "To give US a favourable image as a creditor",
+      "To ensure economic stability and political order in the Post World War II World",
+      "All of the above"
+    ],
+    "correct": 3,
+    "ques_no": 63
+  },
+  {
+    "question": "Which one of the following is not a part of the UN Millennium Development Goals (MDGs) ?",
+    "options": [
+      "Eradicate Extreme Poverty and Hunger",
+      "Achieve Universal Primary Education",
+      "Promote Gender Equality and Empower Women",
+      "Promote South-South Cooperation"
+    ],
+    "correct": 3,
+    "ques_no": 64
+  },
+  {
+    "question": "Which one of the following is not a type of Public Policy in Theodore Lowi’s classification ?",
+    "options": [
+      "Regulatory Policy",
+      "Distributive Policy",
+      "Redistributive Policy",
+      "Welfare Policy"
+    ],
+    "correct": 3,
+    "ques_no": 65
+  },
+  {
+    "question": "Which of the following is/are correct about the Hawthorne Experiments ?<br><br>A. It was a pioneering study of how individuals behave in organisations.<br>B. It was carried out at the Hawthorne Works of Western Electric company, UK.<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A",
+      "Only B",
+      "Both A and B",
+      "Neither A nor B"
+    ],
+    "correct": 0,
+    "ques_no": 66
+  },
+  {
+    "question": "The book ‘The Principles of Scientific Management’ was authored by",
+    "options": [
+      "F.W. Taylor",
+      "Henri Fayol",
+      "Luther Gulick",
+      "Lyndall Urwick"
+    ],
+    "correct": 0,
+    "ques_no": 67
+  },
+  {
+    "question": "Who is associated with the concept of ‘Bounded Rationality’ ?",
+    "options": [
+      "Charles E. Lindblom",
+      "Herbert Simon",
+      "Thomas R. Dye",
+      "Yehezkel Dror"
+    ],
+    "correct": 1,
+    "ques_no": 68
+  },
+  {
+    "question": "Which of the following statements are true about ‘game theory’ ?<br><br>A. Game theory attempts to understand collective human activity as an outcome of interactive decisions.<br>B. It assumes decision-makers are involved in choices that are interdependent.<br>C. In game theory the ‘best’ depends upon what others do.<br>D. Game theory can be applied to decisions about war and peace, use of nuclear weapons and international diplomacy.<br>E. The conditions of game theory are always approximated in real life.<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B, C, D",
+      "Only A, B, C, E",
+      "Only B, C, D, E",
+      "Only A, C, D, E"
+    ],
+    "correct": 0,
+    "ques_no": 69
+  },
+  {
+    "question": "Which of the following are true about a federal system ?<br><br>A. A federal system is based on a constitutional division of power.<br>B. In a federal system the power remains centralised.<br>C. A federal system is an innovation of modern times to deal with the issues of mass democracies.<br>D. In a federal system the regional units participate in the decision-making process at federal level electorally.<br>E. It is characterised by primacy of territorial representation.<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B, C, D",
+      "Only A, C, D, E",
+      "Only A, B, C",
+      "Only B, C, D, E"
+    ],
+    "correct": 1,
+    "ques_no": 70
+  },
+  {
+    "question": "Who coined the phrase ‘Catch-all party’ ?",
+    "options": [
+      "Robert Dahl",
+      "Duverger",
+      "Sartori",
+      "Otto Kirchheimer"
+    ],
+    "correct": 3,
+    "ques_no": 71
+  },
+  {
+    "question": "Which of the following are modern approaches to Comparative Politics ?",
+    "options": [
+      "Behavioural Approach",
+      "Structural-functional Approach",
+      "Systems Approach",
+      "All of the above"
+    ],
+    "correct": 3,
+    "ques_no": 72
+  },
+  {
+    "question": "Who among the following is not a classical elitist thinker ?",
+    "options": [
+      "J.A. Schumpeter",
+      "Vilfredo Pareto",
+      "R. Michels",
+      "G. Mosca"
+    ],
+    "correct": 0,
+    "ques_no": 73
+  },
+  {
+    "question": "Which of the following statements is/are correct ?<br><br>A. The origin of constitutionalism is traced in the Magna Carta.<br>B. State Duma is Russia’s national legislature.<br>C. Separation of powers is about distributing powers between the Centre and the States (Units).<br>D. Canada has parliamentary-federal polity.<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A and B",
+      "Only A, B and C",
+      "Only A, B and D",
+      "Only D"
+    ],
+    "correct": 2,
+    "ques_no": 74
+  },
+  {
+    "question": "Functions of a Political Party include<br><br>A. Coordination within government and society<br>B. Contesting elections<br>C. Recruitment of cadre<br>D. Representation<br>E. Legislation<br><br>Choose the correct answer from the options given below :",
+    "options": [
+      "Only A, B, C, D",
+      "Only A, B, D, E",
+      "Only B, C, D, E",
+      "Only A, C, D, E"
+    ],
+    "correct": 0,
+    "ques_no": 75
+  }
+
+
+
+];
+
+        // State variables
+        let currentQuestion = 0;
+        let userAnswers = {};
+        let userName = '';
+        let examTimer;
+        let progressSaver; // Periodic save interval
+        let timeRemaining = TOTAL_EXAM_TIME; 
+        let examStarted = false;
+
+        // NEW: Tracks all questions the user has landed on/viewed
+        let questionsVisited = new Set();
+
+        // --- PROGRESS RECOVERY KEYS ---
+        const PROGRESS_KEY = 'quiz_in_progress';
+        const ANSWERS_KEY = 'quiz_answers';
+        const VISITED_KEY = 'quiz_visited';
+        // ---------------------------------
+
+        // --- GLOBAL STATE FOR TIMING ---
+        let questionTimings = {}; // { index: totalTimeInSeconds }
+        let lastQuestionStartTime = 0; // Timestamp in milliseconds (Date.now())
+        // -----------------------------------
+
+        /***********************
+         * JSONBin helper funcs
+         ***********************/
+        async function fetchResponsesFromBin() {
+            try {
+                const resp = await fetch(`${JSONBIN_BASE}/latest`, {
+                    method: 'GET',
+                    headers: { 'X-Master-Key': JSONBIN_MASTER_KEY, 'Accept': 'application/json' }
+                });
+
+                if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`);
+                const json = await resp.json();
+                const payload = json?.record?.data ?? json?.record ?? json?.data ?? json;
+
+                if (Array.isArray(payload)) return payload;
+                if (Array.isArray(payload.quizResponses)) return payload.quizResponses;
+                if (Array.isArray(payload.responses)) return payload.responses;
+                
+                return payload?.quizResponses || payload?.responses || [];
+            } catch (err) {
+                return JSON.parse(localStorage.getItem('quizResponses') || '[]');
+            }
+        }
+
+        async function writeResponsesToBin(responsesArray) {
+            try {
+                const body = { data: { quizResponses: responsesArray } };
+                const resp = await fetch(`${JSONBIN_BASE}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_MASTER_KEY },
+                    body: JSON.stringify(body)
+                });
+                if (!resp.ok) throw new Error('JSONBin write failed');
+
+                try { localStorage.setItem('quizResponses', JSON.stringify(responsesArray)); } catch (e) { console.warn('Could not write to localStorage as cache:', e); }
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        async function appendResponseRemote(newResponse) {
+            const current = await fetchResponsesFromBin();
+            current.push(newResponse);
+            return { ok: await writeResponsesToBin(current), current };
+        }
+
+        // -------------------------
+        // DATA PERSISTENCE & RECOVERY
+        // -------------------------
+
+        function saveProgress() {
+            const progress = {
+                currentQuestion: currentQuestion,
+                timeRemaining: timeRemaining,
+                userName: userName,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+            localStorage.setItem(ANSWERS_KEY, JSON.stringify(userAnswers));
+            localStorage.setItem(VISITED_KEY, JSON.stringify(Array.from(questionsVisited)));
+        }
+
+        function recoverProgress() {
+            const progressStr = localStorage.getItem(PROGRESS_KEY);
+            const answersStr = localStorage.getItem(ANSWERS_KEY);
+            const visitedStr = localStorage.getItem(VISITED_KEY);
+
+            if (!progressStr || !answersStr || !questions.length) return false;
+
+            const progress = JSON.parse(progressStr);
+            const answers = JSON.parse(answersStr);
+            const visited = JSON.parse(visitedStr || '[]');
+
+            if (progress.timeRemaining <= 0) { clearLocalProgress(); return false; }
+
+            if (confirm(`A previous exam session was found for ${progress.userName}, started at ${new Date(progress.timestamp).toLocaleTimeString()}. Do you want to continue?`)) {
+                currentQuestion = progress.currentQuestion;
+                timeRemaining = progress.timeRemaining;
+                userName = progress.userName;
+                userAnswers = answers;
+                questionsVisited = new Set(visited);
+
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('quizContainer').style.display = 'block';
+                document.getElementById('userForm').style.display = 'none';
+                document.getElementById('navigation').style.display = 'flex';
+                document.getElementById('questionsContainer').style.display = 'block';
+                document.getElementById('palettePanel').style.display = 'flex';
+
+                document.getElementById('userName').value = userName;
+
+                generateQuestions();
+                
+                for (let index in userAnswers) {
+                    const optIndex = userAnswers[index];
+                    const optionElement = document.querySelector(`#question-${index} .option:nth-child(${optIndex + 1})`);
+                    if (optionElement) {
+                        optionElement.classList.add('selected');
+                        const radio = optionElement.querySelector('input[type="radio"]');
+                        if (radio) radio.checked = true;
+                    }
+                }
+
+                showQuestion(currentQuestion);
+                examStarted = true;
+                startTimer();
+
+                return true;
+            } else {
+                clearLocalProgress();
+                return false;
+            }
+        }
+
+        function clearLocalProgress() {
+            localStorage.removeItem(PROGRESS_KEY);
+            localStorage.removeItem(ANSWERS_KEY);
+            localStorage.removeItem(VISITED_KEY);
+        }
+
+        // -------------------------
+        // UI & NAVIGATION
+        // -------------------------
+
+        function startTimer() {
+            if (examTimer) clearInterval(examTimer);
+            if (progressSaver) clearInterval(progressSaver);
+
+            // Set the start time for the current session/question
+            lastQuestionStartTime = Date.now(); 
+
+            examTimer = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+
+                if (timeRemaining <= CRITICAL_TIME_THRESHOLD) { 
+                    document.getElementById('timerContainer').classList.add('timer-warning');
+                    document.getElementById('autoSubmitWarning').style.display = 'block';
+                }
+                if (timeRemaining <= 60) { 
+                    document.getElementById('timerContainer').classList.remove('timer-warning');
+                    document.getElementById('timerContainer').classList.add('timer-critical');
+                }
+
+                if (timeRemaining <= 0) {
+                    autoSubmitTest();
+                }
+            }, 1000);
+            
+            progressSaver = setInterval(saveProgress, SAVE_INTERVAL_SECONDS * 1000);
+        }
+
+        function stopTimer() {
+            if (examTimer) clearInterval(examTimer);
+            if (progressSaver) clearInterval(progressSaver);
+            examTimer = null;
+            progressSaver = null;
+        }
+
+        function updateTimerDisplay() {
+            const hours = Math.floor(timeRemaining / 3600);
+            const minutes = Math.floor((timeRemaining % 3600) / 60);
+            const seconds = timeRemaining % 60;
+            
+            const display = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('timerDisplay').textContent = display;
+        }
+
+        function autoSubmitTest() {
+            stopTimer();
+            submitTest(true);
+        }
+        
+        // NEW HELPER: Records time spent on the previous question
+        function recordQuestionTime(prevIndex) {
+            if (prevIndex !== null && examStarted) {
+                // Calculate time spent on the previous question (in seconds)
+                const timeSpent = (Date.now() - lastQuestionStartTime) / 1000;
+                
+                // Add time to the total time for that question index
+                questionTimings[prevIndex] = (questionTimings[prevIndex] || 0) + timeSpent;
+            }
+            // Set the start time for the current/next active question
+            lastQuestionStartTime = Date.now();
+        }
+
+
+        // --- PIN GATEWAY FUNCTIONS ---
+        function startTest() {
+            document.getElementById('modalTitle').textContent = 'Enter Test PIN';
+            document.getElementById('testPinInput').value = '';
+            document.getElementById('pinError').style.display = 'none';
+            document.getElementById('pinSubmitBtn').onclick = checkTestPin;
+            document.getElementById('passwordModal').style.display = 'block';
+        }
+
+        function checkTestPin() {
+            const enteredPin = document.getElementById('testPinInput').value;
+            const pinError = document.getElementById('pinError');
+
+            if (enteredPin === TEST_PIN) {
+                closeModal('passwordModal');
+                
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('quizContainer').style.display = 'block';
+                
+                // Show the sign-in form only, other elements remain hidden
+                document.getElementById('questionsContainer').style.display = 'none';
+                document.getElementById('navigation').style.display = 'none';
+                document.getElementById('palettePanel').style.display = 'none';
+                document.getElementById('userForm').style.display = 'flex'; 
+
+            } else {
+                pinError.textContent = 'Incorrect 6-Digit PIN!';
+                pinError.style.display = 'block';
+            }
+        }
+        // --- END PIN GATEWAY FUNCTIONS ---
+
+        function togglePalette() {
+            const palette = document.getElementById('palettePanel');
+            palette.classList.toggle('visible'); 
+        }
+
+        function startQuiz() {
+            userName = document.getElementById('userName').value.trim();
+
+            if (!userName) {
+                alert('Please enter your name');
+                return;
+            }
+
+            document.getElementById('userForm').style.display = 'none';
+            document.getElementById('navigation').style.display = 'flex';
+            document.getElementById('questionsContainer').style.display = 'block';
+            document.getElementById('palettePanel').style.display = 'flex'; 
+            
+            showQuestion(0);
+            
+            examStarted = true;
+            startTimer();
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function generateQuestions() {
+            const container = document.getElementById('questionsContainer');
+            const paletteGrid = document.getElementById('paletteGrid');
+            container.innerHTML = '';
+            paletteGrid.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                // 1. Generate Question UI
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                questionDiv.id = `question-${index}`;
+                
+                let optionsHtml = '';
+                q.options.forEach((option, optIndex) => {
+                    const isChecked = userAnswers[index] === optIndex ? 'checked' : '';
+                    const isSelected = userAnswers[index] === optIndex ? ' selected' : '';
+                    
+                    optionsHtml += `
+                        <li class="option${isSelected}" onclick="selectOption(${index}, ${optIndex})">
+                            <label>
+                                <input type="radio" name="question-${index}" value="${optIndex}" ${isChecked}>
+                                (${String.fromCharCode(65 + optIndex)}) ${option}
+                            </label>
+                        </li>
+                    `;
+                });
+
+                questionDiv.innerHTML = `
+                    <div class="question">
+                        <div class="question-header">Question ${index + 1}</div>
+                        <div class="question-text">${q.question}</div>
+                        <ul class="options">${optionsHtml}</ul>
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+                
+                // 2. Generate Palette Item
+                const paletteItem = document.createElement('div');
+                paletteItem.className = `palette-item palette-default`;
+                paletteItem.textContent = index + 1;
+                paletteItem.onclick = () => showQuestion(index);
+                paletteGrid.appendChild(paletteItem);
+            });
+            
+            updatePalette();
+        }
+
+        function updatePalette() {
+            const paletteItems = document.querySelectorAll('#paletteGrid .palette-item');
+            
+            questions.forEach((q, index) => {
+                const item = paletteItems[index];
+                item.classList.remove('palette-answered', 'palette-unanswered', 'palette-current', 'palette-default');
+                
+                const isAnswered = userAnswers[index] !== undefined && userAnswers[index] !== null;
+                const isVisited = questionsVisited.has(index);
+                
+                if (index === currentQuestion) {
+                    item.classList.add('palette-current'); // Current: Yellow/Gold
+                } else if (isAnswered) {
+                    item.classList.add('palette-answered'); // Answered: Green
+                } else if (isVisited) {
+                    item.classList.add('palette-unanswered'); // Unanswered (Seen): Red
+                } else {
+                    item.classList.add('palette-default'); // Not Seen: White
+                }
+            });
+        }
+
+        function calculateScore(answers) {
+             let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+            let detailedResults = {};
+
+            for (let i = 0; i < questions.length; i++) {
+                const userAnswer = answers[i];
+                const correctAnswer = questions[i].correct;
+                
+                if (userAnswer === undefined || userAnswer === null) {
+                    unattempted++;
+                    detailedResults[i] = { status: 'unattempted', icon: '–', points: 0 };
+                } else if (userAnswer === correctAnswer) {
+                    correct++;
+                    detailedResults[i] = { status: 'correct', icon: '✅', points: 4 };
+                } else {
+                    incorrect++;
+                    detailedResults[i] = { status: 'incorrect', icon: '❌', points: -1 };
+                }
+            }
+
+            const totalScore = (correct * 4) + (incorrect * -1);
+            const accuracy = ((correct) / (questions.length - unattempted)) * 100;
+
+            return {
+                correct,
+                incorrect,
+                unattempted,
+                totalScore,
+                accuracy: accuracy.toFixed(2),
+                maxMarks: questions.length * 4,
+                detailedResults
+            };
+        }
+
+        function selectOption(questionIndex, optionIndex) {
+            const options = document.querySelectorAll(`#question-${questionIndex} .option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            options[optionIndex].classList.add('selected');
+
+            userAnswers[questionIndex] = optionIndex;
+            
+            updatePalette(); 
+            saveProgress();
+        }
+
+        function showQuestion(index) {
+            if (index < 0 || index >= questions.length) return;
+
+            // CRITICAL FIX: Record time for the question being left BEFORE changing the index
+            recordQuestionTime(currentQuestion);
+
+            // Mark question as visited
+            questionsVisited.add(index);
+            
+            document.querySelectorAll('.question-container').forEach(q => {
+                q.classList.remove('active');
+            });
+            document.getElementById(`question-${index}`).classList.add('active');
+
+            currentQuestion = index; // Update index after recording time
+
+            document.getElementById('progress').textContent = `Question ${index + 1} of ${questions.length}`;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (prevBtn) prevBtn.disabled = (index === 0);
+            
+            if (index === questions.length - 1) {
+                if (nextBtn) nextBtn.style.display = 'none';
+                if (submitBtn) submitBtn.style.display = 'inline-block';
+            } else {
+                if (nextBtn) nextBtn.style.display = 'inline-block';
+                if (submitBtn) submitBtn.style.display = 'none';
+            }
+            
+            updatePalette(); 
+            MathJax.typeset(); 
+            saveProgress(); // Save after state change
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) showQuestion(currentQuestion - 1);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) showQuestion(currentQuestion + 1);
+        }
+
+        async function submitTest(isAutoSubmit = false) {
+            stopTimer(); 
+            
+            const confirmMessage = isAutoSubmit ? 
+                'Your test has been auto-submitted due to time expiry.' :
+                'Are you sure you want to submit your test? You cannot change your answers after submission.';
+                
+            if (!isAutoSubmit && !confirm(confirmMessage)) {
+                if (examStarted) startTimer();
+                return;
+            }
+
+            // CRITICAL FIX: Record time for the final active question
+            if (examStarted) {
+                recordQuestionTime(currentQuestion);
+            }
+
+            try {
+                const scoreData = calculateScore(userAnswers);
+                
+                const response = {
+                    name: userName,
+                    answers: userAnswers,
+                    scoreData: scoreData,
+                    timestamp: new Date().toISOString(),
+                    submittedAt: new Date().toLocaleString(),
+                    isAutoSubmitted: isAutoSubmit,
+                    timeSpent: TOTAL_EXAM_TIME - timeRemaining,
+                    questionTimings: questionTimings // NEW: Include per-question data
+                };
+
+                const { ok, current } = await appendResponseRemote(response);
+
+                if (ok) {
+                    console.log('Saved response to JSONBin successfully.');
+                } else {
+                    console.warn('Failed to save to JSONBin; final fallback to localStorage cache.');
+                }
+                
+                clearLocalProgress();
+
+                document.getElementById('quizContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error in final submission process:', error);
+                clearLocalProgress();
+                
+                document.getElementById('quizContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                alert('Submission complete, though there was a server error.');
+            }
+        }
+        
+        // NEW HELPER: Records time spent on the previous question
+        function recordQuestionTime(prevIndex) {
+            if (prevIndex !== null && examStarted && questionsVisited.has(prevIndex)) {
+                // Calculate time spent on the previous question (in seconds)
+                const timeSpent = (Date.now() - lastQuestionStartTime) / 1000;
+                
+                // Add time to the total time for that question index
+                questionTimings[prevIndex] = (questionTimings[prevIndex] || 0) + timeSpent;
+            }
+            // Set the start time for the current/next active question
+            lastQuestionStartTime = Date.now();
+        }
+
+        // -------------------------
+        // ADMIN AND DOWNLOAD FUNCTIONS
+        // -------------------------
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function openAdminModal() {
+            document.getElementById('adminModal').style.display = 'block';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('passwordError').style.display = 'none';
+        }
+
+        function checkAdminPassword() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === 'AryanM@123M') {
+                closeModal('adminModal');
+                showAdminPanel();
+            } else {
+                document.getElementById('passwordError').style.display = 'block';
+            }
+        }
+
+        async function showAdminPanel() {
+            document.getElementById('landingPage').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            
+            await displayResponses();
+        }
+
+        async function displayResponses() {
+            const container = document.getElementById('responsesContainer');
+            if (typeof MathJax !== 'undefined') {
+                await MathJax.startup.promise;
+            }
+            const responses = await fetchResponsesFromBin();
+
+            if (!responses || responses.length === 0) {
+                container.innerHTML = '<p>No responses yet.</p>';
+                return;
+            }
+
+            let allResponsesHtml = '';
+
+            responses.forEach((response, responseIndex) => {
+                const scoreData = response.scoreData || calculateScore(response.answers || {});
+                const timings = response.questionTimings || {};
+                const totalAttempted = scoreData.correct + scoreData.incorrect;
+                
+                const timeSpentMinutes = Math.floor((response.timeSpent || 0) / 60);
+                const timeSpentSeconds = (response.timeSpent || 0) % 60;
+                const timeSpentDisplay = `${timeSpentMinutes}m ${timeSpentSeconds}s`;
+
+                // --- SUMMARY PANEL HTML ---
+                let summaryHtml = `
+                    <div class="report-summary">
+                        <h3 class="test-title">SSC CHSL - Mathematics Practice Test 2 Report</h3>
+                        <div class="summary-details">
+                            <p><strong>Name:</strong> ${response.name || '—'}</p>
+                            <p><strong>Date & Time:</strong> ${response.submittedAt}</p>
+                            <p><strong>Time Taken:</strong> ${timeSpentDisplay}</p>
+                            <p><strong>Score:</strong> ${scoreData.totalScore.toFixed(2)} / ${scoreData.maxMarks}</p>
+                            <p><strong>Accuracy:</strong> ${scoreData.accuracy}%</p>
+                            <p><strong>Correct:</strong> ${scoreData.correct}</p>
+                            <p><strong>Incorrect:</strong> ${scoreData.incorrect}</p>
+                            <p><strong>Unattempted:</strong> ${scoreData.unattempted}</p>
+                            <p><strong>Attempted:</strong> ${totalAttempted}</p>
+                        </div>
+                    </div>`;
+                // --- END SUMMARY PANEL HTML ---
+
+                // --- TOOLBAR (Updated with Solution and Chapter Checkbox) ---
+                let toolbarHtml = `
+                    <div class="toolbar" id="toolbar-${responseIndex}">
+                        <label><input type="checkbox" data-col="q-num" checked> Q#</label>
+                        <label><input type="checkbox" data-col="q-text" checked> Question</label>
+                        <label><input type="checkbox" data-col="q-options" checked> Options</label>
+                        <label><input type="checkbox" data-col="q-selection-letter" checked> Your Option</label>
+                        <label><input type="checkbox" data-col="q-correct-letter" checked> Correct Option</label>
+                        <label><input type="checkbox" data-col="q-result" checked> Result</label>
+                        <label><input type="checkbox" data-col="q-time" checked> Time</label>
+                        <label><input type="checkbox" data-col="q-solution" checked> Solution</label>
+                        <label><input type="checkbox" data-col="q-chapter" checked> Chapter</label> </div>
+                `;
+                
+                let tableHtml = '<div class="response-view"><div style="overflow-x: auto;"><table class="response-table" style="width: 100%; font-size: 12px;"><thead><tr>';
+                
+                // NEW COLUMN HEADERS AND ORDER & WIDTHS (Updated with Chapter Header)
+                tableHtml += '<th class="col-q-num" style="width: 4%;">Q#</th>';
+                tableHtml += '<th class="col-q-chapter" style="width: 10%;">Chapter</th>'; // NEW: Chapter Column - Header
+                tableHtml += '<th class="col-q-text" style="width: 20%;">Question</th>';
+                tableHtml += '<th class="col-q-options" style="width: 10%;">Options (with Text)</th>';
+                tableHtml += '<th class="col-q-selection-letter" style="width: 5%;">Your Opt.</th>';
+                tableHtml += '<th class="col-q-correct-letter" style="width: 5%;">Correct Opt.</th>';
+                tableHtml += '<th class="col-q-result" style="width: 7%;">Result</th>';
+                tableHtml += '<th class="col-q-time" style="width: 5%;">Time (s)</th>';
+                tableHtml += '<th class="col-q-solution" style="width: 29%;">Solution</th></tr></thead><tbody>'; 
+                // --- END TOOLBAR & TABLE SETUP ---
+
+                for (let i = 0; i < questions.length; i++) {
+                    const questionData = questions[i]; // Get question data
+                    const userAnswer = (response.answers || {})[i];
+                    const correctAnswer = questionData.correct;
+                    const result = scoreData.detailedResults[i];
+
+                    const fullQuestionText = questionData.question;
+                    const resultIcon = result?.icon || '–';
+                    const points = result?.points || 0;
+                    const timePerQ = (timings[i] || 0).toFixed(1);
+                    const solutionText = questionData.solution || 'N/A'; // Get solution text
+                    const chapterName = questionData.chapter || 'N/A'; // NEW: Chapter Column - Get Chapter Name
+
+                    const correctLetter = String.fromCharCode(65 + correctAnswer);
+                    let userAnswerLetter = '—';
+
+                    let allOptionsHtml = '<ul style="list-style: none; padding: 0; margin: 0;">';
+                    questionData.options.forEach((optionText, optIndex) => {
+                        const optionLetter = String.fromCharCode(65 + optIndex);
+                        const isUserSelection = optIndex === userAnswer;
+                        
+                        let optionClass = 'font-weight: normal;';
+                        let prefix = ''; 
+                        
+                        
+                        
+                        if (isUserSelection) {
+                            userAnswerLetter = `${optionLetter}`; 
+                            
+                        }
+                        
+                        allOptionsHtml += `<li style="${optionClass} font-size: 11px; margin-bottom: 2px; line-height: 1.2;">${prefix}${optionLetter}) ${optionText}</li>`;
+                    });
+                    allOptionsHtml += '</ul>';
+
+                    tableHtml += '<tr>';
+                    // NEW COLUMN DATA AND ORDER
+                    tableHtml += `<td class="col-q-num" style="font-size: 13px; font-weight: 170;">${i + 1}</td>`;
+                    tableHtml += `<td class="col-q-chapter" style="font-size: 13px; font-weight: 150;">${chapterName}</td>`; // NEW: Chapter Column - Data
+                    tableHtml += `<td class="col-q-text math-question" style="font-size: 15px; font-weight: 150;">${fullQuestionText}</td>`;
+                    tableHtml += `<td class="col-q-options" style="font-size: 17px; font-weight: 150;">${allOptionsHtml}</td>`;
+                    
+                    // New column: Your Option (only letter)
+                    tableHtml += `<td class="col-q-selection-letter" style="text-align: center; font-weight: bold; color: ${userAnswer === correctAnswer ? '#28a745' : userAnswer !== undefined ? '#e74c3c' : '#999'};">${userAnswerLetter}</td>`;
+                    
+                    // New column: Correct Option (only letter)
+                    tableHtml += `<td class="col-q-correct-letter" style="text-align: center; font-weight: bold; color: #28a745;">${correctLetter}</td>`;
+                    
+                    tableHtml += `<td class="col-q-result" style="font-weight: bold; font-size: 11px; text-align: center; color: ${points > 0 ? '#27ae60' : points < 0 ? '#e74c3c' : '#95a5a6'};">${resultIcon}<br>(${points > 0 ? '+' : ''}${points})</td>`;
+                    tableHtml += `<td class="col-q-time">${timePerQ}</td>`;
+                    tableHtml += `<td class="col-q-solution math-question" style="font-size: 14px;">${solutionText.replace(/\r<br>/g, '<br>')}</td>`; // Added Solution Data
+                    tableHtml += '</tr>';
+                }
+                
+                tableHtml += '</tbody></table></div></div>';
+                
+                allResponsesHtml += `<div class="response-report" id="response-report-${responseIndex}">` + summaryHtml + toolbarHtml + tableHtml + `</div>`;
+            });
+
+            container.innerHTML = allResponsesHtml;
+            
+            // Attach event listeners for the toolbars
+            document.querySelectorAll('.toolbar').forEach(toolbar => {
+                toolbar.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', toggleColumn);
+                });
+            });
+
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+        }
+
+        // New function to handle column visibility toggling
+        function toggleColumn(event) {
+            const checkbox = event.target;
+            const colClass = `col-${checkbox.getAttribute('data-col')}`;
+            
+            const report = checkbox.closest('.response-report');
+            if (!report) return;
+
+            const elementsToToggle = report.querySelectorAll(`.${colClass}`);
+            
+            elementsToToggle.forEach(el => {
+                if (checkbox.checked) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+        }
+
+
+        // New function to trigger native browser print (kept simple)
+        function printReport() {
+            // This relies on the @media print CSS rules to hide all buttons and controls.
+            window.print();
+        }
+        
+        // --- DOWNLOAD UTILITIES (Kept from previous functional code) ---
+        function cleanMathText(text) {
+            if (typeof text !== 'string') return String(text);
+            let cleaned = text;
+
+            // 1. Remove delimiters and environment commands
+            cleaned = cleaned.replace(/\$/g, '');
+            cleaned = cleaned.replace(/\\left|\\right/g, ''); 
+            cleaned = cleaned.replace(/\\cdot/g, '*');
+            cleaned = cleaned.replace(/\\quad|\\qquad/g, ' '); 
+
+            // 2. Simplify fractions and roots
+            cleaned = cleaned.replace(/\\frac{(.*?)}{(.*?)}/g, '($1/$2)'); 
+            cleaned = cleaned.replace(/\\sqrt{(.*?)}/g, 'sqrt($1)'); 
+            cleaned = cleaned.replace(/(\\w+)\^\{(.*?)\}/g, '$1^($2)'); // x^{2} -> x^(2)
+            cleaned = cleaned.replace(/(\w+)\^([a-zA-Z0-9])/g, '$1^$2'); // x^2 -> x^2
+
+            // 3. Handle Greek letters and functions (e.g., \sin, \theta)
+            cleaned = cleaned.replace(/\\cos/g, 'cos');
+            cleaned = cleaned.replace(/\\sin/g, 'sin');
+            cleaned = cleaned.replace(/\\tan/g, 'tan');
+            cleaned = cleaned.replace(/\\cot/g, 'cot');
+            cleaned = cleaned.replace(/\\sec/g, 'sec');
+            cleaned = cleaned.replace(/\\csc/g, 'csc');
+            cleaned = cleaned.replace(/\\theta/g, 'θ');
+            cleaned = cleaned.replace(/\\alpha/g, 'α');
+            cleaned = cleaned.replace(/\\beta/g, 'β');
+
+            // 4. Handle operators and units
+            cleaned = cleaned.replace(/\\pm/g, '+/-');
+            cleaned = cleaned.replace(/\\text{(.*?)}/g, '$1'); // \text{cm} -> cm
+            cleaned = cleaned.replace(/\\circ/g, ' deg'); // \circ -> deg
+            cleaned = cleaned.replace(/\\triangle/g, '∆'); 
+            cleaned = cleaned.replace(/\\ge/g, '>=');
+            cleaned = cleaned.replace(/\\le/g, '<=');
+            cleaned = cleaned.replace(/\\equiv/g, '≡');
+            cleaned = cleaned.replace(/\<br>e/g, '≠');
+            
+            // 5. Clean up any remaining backslashes that don't represent a known command
+            cleaned = cleaned.replace(/\\/g, ''); 
+
+            return cleaned.trim();
+        }
+
+        function escapeForCSV(text) {
+            if (text === null || text === undefined) return '';
+            const str = String(text).replace(/"/g, '""').replace(/\r<br>|<br>|\r/g, ' '); // Replace newlines for CSV
+            return `"${str}"`;
+        }
+
+        function triggerDownload(data, filename) {
+            const blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            
+            if (link.download !== undefined) { 
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('Your browser does not support direct downloading. Please copy and paste the data.');
+            }
+        }
+
+        /** DOWNLOAD FINAL RESULTS (CSV) - Per Question Row (Updated with Chapter Column) */
+        async function downloadResultsCSV() {
+            const responses = await fetchResponsesFromBin();
+            
+            if (!responses || responses.length === 0) {
+                alert('No results to download');
+                return;
+            }
+
+            const questionHeaders = ["User Status", "Q#", "Chapter", "Result", "Time (s)", "Points", "Question Text", "User Answer", "Correct Answer", "Solution"]; // NEW: Chapter Column - Header in CSV
+            let csvContent = questionHeaders.map(escapeForCSV).join(",") + "<br>";
+
+            responses.forEach(response => {
+                let scoreData = response.scoreData || calculateScore(response.answers || {});
+                const timeSpentMinutes = ((response.timeSpent || 0) / 60).toFixed(2);
+                const timings = response.questionTimings || {}; 
+
+                const userHeader = [
+                    `USER: ${response.name}`, 
+                    `SCORE: ${scoreData.totalScore.toFixed(2)}/${scoreData.maxMarks}`,
+                    `ACCURACY: ${scoreData.accuracy}%`, 
+                    `CORRECT: ${scoreData.correct}`, 
+                    `INCORRECT: ${scoreData.incorrect}`, 
+                    `UNATTEMPTED: ${scoreData.unattempted}`,
+                    `TIME TAKEN: ${timeSpentMinutes} min`, 
+                    `SUBMITTED: ${response.submittedAt}`, 
+                    `AUTO-SUBMIT: ${response.isAutoSubmitted ? 'Yes' : 'No'}`
+                ];
+                csvContent += userHeader.map(escapeForCSV).join(",") + "<br>";
+
+                for (let i = 0; i < questions.length; i++) {
+                    const question = questions[i];
+                    const userAnswerIndex = (response.answers || {})[i];
+                    const correctAnswerIndex = question.correct;
+                    const result = scoreData.detailedResults[i];
+
+                    const userStatus = result?.status.toUpperCase() || 'UNATTEMPTED';
+                    const timePerQ = (timings[i] || 0).toFixed(1); 
+                    const chapterName = question.chapter || 'N/A'; // NEW: Chapter Column - Get Chapter Name
+
+                    let userAnswerText = 'Not Answered';
+                    if (userAnswerIndex !== undefined && userAnswerIndex !== null) {
+                        const optionLetter = String.fromCharCode(65 + userAnswerIndex);
+                        userAnswerText = `${optionLetter}) ${cleanMathText(question.options[userAnswerIndex])}`;
+                    }
+
+                    const correctLetter = String.fromCharCode(65 + correctAnswerIndex);
+                    const correctAnswerText = `${correctLetter}) ${cleanMathText(question.options[correctAnswerIndex])}`;
+                    const solutionText = cleanMathText(question.solution || 'N/A'); 
+
+                    const questionRow = [
+                        userStatus,
+                        i + 1,
+                        chapterName, // NEW: Chapter Column - Data in CSV
+                        userStatus === 'CORRECT' ? 'C' : userStatus === 'INCORRECT' ? 'I' : 'U',
+                        timePerQ, 
+                        result?.points || 0,
+                        cleanMathText(question.question), 
+                        userAnswerText,
+                        correctAnswerText,
+                        solutionText 
+                    ];
+                    
+                    csvContent += questionRow.map(escapeForCSV).join(",") + "<br>";
+                }
+            });
+
+            triggerDownload(csvContent, `ssc_chsl_final_results_${new Date().toISOString().split('T')[0]}.csv`);
+        }
+
+        /** DOWNLOAD RAW DATA (CSV) - Per Question Row (Updated with Chapter Column) */
+        async function downloadRawDataCSV() {
+            const responses = await fetchResponsesFromBin();
+            
+            if (!responses || responses.length === 0) {
+                alert('No raw data to download');
+                return;
+            }
+            
+            const rawHeaders = ["User Name", "Q#", "Chapter", "Question Text", "All Options", "User Selection"]; // NEW: Chapter Column - Header in Raw CSV
+            let csvContent = rawHeaders.map(escapeForCSV).join(",") + "<br>";
+            
+            responses.forEach(response => {
+                const userNameHeader = [`USER: ${response.name}`]; 
+                csvContent += userNameHeader.map(escapeForCSV).join(",") + "<br>";
+                
+                for (let i = 0; i < questions.length; i++) {
+                    const question = questions[i];
+                    const userAnswerIndex = (response.answers || {})[i];
+                    const chapterName = question.chapter || 'N/A'; // NEW: Chapter Column - Get Chapter Name
+                    
+                    const allOptions = question.options.map((opt, idx) => 
+                        `${String.fromCharCode(65 + idx)}) ${cleanMathText(opt)}`
+                    ).join(' | ');
+                    
+                    let userAnswerText = 'Not Answered';
+                    if (userAnswerIndex !== undefined && userAnswerIndex !== null) {
+                        const optionLetter = String.fromCharCode(65 + userAnswerIndex);
+                        const optionText = cleanMathText(question.options[userAnswerIndex]);
+                        userAnswerText = `${optionLetter}) ${optionText}`;
+                    }
+                    
+                    const questionRow = [
+                        response.name,
+                        i + 1,
+                        chapterName, // NEW: Chapter Column - Data in Raw CSV
+                        cleanMathText(question.question),
+                        allOptions,
+                        userAnswerText
+                    ];
+                    
+                    csvContent += questionRow.map(escapeForCSV).join(",") + "<br>";
+                }
+            });
+
+            triggerDownload(csvContent, `ssc_chsl_raw_data_${new Date().toISOString().split('T')[0]}.csv`);
+        }
+
+        async function clearAllResponses() {
+            if (!confirm('Are you sure you want to delete all user responses? This cannot be undone.')) return;
+
+            localStorage.removeItem('quizResponses');
+
+            const ok = await writeResponsesToBin([]);
+
+            if (ok) {
+                await displayResponses();
+                alert('All responses have been cleared from the server and local cache.');
+            } else {
+                alert('Failed to clear responses on server. Local responses cleared only.');
+                await displayResponses();
+            }
+        }
+
+        function goHome() {
+            stopTimer(); 
+            clearLocalProgress();
+            
+            document.getElementById('landingPage').style.display = 'block';
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            currentQuestion = 0;
+            timeRemaining = TOTAL_EXAM_TIME; 
+            examStarted = false;
+            updateTimerDisplay();
+            document.getElementById('userName').value = '';
+            document.getElementById('userForm').style.display = 'block';
+            document.getElementById('navigation').style.display = 'none';
+            document.getElementById('autoSubmitWarning').style.display = 'none';
+            document.getElementById('timerContainer').classList.remove('timer-warning', 'timer-critical');
+        }
+
+        // -------------------------
+        // INITIALIZATION & EVENT LISTENERS
+        // -------------------------
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const recovered = recoverProgress();
+
+            if (!recovered) {
+                document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') checkAdminPassword();
+                });
+
+                document.getElementById('testPinInput').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') checkTestPin();
+                });
+            }
+            
+            updateTimerDisplay();
+            
+            if (!recovered) {
+                generateQuestions();
+            }
+        });
+
+        window.addEventListener('beforeunload', function (e) {
+            if (examStarted && timeRemaining > 0) {
+                saveProgress(); 
+
+                if (timeRemaining <= 300) { 
+                    autoSubmitTest(); 
+                }
+                
+                const message = 'Your exam progress has been saved. You can continue later.';
+                e.preventDefault();
+                e.returnValue = message;
+                return message;
+            }
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('adminModal');
+            if (event.target === modal) closeModal('adminModal');
+            
+            const pinModal = document.getElementById('passwordModal');
+            if (event.target === pinModal) closeModal('passwordModal');
+        }
+
+        document.addEventListener('contextmenu', function(e) { if (examStarted) e.preventDefault(); });
+        document.addEventListener('keydown', function(e) { 
+            if (examStarted) {
+                if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || e.key === 'F12') {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
