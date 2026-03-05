@@ -542,9 +542,9 @@
                 <div class="exam-info">
                     <h3>Examination Instructions:</h3>
                     <ul>
-                        <li>Total Questions: 75</li>
-                        <li>Maximum Marks: 300</li>
-                        <li>Time Duration: <strong>1 Hour 15 Minutes</strong></li>
+                        <li>Total Questions: 60</li>
+                        <li>Maximum Marks: 240</li>
+                        <li>Time Duration: <strong>1 Hour</strong></li>
                         <li><strong style="color: #dc3545;">⚠️ Test will auto-submit when time expires</strong></li>
                         <li>Marking Scheme: +4 for correct, -1 for incorrect, 0 for unattempted</li>
                         <li>Do not refresh the page during the examination</li>
@@ -557,7 +557,7 @@
 
         <div id="quizContainer" class="quiz-container">
             <div class="exam-header">
-                <div class="exam-title">SSC CHSL - Mathematics Practice Test</div>
+                <div class="exam-title">CUET PG Section Test 1</div>
                 <div class="timer-group">
                     <button class="menu-toggle" onclick="togglePalette()">☰</button>
                     <div class="timer-container" id="timerContainer">
@@ -652,10 +652,10 @@
         const JSONBIN_ID = '68d903e243b1c97be952d590';
         const JSONBIN_MASTER_KEY = '$2a$10$XZzc.4ipvMjGFeEh9J/7cuffWTZGYXoXCkJjMDjZ1wCgz.BGJ3Cse';
         const JSONBIN_BASE = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
-        const TEST_PIN = '112244'; 
+        const TEST_PIN = '112288'; 
         const SAVE_INTERVAL_SECONDS = 10;
-        const TOTAL_EXAM_TIME = 75 * 60; 
-        const CRITICAL_TIME_THRESHOLD = 10 * 60; 
+        const TOTAL_EXAM_TIME = 60 * 60; 
+        const CRITICAL_TIME_THRESHOLD = 5 * 60; 
         
        
         // Questions data 
@@ -663,836 +663,668 @@
             
             [
               
-  {
-    "question": "Asymmetrical features of federalism in India include :<br><br>A. Fifth Schedule<br>B. Sixth Schedule<br>C. Article 371 A<br>D. Article 371 G<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B and C",
-      "Only B, C and D",
-      "A, B, C and D",
-      "Only A, B and D"
-    ],
-    "correct": 2,
-    "ques_no": 1
-  },
-  {
-    "question": "Which of the Constitutional provisions doesn’t/don’t come within the legislative jurisdiction of the Legislature of a State?<br><br>A. Matters relating to clause 3 of article 16<br>B. Matters relating to article 32<br>C. Matters relating to article 33<br>D. Matters relating to article 34<br>E. Matters relating to clause 4 of article 16<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B, C and D",
-      "Only B, C and E",
-      "Only A, C, D and E",
-      "Only A, B, D and E"
-    ],
-    "correct": 0,
-    "ques_no": 2
-  },
-  {
-    "question": "Reservation of seats for the Scheduled Castes and Scheduled Tribes in the House of the People is provided under which article of the Constitution?",
-    "options": [
-      "Article 164",
-      "Article 243 D",
-      "Article 243 T",
-      "Article 334"
-    ],
-    "correct": [0,1,2,3],
-    "ques_no": 3
-  },
-  {
-    "question": "Which of the following articles were not inserted by the Forty-second Constitutional Amendment Act, 1976?<br><br>A. Article 21A<br>B. Article 31A<br>C. Article 39A<br>D. Article 43A<br>E. Article 48A<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A and B",
-      "Only B and C",
-      "Only C and D",
-      "Only D and E"
-    ],
-    "correct": 0,
-    "ques_no": 4
-  },
-  {
-    "question": "Who in the Constituent Assembly, said that ‘the Doctrine of Independence was not to be raised to the level of a dogma so as to enable the judiciary to function as a kind of Super Legislature’?",
-    "options": [
-      "N. Madhava Rao",
-      "K.M. Munshi",
-      "N.G. Ayyangar",
-      "A.K. Ayyar"
-    ],
-    "correct": 3,
-    "ques_no": 5
-  },
-  {
-    "question": "The Parliament of India consists of :<br><br>A. The House of the People<br>B. The Council of States<br>C. The President<br>D. The Prime Minister<br>E. The Speaker<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B and C",
-      "Only B, C and D",
-      "Only C, D and E",
-      "Only A, B and E"
-    ],
-    "correct": 0,
-    "ques_no": 6
-  },
-  {
-    "question": "Which of the following is/are correct ?<br><br>A. Article 143 provides for the power of President to consult Supreme Court.<br>B. The opinion of the Supreme Court is not binding.<br>C. The Supreme Court is not bound to give opinion on the subject so referred.<br>D. The Supreme Court would respectfully decline to answer with reference if it is improper, inadvisable and undesirable.<br>E. The Supreme Court is bound to give opinion.<br><br>Choose the most appropriate answer from the options given below :",
-    "options": [
-      "Only A, B and C",
-      "Only B, C and D",
-      "Only B, C, D and E",
-      "Only A, B, C, D"
-    ],
-    "correct": [0,1,2,3],
-    "ques_no": 7
-  },
-  {
-    "question": "Parliament may by law :<br><br>A. extend the jurisdiction of a High Court<br>B. establish a common High Court for two or more States<br>C. constitute a High Court for a Union Territory<br>D. establish administrative tribunal for each State<br>E. appoint judges of the High Courts<br><br>Choose the most appropriate answer from the options given below :",
-    "options": [
-      "Only A, B, C and D",
-      "Only B, C, D and E",
-      "Only A, B, D and E",
-      "Only A, C, D and E"
-    ],
-    "correct": 0,
-    "ques_no": 8
-  },
-  {
-    "question": "Which Constitutional Amendment lowered the voting age from 21 years to 18 years ?",
-    "options": [
-      "55th Amendment Act, 1987",
-      "61st Amendment Act, 1988",
-      "64th Amendment Act, 1990",
-      "65th Amendment Act, 1990"
-    ],
-    "correct": 1,
-    "ques_no": 9
-  },
-  {
-    "question": "The Constitution (Forty-Second Amendment) Act, 1976 added three words to the Preamble of the Constitution of India.<br><br>A. Socialist<br>B. Secular<br>C. Integrity<br>D. Unity<br>E. Federal<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B and C",
-      "Only B, C and D",
-      "Only C, D and E",
-      "Only A, C and E"
-    ],
-    "correct": 0,
-    "ques_no": 10
-  },
-  {
-    "question": "Which was the first reported case of Public Interest Litigation (PIL) seeking relief for the under trials in jails ?",
-    "options": [
-      "Anil Yadav Vs State of Bihar, 1981",
-      "Hussainara Khatoon Vs State of Bihar, 1979",
-      "Khatri Vs State of Bihar, 1981",
-      "Veena Sethi Vs State of Bihar, 1982"
-    ],
-    "correct": 1,
-    "ques_no": 11
-  },
-  {
-    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>Power of judicial review is considered as part of the basic structure of the Constitution.<br><br>Reason R :<br>The Supreme Court is endowed with the power of judicial review to ensure judicial independence and protection of rights.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
-    "options": [
-      "Both A and R are correct and R is the correct explanation of A",
-      "Both A and R are correct but R is not the correct explanation of A",
-      "A is correct but R is not correct",
-      "A is not correct but R is correct"
-    ],
-    "correct": 0,
-    "ques_no": 12
-  },
-  {
-    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>The powers within the Supervisory Jurisdiction of the High Courts are both administrative and judicial in nature.<br><br>Reason R :<br>Article 227(1) gives the High Courts power of Superintendence over all courts and tribunals within their territorial and constitutional jurisdiction.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
-    "options": [
-      "Both A and R are correct and R is the correct explanation of A",
-      "Both A and R are correct but R is not the correct explanation of A",
-      "A is correct but R is not correct",
-      "A is not correct but R is correct"
-    ],
-    "correct": 0,
-    "ques_no": 13
-  },
-  {
-    "question": "Which Fundamental Rights are available to all persons?<br><br>A. Protection in respect of conviction for offences (Article 20)<br>B. Protection of life and personal liberty (Article 21)<br>C. Protection against arrest and detention in certain cases (Article 22)<br>D. Freedom of religion (Article 25 – 28)<br>E. Prohibition of discrimination on grounds of religion, race, caste or place of birth (Article 15)<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only B, C and D",
-      "Only A, B and D",
-      "Only B, C, D and E",
-      "Only A, B, C and D"
-    ],
-    "correct": 3,
-    "ques_no": 14
-  },
-  {
-    "question": "Which Constitutional Amendment ended the Parts A, B and C categories of States and implemented the States Reorganisation Scheme?",
-    "options": [
-      "The Constitution (Fourth Amendment) Act, 1955",
-      "The Constitution (Fifth Amendment) Act, 1955",
-      "The Constitution (Sixth Amendment) Act, 1956",
-      "The Constitution (Seventh Amendment) Act, 1956"
-    ],
-    "correct": 3,
-    "ques_no": 15
-  },
   
-  {
-    "question": "Which Constitutional Amendment abolished the privy purses and privileges of former rulers of Princely States?",
-    "options": [
-      "The Constitution (Twenty-fourth Amendment) Act, 1971",
-      "The Constitution (Twenty-fifth Amendment) Act, 1971",
-      "The Constitution (Twenty-sixth Amendment) Act, 1971",
-      "The Constitution (Twenty-seventh Amendment) Act, 1971"
-    ],
-    "correct": 2,
-    "ques_no": 16
-  },
-  {
-    "question": "Which powers and responsibilities are not endowed by the Constitution to the Panchayats ?",
-    "options": [
-      "The preparation of plans for economic development",
-      "The implementation of schemes for economic development and social justice",
-      "Agriculture, including agricultural extension",
-      "Regulation of slaughter houses and tanneries"
-    ],
-    "correct": 3,
-    "ques_no": 17
-  },
-  {
-    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>Ministers shall hold office during the pleasure of the President.<br><br>Reason R :<br>The Council of Ministers shall be collectively responsible to the House of the People.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
-    "options": [
-      "Both A and R are correct and R is the correct explanation of A",
-      "Both A and R are correct but R is not the correct explanation of A",
-      "A is correct but R is not correct",
-      "A is not correct but R is correct"
-    ],
-    "correct": 1,
-    "ques_no": 18
-  },
-  {
-    "question": "Which of the following is incorrect about a Money Bill?",
-    "options": [
-      "The bill deals with all or any provisions under article 110 of the Constitution.",
-      "The Money Bill has to be certified by the Speaker of the House of the People.",
-      "The Money Bill has to be introduced in the House of the People first.",
-      "Both the Houses of the Parliament enjoy equal powers with respect to a Money Bill."
-    ],
-    "correct": 3,
-    "ques_no": 19
-  },
-  {
-    "question": "Who explains party systems in India in terms of democratisation and decay?",
-    "options": [
-      "K.C. Suri",
-      "Yogendra Yadav",
-      "James Manor",
-      "Morris Jones"
-    ],
-    "correct": 2,
-    "ques_no": 20
-  },
-  {
-    "question": "Which of the following statements is/are correct ?<br><br>A. Some nations lack states<br>B. Some states lack national identity<br>C. Some nations occupy more than one state<br>D. Some states contain more than one nation<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A",
-      "Only B and D",
-      "Only C and D",
-      "Only A, B, C and D"
-    ],
-    "correct": 3,
-    "ques_no": 21
-  },
-  {
-    "question": "Who, amongst the following political philosophers can be associated with the idea of ‘Luck egalitarianism’ ?",
-    "options": [
-      "John Rawls",
-      "Cohen",
-      "Robert Nozick",
-      "Ronald Dworkin"
-    ],
-    "correct": [1,3],
-    "ques_no": 22
-  },
-  {
-    "question": "Given below are two statements : one is labelled as Assertion A and the other is labelled as Reason R.<br><br>Assertion A :<br>Problems of global environmental change pose serious challenges to democratic political systems, as they currently exist.<br><br>Reason R :<br>We need a thicker conception of citizenship, like environmental citizenship that obligates citizens to inculcate environmentally sensitive behaviour.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
-    "options": [
-      "Both A and R are correct and R is the correct explanation of A",
-      "Both A and R are correct but R is not the correct explanation of A",
-      "A is correct but R is not correct",
-      "A is not correct but R is correct"
-    ],
-    "correct": 1,
-    "ques_no": 23
-  },
-  {
-    "question": "The author of ‘Essay on Toleration’ is",
-    "options": [
-      "Locke",
-      "Rousseau",
-      "J.S. Mill",
-      "Kant"
-    ],
-    "correct": 0,
-    "ques_no": 24
-  },
-  {
-    "question": "Who among the following theorists is known for his work on ‘The theory of resources equality’ ?",
-    "options": [
-      "Amartya Sen",
-      "Ronald Dworkin",
-      "Jagdish Bhagwati",
-      "Abhijit Banerjee"
-    ],
-    "correct": 1,
-    "ques_no": 25
-  },
-  {
-    "question": "Who described ‘Democracy as the tyranny of the majority’ ?",
-    "options": [
-      "Tocqueville",
-      "David Held",
-      "Habermas",
-      "Carole Pateman"
-    ],
-    "correct": 0,
-    "ques_no": 26
-  },
-  {
-    "question": "Given below are two statements :<br><br>Statement I :<br>Thin multiculturalism views some cultural differences as occurring between liberals and non-liberals.<br><br>Statement II :<br>Thick multiculturalism views all cultural differences as disagreements between groups that already agree on liberal values.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
-    "options": [
-      "Both Statement I and Statement II are correct",
-      "Both Statement I and Statement II are incorrect",
-      "Statement I is correct but Statement II is incorrect",
-      "Statement I is incorrect but Statement II is correct"
-    ],
-    "correct": 1,
-    "ques_no": 27
-  },
-  {
-    "question": "Match List I with List II :<br><br>List I<br>A. Simone de Beauvoir<br>B. Betty Friedan<br>C. Germaine Greer<br>D. S. Moller Okin<br><br>List II<br>I. The Female Eunuch<br>II. Justice, Gender and the Family<br>III. The Feminine Mystique<br>IV. The Second Sex<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "A-I, B-III, C-II, D-IV",
-      "A-IV, B-III, C-I, D-II",
-      "A-II, B-IV, C-I, D-III",
-      "A-IV, B-III, C-II, D-I"
-    ],
-    "correct": 3,
-    "ques_no": 28
-  },
-  {
-    "question": "Given below are two statements :<br><br>Statement I :<br>Liberal feminists argue for laws that give women formal equality of opportunity and freedom from discrimination.<br><br>Statement II :<br>For radical feminists, the prevalence of violence against women is part and parcel of sex-inequality.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
-    "options": [
-      "Both Statement I and Statement II are correct",
-      "Both Statement I and Statement II are incorrect",
-      "Statement I is correct but Statement II is incorrect",
-      "Statement I is incorrect but Statement II is correct"
-    ],
-    "correct": 0,
-    "ques_no": 29
-  },
-  {
-    "question": "Which of the following is/are correct explanation of Ronald Dworkin’s idea of ‘Rights as Trumps’?<br><br>A. Norms of the society take precedence over basic individual rights.<br>B. Interests of the whole community can trump individual rights.<br>C. Basic rights of individuals take moral and legal precedence over other norms.<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A",
-      "Only B",
-      "Only C",
-      "A, B and C"
-    ],
-    "correct": 2,
-    "ques_no": 30
-  },
-  
-  {
-    "question": "Given below are two statements :<br><br>Statement I :<br>Jeremy Bentham, the founder of utilitarianism, ridiculed natural rights as a pernicious fiction.<br><br>Statement II :<br>Human rights are believed to have been derived from the idea of natural law.<br><br>In the light of the above statements, choose the most appropriate answer from the options given below :",
-    "options": [
-      "Both Statement I and Statement II are correct",
-      "Both Statement I and Statement II are incorrect",
-      "Statement I is correct but Statement II is incorrect",
-      "Statement I is incorrect but Statement II is correct"
-    ],
-    "correct": 0,
-    "ques_no": 31
-  },
-  {
-    "question": "\"If your aim is liberty in democracy, then you must teach people the art of being free and of governing themselves.\" Who gave this statement ?",
-    "options": [
-      "Bertrand Russell",
-      "Aldous Huxley",
-      "Fichte",
-      "David Held"
-    ],
-    "correct": 1,
-    "ques_no": 32
-  },
-  {
-    "question": "Which of the following constitutes the core principles of ‘Utilitarianism’ ?<br><br>A. Concept of utility<br>B. Greatest good of the greatest number<br>C. Laissez-Faire<br>D. Maximum happiness of maximum number of people<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A and B",
-      "Only A, B and C",
-      "Only A, B, C and D",
-      "Only A, B and D"
-    ],
-    "correct": 3,
-    "ques_no": 33
-  },
-  {
-    "question": "Who among the following defined \"Citizenship as full and equal membership in Political Community\" ?",
-    "options": [
-      "Derek Heater",
-      "T.H. Marshall",
-      "Will Kymlicka",
-      "Iris Young"
-    ],
-    "correct": 1,
-    "ques_no": 34
-  },
-  {
-    "question": "Who among the following advocates the ‘Entitlement theory of Justice’ ?",
-    "options": [
-      "Kant",
-      "Michael Sandel",
-      "Robert Nozick",
-      "Michael Walzer"
-    ],
-    "correct": 2,
-    "ques_no": 35
-  },
-  {
-    "question": "John Rawls is",
-    "options": [
-      "A Utilitarian",
-      "A Social Contractarian",
-      "A Perfectionist",
-      "A Marxist"
-    ],
-    "correct": 1,
-    "ques_no": 36
-  },
-  {
-    "question": "The word ‘ideology’ was coined by",
-    "options": [
-      "de Tracy",
-      "Karl Marx",
-      "Fukuyama",
-      "D. Bell"
-    ],
-    "correct": 0,
-    "ques_no": 37
-  },
-  {
-    "question": "The author of ‘Nicomachean Ethics’ is",
-    "options": [
-      "Plato",
-      "Aristotle",
-      "Socrates",
-      "Hobbes"
-    ],
-    "correct": 1,
-    "ques_no": 38
-  },
-  {
-    "question": "Who among the following used the concept of ‘Oceanic Circle’ ?",
-    "options": [
-      "J.L. Nehru",
-      "B.R. Ambedkar",
-      "Mahatma Gandhi",
-      "Jayprakash Narayan"
-    ],
-    "correct": 2,
-    "ques_no": 39
-  },
-  {
-    "question": "The work ‘Who were the Shudras’ is associated with",
-    "options": [
-      "Periyar",
-      "Ambedkar",
-      "John Dewey",
-      "Mahatma Gandhi"
-    ],
-    "correct": 1,
-    "ques_no": 40
-  },
-  {
-    "question": "The term ‘Original Position’ is associated with",
-    "options": [
-      "Brian Barry",
-      "John Rawls",
-      "S. Moller Okin",
-      "Michael Walzer"
-    ],
-    "correct": 1,
-    "ques_no": 41
-  },
-  {
-    "question": "‘Leviathan’ was written by",
-    "options": [
-      "Locke",
-      "Hobbes",
-      "J.S. Mill",
-      "Rousseau"
-    ],
-    "correct": 1,
-    "ques_no": 42
-  },
-  {
-    "question": "Who among the following defined \"Politics as the Authoritative Allocation of Values\"",
-    "options": [
-      "Harold Lasswell",
-      "David Easton",
-      "Adrian Leftwich",
-      "Ian Bell"
-    ],
-    "correct": 1,
-    "ques_no": 43
-  },
-  {
-    "question": "Who among the following is considered as a ‘reluctant democrat’ ?",
-    "options": [
-      "J.S. Mill",
-      "J.J. Rousseau",
-      "Thomas Hobbes",
-      "J. Locke"
-    ],
-    "correct": 0,
-    "ques_no": 44
-  },
-  {
-    "question": "\"The Saptang Theory of State\" is associated with",
-    "options": [
-      "Kautilya",
-      "R.S. Sharma",
-      "J.P. Narayan",
-      "M.N. Roy"
-    ],
-    "correct": 0,
-    "ques_no": 45
-  },
-  
-  {
-    "question": "‘Hindutva : Who is a Hindu’ was written by :",
-    "options": [
-      "Savarkar",
-      "Golwalkar",
-      "Lala Lajpat Rai",
-      "Bipin Chandra Pal"
-    ],
-    "correct": 0,
-    "ques_no": 46
-  },
-  {
-    "question": "The concept of ‘Complex Equality’ was given by",
-    "options": [
-      "John Rawls",
-      "Michael Walzer",
-      "Ronald Dworkin",
-      "David Miller"
-    ],
-    "correct": 1,
-    "ques_no": 47
-  },
-  {
-    "question": "Isaiah Berlin is the author of",
-    "options": [
-      "Taking Rights Seriously",
-      "Four Essays on Liberty",
-      "The Constitution of Liberty",
-      "What’s Wrong with Negative Liberty ?"
-    ],
-    "correct": 1,
-    "ques_no": 48
-  },
-  {
-    "question": "\"Considerations on Representative Government\" was authored by :",
-    "options": [
-      "Plato",
-      "James Mill",
-      "J.S. Mill",
-      "John Locke"
-    ],
-    "correct": 2,
-    "ques_no": 49
-  },
-  {
-    "question": "The United Nations is",
-    "options": [
-      "A Multinational Corporation",
-      "An International Organisation",
-      "A Non-Governmental Organisation",
-      "A business entity"
-    ],
-    "correct": 1,
-    "ques_no": 50
-  },
-  {
-    "question": "Major wars between India and Pakistan took place in",
-    "options": [
-      "1947 – 48, 1965 and 1971",
-      "1962 and 1965",
-      "1962 and 1999",
-      "1965 and 1999"
-    ],
-    "correct": 0,
-    "ques_no": 51
-  },
-  {
-    "question": "Who among the following thinkers is known for Realism in International Relations ?",
-    "options": [
-      "Hans J. Morgenthau",
-      "Robert O. Keohane",
-      "Joseph Nye",
-      "Immanuel Wallerstein"
-    ],
-    "correct": 0,
-    "ques_no": 52
-  },
-  {
-    "question": "SAARC was founded in the year",
-    "options": [
-      "1991",
-      "1985",
-      "1950",
-      "1965"
-    ],
-    "correct": 1,
-    "ques_no": 53
-  },
-  {
-    "question": "Two superpowers during the Cold War were",
-    "options": [
-      "USA and Russia",
-      "UK and Russia",
-      "USA and USSR",
-      "UK and France"
-    ],
-    "correct": 2,
-    "ques_no": 54
-  },
-  {
-    "question": "Which of the following is not a key feature of India’s Act East policy ?",
-    "options": [
-      "To boost its economic and strategic security",
-      "To develop strong relations with Indo-Pacific nations",
-      "To emerge as a regional superpower",
-      "To secure access to capital, technology, energy and markets"
-    ],
-    "correct": 2,
-    "ques_no": 55
-  },
-  {
-    "question": "Match List I with List II :<br><br>List I (Treaty)<br>A. Geneva Protocol<br>B. Nuclear Non-Proliferation Treaty<br>C. ABM Treaty<br>D. SALT II Treaty<br><br>List II (Year)<br>I. 1968<br>II. 1925<br>III. 1979<br>IV. 1972<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "A-I, B-II, C-III, D-IV",
-      "A-II, B-I, C-IV, D-III",
-      "A-III, B-I, C-IV, D-II",
-      "A-I, B-II, C-IV, D-III"
-    ],
-    "correct": 2,
-    "ques_no": 56
-  },
-  {
-    "question": "Match List I with List II :<br><br>List I (Name of Author/Thinker)<br>A. Machiavelli<br>B. Thucydides<br>C. Hans J. Morgenthau<br>D. Kenneth Waltz<br><br>List II (Name of Book)<br>I. Theory of International Politics<br>II. Politics Among Nations<br>III. The Prince<br>IV. The Peloponnesian War<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "A-I, B-II, C-III, D-IV",
-      "A-III, B-IV, C-II, D-I",
-      "A-II, B-IV, C-I, D-III",
-      "A-IV, B-III, C-II, D-I"
-    ],
-    "correct": 1,
-    "ques_no": 57
-  },
-  {
-    "question": "Arrange the following Cold War events chronologically from the earliest to the latest.<br><br>A. Cuban Missile Crisis<br>B. Suez Crisis<br>C. Soviet intervention in Afghanistan<br>D. Vietnam War<br>E. Korean War<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "E, A, B, D, C",
-      "E, B, A, D, C",
-      "B, E, A, C, D",
-      "B, E, A, D, C"
-    ],
-    "correct": 1,
-    "ques_no": 58
-  },
-  {
-    "question": "Which of the following statements about NAM are correct ?<br><br>A. NAM represented the concerns, interests and aspirations of the developing countries.<br>B. Emerged in the context of a wave of decolonization after the Second World War.<br>C. India was one of the founding members of NAM.<br>D. The relevance of NAM after the end of Cold War is being debated.<br>E. NAM supported the policy of imperialism.<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B, C and E",
-      "Only A, B, C and D",
-      "Only A, B, D and E",
-      "Only A, C, D and E"
-    ],
-    "correct": 1,
-    "ques_no": 59
-  },
-  {
-    "question": "Who is the author of the book \"Engaging India : Diplomacy, Democracy and the Bomb\" ?",
-    "options": [
-      "Jaswant Singh",
-      "Strobe Talbott",
-      "C. Raja Mohan",
-      "Harsh V. Pant"
-    ],
-    "correct": 1,
-    "ques_no": 60
-  },
-  
-  {
-    "question": "The US-Indian Nuclear Cooperation Approval and Nonproliferation Enhancement Act was signed in the year",
-    "options": [
-      "2005",
-      "2001",
-      "2008",
-      "2020"
-    ],
-    "correct": 2,
-    "ques_no": 61
-  },
-  {
-    "question": "Woodrow Wilson’s 14 points stressed the importance of",
-    "options": [
-      "Self-help in International Relations",
-      "Security Dilemma in International Relations",
-      "Traditional Morality in International Relations",
-      "Collective Security in International Relations"
-    ],
-    "correct": 3,
-    "ques_no": 62
-  },
-  {
-    "question": "The purpose of the US Marshall Plan was",
-    "options": [
-      "To extend economic loans to war-torn countries in Europe",
-      "To give US a favourable image as a creditor",
-      "To ensure economic stability and political order in the Post World War II World",
-      "All of the above"
-    ],
-    "correct": 3,
-    "ques_no": 63
-  },
-  {
-    "question": "Which one of the following is not a part of the UN Millennium Development Goals (MDGs) ?",
-    "options": [
-      "Eradicate Extreme Poverty and Hunger",
-      "Achieve Universal Primary Education",
-      "Promote Gender Equality and Empower Women",
-      "Promote South-South Cooperation"
-    ],
-    "correct": 3,
-    "ques_no": 64
-  },
-  {
-    "question": "Which one of the following is not a type of Public Policy in Theodore Lowi’s classification ?",
-    "options": [
-      "Regulatory Policy",
-      "Distributive Policy",
-      "Redistributive Policy",
-      "Welfare Policy"
-    ],
-    "correct": 3,
-    "ques_no": 65
-  },
-  {
-    "question": "Which of the following is/are correct about the Hawthorne Experiments ?<br><br>A. It was a pioneering study of how individuals behave in organisations.<br>B. It was carried out at the Hawthorne Works of Western Electric company, UK.<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A",
-      "Only B",
-      "Both A and B",
-      "Neither A nor B"
-    ],
-    "correct": 0,
-    "ques_no": 66
-  },
-  {
-    "question": "The book ‘The Principles of Scientific Management’ was authored by",
-    "options": [
-      "F.W. Taylor",
-      "Henri Fayol",
-      "Luther Gulick",
-      "Lyndall Urwick"
-    ],
-    "correct": 0,
-    "ques_no": 67
-  },
-  {
-    "question": "Who is associated with the concept of ‘Bounded Rationality’ ?",
-    "options": [
-      "Charles E. Lindblom",
-      "Herbert Simon",
-      "Thomas R. Dye",
-      "Yehezkel Dror"
-    ],
-    "correct": 1,
-    "ques_no": 68
-  },
-  {
-    "question": "Which of the following statements are true about ‘game theory’ ?<br><br>A. Game theory attempts to understand collective human activity as an outcome of interactive decisions.<br>B. It assumes decision-makers are involved in choices that are interdependent.<br>C. In game theory the ‘best’ depends upon what others do.<br>D. Game theory can be applied to decisions about war and peace, use of nuclear weapons and international diplomacy.<br>E. The conditions of game theory are always approximated in real life.<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B, C, D",
-      "Only A, B, C, E",
-      "Only B, C, D, E",
-      "Only A, C, D, E"
-    ],
-    "correct": 0,
-    "ques_no": 69
-  },
-  {
-    "question": "Which of the following are true about a federal system ?<br><br>A. A federal system is based on a constitutional division of power.<br>B. In a federal system the power remains centralised.<br>C. A federal system is an innovation of modern times to deal with the issues of mass democracies.<br>D. In a federal system the regional units participate in the decision-making process at federal level electorally.<br>E. It is characterised by primacy of territorial representation.<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B, C, D",
-      "Only A, C, D, E",
-      "Only A, B, C",
-      "Only B, C, D, E"
-    ],
-    "correct": 1,
-    "ques_no": 70
-  },
-  {
-    "question": "Who coined the phrase ‘Catch-all party’ ?",
-    "options": [
-      "Robert Dahl",
-      "Duverger",
-      "Sartori",
-      "Otto Kirchheimer"
-    ],
-    "correct": 3,
-    "ques_no": 71
-  },
-  {
-    "question": "Which of the following are modern approaches to Comparative Politics ?",
-    "options": [
-      "Behavioural Approach",
-      "Structural-functional Approach",
-      "Systems Approach",
-      "All of the above"
-    ],
-    "correct": 3,
-    "ques_no": 72
-  },
-  {
-    "question": "Who among the following is not a classical elitist thinker ?",
-    "options": [
-      "J.A. Schumpeter",
-      "Vilfredo Pareto",
-      "R. Michels",
-      "G. Mosca"
-    ],
-    "correct": 0,
-    "ques_no": 73
-  },
-  {
-    "question": "Which of the following statements is/are correct ?<br><br>A. The origin of constitutionalism is traced in the Magna Carta.<br>B. State Duma is Russia’s national legislature.<br>C. Separation of powers is about distributing powers between the Centre and the States (Units).<br>D. Canada has parliamentary-federal polity.<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A and B",
-      "Only A, B and C",
-      "Only A, B and D",
-      "Only D"
-    ],
-    "correct": 2,
-    "ques_no": 74
-  },
-  {
-    "question": "Functions of a Political Party include<br><br>A. Coordination within government and society<br>B. Contesting elections<br>C. Recruitment of cadre<br>D. Representation<br>E. Legislation<br><br>Choose the correct answer from the options given below :",
-    "options": [
-      "Only A, B, C, D",
-      "Only A, B, D, E",
-      "Only B, C, D, E",
-      "Only A, C, D, E"
-    ],
-    "correct": 0,
-    "ques_no": 75
-  }
+{
+"question": "Assertion (A): The Constitution of India establishes a federal system of government with several unitary features.<br><br>Reason (R): The Constitution provides for a single constitution, a single citizenship and residuary legislative powers vested in the Union.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 1
+},
+{
+"question": "Match List-I with List-II regarding constitutional provisions.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Finance Commission&nbsp;&nbsp;&nbsp;&nbsp;1. Article 324<br>B. Election Commission&nbsp;&nbsp;&nbsp;&nbsp;2. Article 280<br>C. Comptroller and Auditor General&nbsp;&nbsp;&nbsp;&nbsp;3. Article 148<br>D. Union Public Service Commission&nbsp;&nbsp;&nbsp;&nbsp;4. Article 315<br><br>Codes:",
+"options": [
+"2-1-3-4",
+"1-2-3-4",
+"2-3-1-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 2
+},
+{
+"question": "Consider the following statements regarding the powers of the Rajya Sabha in the Indian parliamentary system:<br><br>The Rajya Sabha may authorize Parliament to legislate on a subject in the State List by passing a resolution supported by a two-thirds majority of members present and voting.<br><br>The Rajya Sabha enjoys equal powers with the Lok Sabha in the matter of Money Bills.<br><br>The Rajya Sabha may initiate legislation on ordinary bills.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 3 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 3
+},
+{
+"question": "Arrange the following constitutional developments in chronological order:<br><br>Government of India Act, 1935<br><br>Indian Independence Act<br><br>Cabinet Mission Plan<br><br>Constitution of India comes into force<br><br>Codes:",
+"options": [
+"1-3-2-4",
+"3-1-2-4",
+"1-2-3-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 4
+},
+{
+"question": "Assertion (A): Judicial review is considered one of the basic features of the Constitution of India.<br><br>Reason (R): The Supreme Court has the power to declare laws unconstitutional if they violate fundamental rights or constitutional provisions.",
+"options": [
+"Both A and R are true but R is not the correct explanation of A",
+"Both A and R are false",
+"Both A and R are true and R is the correct explanation of A",
+"A is false but R is true"
+],
+"correct": 2,
+"ques_no": 5
+},
+{
+"question": "Match List-I with List-II regarding major committees related to decentralisation and federal relations.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Balwant Rai Mehta Committee&nbsp;&nbsp;&nbsp;&nbsp;1. Centre-State relations<br>B. Sarkaria Commission&nbsp;&nbsp;&nbsp;&nbsp;2. Panchayati Raj<br>C. Punchhi Commission&nbsp;&nbsp;&nbsp;&nbsp;3. Review of federal relations<br>D. Mandal Commission&nbsp;&nbsp;&nbsp;&nbsp;4. OBC reservation<br><br>Codes:",
+"options": [
+"2-1-3-4",
+"1-2-3-4",
+"2-3-1-4",
+"3-1-2-4"
+],
+"correct": 0,
+"ques_no": 6
+},
+{
+"question": "Consider the following statements regarding the Basic Structure doctrine evolved by the Supreme Court of India:<br><br>The doctrine was articulated in the Kesavananda Bharati case.<br><br>The doctrine restricts Parliament from altering certain fundamental features of the Constitution.<br><br>The doctrine implies that Parliament cannot amend the Constitution under any circumstances.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 and 2 only",
+"1 and 3 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 0,
+"ques_no": 7
+},
+{
+"question": "In the context of contemporary governance debates in India, the introduction of the Goods and Services Tax (GST) through the 101st Constitutional Amendment primarily aimed at which of the following objectives?",
+"options": [
+"Establishing a unified indirect tax structure across the country",
+"Increasing direct taxation powers of state governments",
+"Replacing income tax with consumption-based taxation",
+"Abolishing state-level taxation powers entirely"
+],
+"correct": 0,
+"ques_no": 8
+},
+{
+"question": "Assertion (A): The Election Commission of India is considered an independent constitutional authority.<br><br>Reason (R): Free and fair elections are regarded as an essential requirement of democratic governance.",
+"options": [
+"Both A and R are false",
+"A is true but R is false",
+"Both A and R are true but R is not the correct explanation of A",
+"Both A and R are true and R is the correct explanation of A"
+],
+"correct": 3,
+"ques_no": 9
+},
+{
+"question": "Consider the following statements regarding coalition politics in India since the late 1980s:<br><br>Coalition governments became more frequent after the decline of single-party dominance at the national level.<br><br>Regional political parties acquired greater bargaining power in the formation of central governments.<br><br>Coalition politics in India ended after the 2014 general elections.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 10
+},
 
+{
+"question": "Assertion (A): The Constitution of India provides for a parliamentary form of government at the Union level.<br><br>Reason (R): The Council of Ministers is collectively responsible to the Lok Sabha.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 11
+},
+{
+"question": "Match List-I with List-II regarding constitutional schedules.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Fifth Schedule&nbsp;&nbsp;&nbsp;&nbsp;1. Administration of tribal areas in certain northeastern states<br>B. Sixth Schedule&nbsp;&nbsp;&nbsp;&nbsp;2. Administration of scheduled areas<br>C. Seventh Schedule&nbsp;&nbsp;&nbsp;&nbsp;3. Distribution of legislative powers<br>D. Tenth Schedule&nbsp;&nbsp;&nbsp;&nbsp;4. Anti-defection law<br><br>Codes:",
+"options": [
+"2-1-3-4",
+"1-2-3-4",
+"2-3-1-4",
+"4-3-2-1"
+],
+"correct": 0,
+"ques_no": 12
+},
+{
+"question": "Consider the following statements regarding the 73rd Constitutional Amendment Act:<br><br>It granted constitutional status to Panchayati Raj institutions.<br><br>It mandated the creation of State Finance Commissions.<br><br>It introduced urban local bodies into the Constitution.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 13
+},
+{
+"question": "Arrange the following events in chronological order.<br><br>Mandal Commission Report implementation<br><br>First General Election in India<br><br>Introduction of Goods and Services Tax<br><br>Proclamation of National Emergency (1975)<br><br>Codes:",
+"options": [
+"2-4-1-3",
+"2-1-4-3",
+"1-2-3-4",
+"4-2-1-3"
+],
+"correct": 0,
+"ques_no": 14
+},
+{
+"question": "Assertion (A): Federalism in India is often described as cooperative federalism.<br><br>Reason (R): The Constitution encourages collaboration between the Union and the states through institutions such as the Inter-State Council and the Finance Commission.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 15
+},
+{
+"question": "Match the following constitutional amendments with their provisions.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. 73rd Amendment&nbsp;&nbsp;&nbsp;&nbsp;1. Panchayati Raj institutions<br>B. 74th Amendment&nbsp;&nbsp;&nbsp;&nbsp;2. Urban local bodies<br>C. 86th Amendment&nbsp;&nbsp;&nbsp;&nbsp;3. Right to Education<br>D. 101st Amendment&nbsp;&nbsp;&nbsp;&nbsp;4. Goods and Services Tax<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 16
+},
+{
+"question": "Consider the following statements regarding the Supreme Court of India:<br><br>It acts as the guardian of the Constitution.<br><br>It exercises advisory jurisdiction under Article 143.<br><br>It can review its own judgments.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"1, 2 and 3",
+"2 and 3 only"
+],
+"correct": 2,
+"ques_no": 17
+},
+{
+"question": "Which of the following best describes the concept of “cooperative federalism” in the Indian context?",
+"options": [
+"A system where states exercise complete autonomy over fiscal matters",
+"A system where the Union government dominates the states in all matters",
+"A system in which the Union and the states work together in policy formulation and implementation",
+"A system where states are completely subordinate to the Union"
+],
+"correct": 2,
+"ques_no": 18
+},
+{
+"question": "Assertion (A): The Election Commission of India conducts elections to Parliament, State Legislatures, and the offices of the President and Vice-President.<br><br>Reason (R): The Election Commission derives its authority from Article 324 of the Constitution.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 19
+},
+{
+"question": "Consider the following statements regarding anti-defection provisions under the Tenth Schedule:<br><br>The law was introduced through the 52nd Constitutional Amendment.<br><br>The decision regarding disqualification of members is taken by the presiding officer of the legislature.<br><br>The anti-defection law applies only to members of Parliament and not to members of state legislatures.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 20
+},
+{
+"question": "Match List-I with List-II regarding contemporary governance institutions.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. NITI Aayog&nbsp;&nbsp;&nbsp;&nbsp;1. Policy think tank<br>B. GST Council&nbsp;&nbsp;&nbsp;&nbsp;2. Indirect tax coordination<br>C. National Green Tribunal&nbsp;&nbsp;&nbsp;&nbsp;3. Environmental adjudication<br>D. Lokpal&nbsp;&nbsp;&nbsp;&nbsp;4. Anti-corruption ombudsman<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"4-3-2-1"
+],
+"correct": 0,
+"ques_no": 21
+},
+{
+"question": "Assertion (A): The Right to Information Act, 2005 is considered a major instrument for promoting transparency in governance.<br><br>Reason (R): The Act empowers citizens to access information held by public authorities.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 22
+},
+{
+"question": "Consider the following statements regarding electoral reforms in India:<br><br>The Election Commission has recommended the use of VVPAT with Electronic Voting Machines.<br><br>VVPAT allows voters to verify that their vote has been recorded correctly.<br><br>VVPAT was introduced to replace electronic voting machines entirely.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 23
+},
+{
+"question": "Arrange the following developments in chronological order.<br><br>Establishment of NITI Aayog<br><br>Introduction of Right to Information Act<br><br>Creation of the National Green Tribunal<br><br>Enactment of the Lokpal and Lokayuktas Act<br><br>Codes:",
+"options": [
+"2-3-4-1",
+"2-4-3-1",
+"3-2-1-4",
+"4-2-3-1"
+],
+"correct": 0,
+"ques_no": 24
+},
+{
+"question": "Which of the following statements best explains the significance of the Goods and Services Tax (GST) Council?",
+"options": [
+"It acts as a constitutional body responsible for coordinating tax policies between the Union and the states.",
+"It replaces the Finance Commission in determining fiscal transfers between the Union and states.",
+"It exercises judicial powers in tax disputes between the Union and states.",
+"It functions as a legislative body responsible for drafting tax laws."
+],
+"correct": 0,
+"ques_no": 25
+},
+{
+"question": "Assertion (A): The Supreme Court of India possesses original jurisdiction in disputes between the Union and the states.<br><br>Reason (R): The Constitution assigns to the Supreme Court the role of interpreting the Constitution and adjudicating federal disputes.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 26
+},
+{
+"question": "Match List-I with List-II regarding constitutional provisions related to emergencies.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Article 352&nbsp;&nbsp;&nbsp;&nbsp;1. President’s Rule in states<br>B. Article 356&nbsp;&nbsp;&nbsp;&nbsp;2. National Emergency<br>C. Article 360&nbsp;&nbsp;&nbsp;&nbsp;3. Financial Emergency<br>D. Article 365&nbsp;&nbsp;&nbsp;&nbsp;4. Failure of constitutional machinery<br><br>Codes:",
+"options": [
+"2-1-3-4",
+"1-2-3-4",
+"2-4-3-1",
+"3-1-2-4"
+],
+"correct": 0,
+"ques_no": 27
+},
+{
+"question": "Consider the following statements regarding Directive Principles of State Policy:<br><br>They are contained in Part IV of the Constitution.<br><br>They are enforceable by courts in the same manner as Fundamental Rights.<br><br>They aim to establish social and economic democracy in India.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 3 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 28
+},
+{
+"question": "Arrange the following constitutional amendments in chronological order.<br><br>42nd Constitutional Amendment<br><br>44th Constitutional Amendment<br><br>73rd Constitutional Amendment<br><br>101st Constitutional Amendment<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-1-2-4"
+],
+"correct": 0,
+"ques_no": 29
+},
+{
+"question": "Assertion (A): The Finance Commission plays a crucial role in maintaining fiscal federalism in India.<br><br>Reason (R): The Finance Commission recommends the distribution of tax revenues between the Union and the states.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 30
+},
+{
+"question": "Consider the following statements regarding the National Green Tribunal (NGT):<br><br>It was established under the National Green Tribunal Act, 2010.<br><br>It deals with cases relating to environmental protection and conservation of forests.<br><br>It functions under the direct control of the Ministry of Environment.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 and 2 only",
+"2 and 3 only",
+"1 only",
+"1, 2 and 3"
+],
+"correct": 0,
+"ques_no": 31
+},
+{
+"question": "Match List-I with List-II regarding institutions related to governance reforms.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Central Vigilance Commission&nbsp;&nbsp;&nbsp;&nbsp;1. Anti-corruption oversight<br>B. Lokpal&nbsp;&nbsp;&nbsp;&nbsp;2. Ombudsman against corruption in public office<br>C. NITI Aayog&nbsp;&nbsp;&nbsp;&nbsp;3. Policy advisory institution<br>D. National Human Rights Commission&nbsp;&nbsp;&nbsp;&nbsp;4. Protection of human rights<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 32
+},
+{
+"question": "Consider the following statements regarding the Right to Information Act, 2005:<br><br>It enables citizens to seek information from public authorities.<br><br>It applies to all constitutional authorities and government institutions.<br><br>It prohibits disclosure of information relating to national security.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"1, 2 and 3",
+"2 and 3 only"
+],
+"correct": 2,
+"ques_no": 33
+},
+{
+"question": "Assertion (A): Electoral reforms in India have emphasized greater transparency in political funding.<br><br>Reason (R): Concerns about the influence of money in elections have prompted debates on reforms such as electoral bonds and disclosure norms.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 34
+},
+{
+"question": "Consider the following statements regarding the role of regional parties in Indian politics:<br><br>Regional parties have become important actors in coalition governments at the Union level.<br><br>Regional parties primarily represent localized interests and regional identities.<br><br>Regional parties are constitutionally prohibited from participating in national governments.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 35
+},
+{
+"question": "Arrange the following governance initiatives in chronological order.<br><br>Aadhaar programme implementation<br><br>National Rural Employment Guarantee Act (MGNREGA)<br><br>Digital India initiative<br><br>Goods and Services Tax implementation<br><br>Codes:",
+"options": [
+"2-1-3-4",
+"1-2-3-4",
+"2-3-1-4",
+"3-1-2-4"
+],
+"correct": 0,
+"ques_no": 36
+},
+{
+"question": "Consider the following statements regarding the Goods and Services Tax (GST) Council:<br><br>It includes the Union Finance Minister and state finance ministers.<br><br>It makes recommendations regarding GST rates and policies.<br><br>Its decisions are taken solely by the Union government.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 37
+},
+{
+"question": "Assertion (A): The concept of “competitive federalism” has gained prominence in India in recent years.<br><br>Reason (R): States increasingly compete with one another to attract investment and improve economic performance.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 38
+},
+{
+"question": "Match List-I with List-II regarding contemporary governance programmes.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Swachh Bharat Mission&nbsp;&nbsp;&nbsp;&nbsp;1. Sanitation campaign<br>B. Ayushman Bharat&nbsp;&nbsp;&nbsp;&nbsp;2. Health insurance programme<br>C. Skill India Mission&nbsp;&nbsp;&nbsp;&nbsp;3. Skill development<br>D. Digital India&nbsp;&nbsp;&nbsp;&nbsp;4. Digital governance<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 39
+},
+{
+"question": "Consider the following statements regarding civil society and governance in India:<br><br>Civil society organizations play an important role in policy advocacy.<br><br>They often act as intermediaries between citizens and the state.<br><br>Civil society organizations are constitutionally prohibited from participating in governance processes.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 40
+},
+{
+"question": "Assertion (A): The doctrine of separation of powers is not strictly followed in the Indian constitutional system.<br><br>Reason (R): The Constitution provides for checks and balances among the legislature, executive, and judiciary rather than rigid separation.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 41
+},
+{
+"question": "Match List-I with List-II regarding important Supreme Court judgments.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Kesavananda Bharati case&nbsp;&nbsp;&nbsp;&nbsp;1. Basic structure doctrine<br>B. Minerva Mills case&nbsp;&nbsp;&nbsp;&nbsp;2. Limited amending power of Parliament<br>C. Golaknath case&nbsp;&nbsp;&nbsp;&nbsp;3. Parliament cannot amend Fundamental Rights<br>D. S.R. Bommai case&nbsp;&nbsp;&nbsp;&nbsp;4. Limits on Article 356<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 42
+},
+{
+"question": "Consider the following statements regarding the Inter-State Council:<br><br>It was established under Article 263 of the Constitution.<br><br>It serves as a forum for discussion and coordination between the Union and states.<br><br>Its decisions are legally binding on the states.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 43
+},
+{
+"question": "Arrange the following developments in chronological order:<br><br>Formation of the Planning Commission<br><br>Establishment of the National Green Tribunal<br><br>Creation of NITI Aayog<br><br>Launch of the Digital India programme<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"1-3-2-4",
+"2-1-3-4",
+"3-1-2-4"
+],
+"correct": 0,
+"ques_no": 44
+},
+{
+"question": "Assertion (A): The Lokpal institution was established to strengthen anti-corruption mechanisms in India.<br><br>Reason (R): The Lokpal investigates allegations of corruption against public officials including ministers and certain categories of public servants.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 45
+},
+{
+"question": "Consider the following statements regarding climate governance in India:<br><br>India is a signatory to the Paris Agreement on climate change.<br><br>India has launched the International Solar Alliance to promote renewable energy cooperation.<br><br>Climate policy in India is exclusively controlled by state governments.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 46
+},
+{
+"question": "Match List-I with List-II regarding contemporary governance programmes.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Make in India&nbsp;&nbsp;&nbsp;&nbsp;1. Manufacturing promotion<br>B. Beti Bachao Beti Padhao&nbsp;&nbsp;&nbsp;&nbsp;2. Gender equality campaign<br>C. Startup India&nbsp;&nbsp;&nbsp;&nbsp;3. Entrepreneurship promotion<br>D. PM-Kisan&nbsp;&nbsp;&nbsp;&nbsp;4. Income support for farmers<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 47
+},
+{
+"question": "Consider the following statements regarding the concept of welfare state in India:<br><br>The Directive Principles encourage the state to promote social and economic welfare.<br><br>Welfare policies include programmes related to employment, health, and education.<br><br>The Constitution explicitly prohibits the state from providing social welfare programmes.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 48
+},
+{
+"question": "Assertion (A): The Right to Privacy has been recognized as a fundamental right under the Constitution of India.<br><br>Reason (R): The Supreme Court declared privacy to be part of the right to life and personal liberty under Article 21.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 49
+},
+{
+"question": "Consider the following statements regarding digital governance in India:<br><br>Digital governance aims to improve service delivery through the use of information technology.<br><br>Initiatives such as Digital India promote online access to government services.<br><br>Digital governance eliminates the need for administrative institutions.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 50
+},
+{
+"question": "Arrange the following events in chronological order:<br><br>Enactment of the Right to Information Act<br><br>Establishment of the National Green Tribunal<br><br>Passage of the Lokpal and Lokayuktas Act<br><br>Implementation of the Goods and Services Tax<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 51
+},
+{
+"question": "Match List-I with List-II regarding institutions related to democratic accountability.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. Election Commission&nbsp;&nbsp;&nbsp;&nbsp;1. Conduct of elections<br>B. Comptroller and Auditor General&nbsp;&nbsp;&nbsp;&nbsp;2. Audit of public expenditure<br>C. Central Information Commission&nbsp;&nbsp;&nbsp;&nbsp;3. Enforcement of RTI<br>D. Lokpal&nbsp;&nbsp;&nbsp;&nbsp;4. Investigation of corruption<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 52
+},
+{
+"question": "Consider the following statements regarding social movements in India:<br><br>Social movements often seek to influence public policy and governance.<br><br>Environmental movements have played a role in shaping environmental legislation in India.<br><br>Social movements are prohibited from participating in democratic politics.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 53
+},
+{
+"question": "Assertion (A): The Supreme Court of India has expanded the scope of fundamental rights through judicial interpretation.<br><br>Reason (R): The Court has interpreted Article 21 broadly to include various rights necessary for dignified human existence.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 54
+},
+{
+"question": "Consider the following statements regarding federal financial relations:<br><br>The Finance Commission recommends the distribution of tax revenues between the Union and the states.<br><br>The GST Council plays a role in coordinating indirect tax policies.<br><br>States have no role in determining fiscal policies under the GST system.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 55
+},
+{
+"question": "Match List-I with List-II regarding constitutional offices.<br><br>List-I&nbsp;&nbsp;&nbsp;&nbsp;List-II<br>A. President of India&nbsp;&nbsp;&nbsp;&nbsp;1. Head of the State<br>B. Prime Minister&nbsp;&nbsp;&nbsp;&nbsp;2. Head of the Government<br>C. Chief Justice of India&nbsp;&nbsp;&nbsp;&nbsp;3. Head of the Judiciary<br>D. Speaker of Lok Sabha&nbsp;&nbsp;&nbsp;&nbsp;4. Presiding officer of the lower house<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"2-1-3-4",
+"1-3-2-4",
+"3-2-1-4"
+],
+"correct": 0,
+"ques_no": 56
+},
+{
+"question": "Consider the following statements regarding public interest litigation (PIL):<br><br>PIL allows courts to hear cases on behalf of disadvantaged groups.<br><br>It has expanded access to justice in India.<br><br>PIL petitions can only be filed by directly affected individuals.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 57
+},
+{
+"question": "Assertion (A): Civil society organizations contribute to democratic governance in India.<br><br>Reason (R): They often participate in advocacy, policy monitoring, and public awareness campaigns.",
+"options": [
+"Both A and R are true and R is the correct explanation of A",
+"Both A and R are true but R is not the correct explanation of A",
+"A is true but R is false",
+"A is false but R is true"
+],
+"correct": 0,
+"ques_no": 58
+},
+{
+"question": "Arrange the following in chronological order:<br><br>Adoption of the Constitution of India<br><br>Introduction of Panchayati Raj through the 73rd Amendment<br><br>Enactment of the Right to Information Act<br><br>Implementation of the Goods and Services Tax<br><br>Codes:",
+"options": [
+"1-2-3-4",
+"1-3-2-4",
+"2-1-3-4",
+"3-1-2-4"
+],
+"correct": 0,
+"ques_no": 59
+},
+{
+"question": "Consider the following statements regarding governance reforms in India:<br><br>Administrative reforms aim to improve efficiency and transparency in government functioning.<br><br>E-governance initiatives have been introduced to enhance service delivery.<br><br>Governance reforms seek to eliminate democratic accountability.<br><br>Which of the statements given above is/are correct?",
+"options": [
+"1 only",
+"1 and 2 only",
+"2 and 3 only",
+"1, 2 and 3"
+],
+"correct": 1,
+"ques_no": 60
+}
 
 
 ];
@@ -2056,7 +1888,7 @@
                 // --- SUMMARY PANEL HTML ---
                 let summaryHtml = `
                     <div class="report-summary">
-                        <h3 class="test-title">SSC CHSL - Mathematics Practice Test 2 Report</h3>
+                        <h3 class="test-title">CUET PG Section Test 2</h3>
                         <div class="summary-details">
                             <p><strong>Name:</strong> ${response.name || '—'}</p>
                             <p><strong>Date & Time:</strong> ${response.submittedAt}</p>
