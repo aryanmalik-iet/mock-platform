@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CUET PG Sectional Mock(political theory)</title>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        /* BASE & TYPOGRAPHY */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f0f2f5; 
+            min-height: 100vh;
+            padding-top: 90px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* --- LANDING PAGE AND ADMIN PANEL (ORIGINAL LOOK) --- */
+        .header { text-align:center;background:#fff;padding:40px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);margin-top:20px; border-top:5px solid #e74c3c; }
+        .govt-logo{width:80px;height:80px;background:#e74c3c;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:bold;}
+        .header h1{color:#2c3e50;margin-bottom:10px;font-size:2.4em;font-weight:bold;text-transform:uppercase;letter-spacing:1px;}
+        .header h2{color:#e74c3c;font-weight:bold;margin-bottom:10px;font-size:1.3em;}
+        .header .subtitle{color:#7f8c8d;font-size:1.1em;margin-bottom:20px;font-style:italic;}
+        .exam-info { background: #f8f9fa; padding: 25px 30px; border-radius: 12px; margin: 20px 0; border-left: 6px solid #3498db; box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2); max-width: 100%; text-align: left; font-size: 16px; line-height: 1.6; color: #2c3e50; }
+        .exam-info h3 { color: #2c3e50; margin-bottom: 15px; font-weight: 700; font-size: 1.5em; text-align: left; }
+        .exam-info ul { list-style: none; padding-left: 20px; margin: 0; }
+        .exam-info li { margin: 8px 0; padding-left: 20px; position: relative; text-align: left; }
+        .exam-info li:before { content: "•"; color: #3498db; font-weight: bold; position: absolute; left: 0; top: 50%; transform: translateY(-50%); font-size: 18px; }
+
+        .btn{background:linear-gradient(45deg,#3498db,#2980b9);color:white;border:none;padding:18px 35px;border-radius:8px;cursor:pointer;font-size:16px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;transition:all 0.3s ease;margin:10px;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.3);}
+        .btn-admin{background:linear-gradient(45deg,#e74c3c,#c0392b);}
+        
+        /* GENERAL UTILITIES */
+        .modal { display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.7);backdrop-filter:blur(5px);}
+        .modal-content { background-color:#fff;margin:10% auto;padding:40px;border-radius:12px;width:90%;max-width:500px;box-shadow:0 10px 40px rgba(0,0,0,0.3);border-top:5px solid #e74c3c;}
+        .modal h3{margin-bottom:25px;color:#2c3e50;font-size:1.5em;}
+        .modal input{width:100%;padding:15px;margin:15px 0;border:2px solid #ddd;border-radius:6px;font-size:16px;}
+        .close{color:#aaa;float:right;font-size:32px;font-weight:bold;cursor:pointer;margin-top:-15px;}
+        .close:hover{color:#e74c3c;}
+        .error-message{background:#f8d7da;color:#721c24;padding:15px;border-radius:8px;text-align:center;margin-top:10px;border:1px solid #f5c6cb;}
+        .admin-panel{display:none;background:#fff;padding:40px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);border-top:5px solid #e74c3c;}
+        .response-table{border-collapse:collapse;margin-top:20px;font-size:14px; width: 100%;}
+        .response-table th, .response-table td{border:1px solid #ddd;padding:12px;text-align:left;}
+        .response-table th{background:linear-gradient(45deg,#2c3e50,#34495e);color:white;font-weight:bold;}
+        .response-table tr:nth-child(even){background-color:#f9f9f9;}
+        /* END OF LANDING PAGE STYLES */
+
+
+        /* === NEW SSC EXAM INTERFACE STYLES === */
+
+        .quiz-container {
+            display: none;
+            background: #f0f2f5; 
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            min-height: 98vh; 
+        }
+
+        /* Top Header Bar */
+       .exam-header {
+    background: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 3px solid #f39c12;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+        .exam-title { font-size: 1.1em; font-weight: bold; }
+
+        /* Timer Block */
+        .timer-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .timer-container {
+            background: #34495e;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1em;
+            text-align: center;
+            border: 2px solid #e74c3c;
+        }
+        .timer-display { font-size: 1.2em; font-weight: bold; }
+        .timer-warning { background: #e74c3c !important; color: white !important; border-color: #f39c12 !important; animation: pulse 1s infinite; }
+        .timer-critical { background: #dc3545 !important; animation: flash 0.5s infinite; }
+        @keyframes pulse{0%{opacity:1;}50%{opacity:0.8;}100%{opacity:1;}}
+        @keyframes flash{0%{opacity:1;}50%{opacity:0.5;}100%{opacity:1;}}
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none; 
+            background: none;
+            border: 1px solid white;
+            color: white;
+            font-size: 24px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* Main Test Layout */
+        #quizInterface {
+            display: flex;
+            flex-direction: row; 
+            min-height: calc(100vh - 70px);
+        }
+        
+
+        /* Left Panel: Questions and Controls */
+        .main-quiz-panel {
+            flex: 1 1 auto;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-right: 1px solid #ddd;
+        }
+        #questionsContainer {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto; 
+            display: none; /* Hidden until quiz starts */
+        }
+        /* Sign-in Form Styles (Center Aligned) */
+        .user-form {
+            background: #ecf0f1; 
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%; 
+        }
+        .user-form h3 { font-size: 1.5em; margin-bottom: 30px; color: #2c3e50; }
+        .user-form input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            width: 80%;
+            max-width: 300px;
+        }
+        .profile-mockup {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            background: #bdc3c7;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: #7f8c8d;
+        }
+        
+        /* Question Card */
+        .question-container {
+            border: none;
+            padding: 0;
+            display: none; 
+        }
+        .question-container.active {
+            display: block; 
+        }
+        .question {
+            background: white;
+            border: 1px solid #bdc3c7; 
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .question-header {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f39c12;
+            display: block; 
+        }
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+       .options { list-style: none; }
+
+.option {
+    margin-bottom: 8px;
+    padding: 12px 14px;
+    border: 1px solid #e0e0e0;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 1.4;
+    transition: 0.15s ease;
+}
+
+.option label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    flex-shrink: 0;
+    transform: translateY(-1px);   /* subtle correction */
+}
+
+.option:hover {
+    background: #e6e6e6;
+    border-color: #999;
+}
+
+.option.selected {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+    font-weight: 500;
+}
+
+.option.selected label {
+    color: white;
+}
+        
+        /* Navigation Bar (Fixed Bottom on Mobile) */
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #34495e; 
+            color: white;
+            border-top: 1px solid #2c3e50;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .progress { font-size: 1em; font-weight: bold; color: white; }
+        .btn-nav { padding: 10px 15px; font-size: 14px; background: #28a745; }
+        #submitBtn { background: #dc3545 !important; }
+
+        /* Right Panel: Question Palette */
+        #palettePanel {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 250px;
+    height: calc(100vh - 60px);
+
+    background: #ecf0f1;
+    border-left: 1px solid #ddd;
+
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: auto;
+
+    box-shadow: -3px 0 10px rgba(0,0,0,0.25);
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+        .palette-header { font-size: 1.1em; font-weight: bold; margin-bottom: 15px; color: #333; text-decoration: underline; }
+        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; width: 100%; }
+        .palette-item {
+            width: 35px; height: 30px; display: flex; align-items: center; justify-content: center;
+            border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; border: 1px solid #ccc;
+        }
+        /* Palette Colors */
+        .palette-default { background: #fff; color: #333; border: 1px solid #999; } 
+        .palette-answered { background: #28a745; color: white; border-color: #28a745; } 
+        .palette-unanswered { background: #e74c3c; color: white; border-color: #e74c3c; } 
+        .palette-current { background: #f39c12; color: white; border-color: #f39c12; box-shadow: 0 0 5px #f39c12; } 
+
+        /* === RESPONSIVENESS === */
+
+        @media (max-width: 600px) {
+    .option {
+        font-size: 14px;
+        padding: 9px 10px;
+    }
+
+    .question-text {
+        font-size: 15px;
+    }
+}
+        
+        @media (max-width: 900px) {
+
+    #quizInterface {
+        flex-direction: column;
+    }
+
+    .main-quiz-panel {
+        width: 100%;
+        border-right: none;
+        padding-bottom: 70px; /* space for fixed nav */
+    }
+    
+
+    #palettePanel {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 80%;
+        max-width: 280px;
+        height: calc(100vh - 60px);
+        background: #ffffff;
+        box-shadow: -3px 0 10px rgba(0,0,0,0.25);
+        transition: right 0.3s ease;
+        z-index: 1000;
+        display: flex;
+    }
+
+    #palettePanel.visible {
+        right: 0;
+    }
+
+    .menu-toggle {
+        display: inline-block;
+    }
+
+    .navigation {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .progress {
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .palette-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .palette-item {
+        width: 32px;
+        height: 29px;
+        font-size: 13px;
+    }
+}
+            
+            /* Mobile Landscape: Show palette as sidebar */
+            @media (orientation: landscape) {
+                #quizInterface { flex-direction: row; height: calc(100vh - 70px); }
+                #palettePanel {
+                    display: flex; 
+                    width: 200px;
+                    min-width: 200px;
+                    order: 2;
+                    height: 100%;
+                }
+                .main-quiz-panel {
+                    width: calc(100% - 200px);
+                    order: 1;
+                }
+                .menu-toggle { display: none; }
+            }
+
+            /* Mobile Portrait: Palette Overlay */
+            @media (orientation: portrait) {
+                 #palettePanel.visible {
+                    display: flex;
+                    position: fixed;
+                    top: 60px; 
+                    right: 0;
+                    height: calc(100vh - 60px); 
+                    z-index: 9;
+                    background: #f8f8f8;
+                    width: 80%;
+                    box-shadow: -3px 0 8px rgba(0,0,0,0.2);
+                }
+            }
+        
+
+        /* ADMIN PANEL ENHANCEMENTS */
+        .response-report {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        /* Column Toggle Bar Styling */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            gap: 15px;
+            background: #f8f8f8; /* Light background for the bar */
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        .toolbar label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #34495e;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .toolbar input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        /* Hide the print button in the toolbar on the main page */
+        .toolbar .print-btn {
+            display: none; 
+        }
+
+        
+        /* DECORATED RESULT SUMMARY */
+        .summary-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #f8f9fa, #ecf0f1);
+            border-radius: 10px;
+            border: 2px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .summary-details p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 200;
+            padding: 5px 0;
+            border-left: 3px solid #3498db; 
+            padding-left: 10px;
+        }
+        .summary-details strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+        .test-title {
+            color: #e74c3c;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            padding-bottom: 5px;
+            border-bottom: 2px dashed #e74c3c;
+        }
+        /* Status Coloring for better visual reports */
+        .summary-details p:nth-child(4) strong { color: #002290;  } /* Score */
+        .summary-details p:nth-child(5) strong { color: #28a745; } /* Percentage */
+        .summary-details p:nth-child(6) strong { color: #28a745; } /* Correct */
+        .summary-details p:nth-child(7) strong { color: #e74c3c; } /* Incorrect */
+        .summary-details p:nth-child(8) strong { color: #f39c12; } /* Unattempted */
+
+        /* Hidden columns CSS for toggling */
+        .response-table .hidden,
+        .response-table th.hidden {
+            display: none !important;
+        }
+        
+        /* --- PRINT MEDIA QUERIES (Simple and Robust) --- */
+        @media print {
+            /* Hide all admin panel buttons and controls */
+            .admin-panel > div:not(#responsesContainer) { display: none !important; }
+            .admin-panel > h2 { display: none !important; }
+
+            /* Hide the container buttons above the responses (Download/Clear buttons) */
+            .admin-panel > div:first-child { display: none !important; }
+
+            /* Hide the toolbar for column toggling */
+            .toolbar { display: none !important; }
+            
+            /* Ensure the responses container is visible */
+            #responsesContainer { display: block !important; padding: 0; margin: 0; }
+            
+            /* Remove any decorative background/shadows for clean print */
+            .response-report {
+                border: none;
+                box-shadow: none;
+                page-break-after: always; /* Ensure reports don't overlap */
+            }
+            .summary-details {
+                background: #fff;
+                border: 1px solid #ccc;
+                box-shadow: none;
+            }
+
+            /* Ensure MathJax elements print correctly */
+            .math-question * {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="landingPage">
+            <div class="header">
+               <div class="govt-logo" style="background:#003366;border-radius:0;">NTA</div>
+                <h1>National Testing Agency (NTA)</h1>
+                <h2>CUET PG Sectional Mock(political theory)</h2>
+                <p class="subtitle">Common University Entrance Test (Postgraduate)</p>
+                <div class="exam-info">
+                    <h3>Examination Instructions:</h3>
+                    <ul>
+                        <li>Total Questions: 50</li>
+                        <li>Maximum Marks: 200</li>
+                        <li>Time Duration: <strong>1 Hour</strong></li>
+                        <li><strong style="color: #dc3545;">⚠️ Test will auto-submit when time expires</strong></li>
+                        <li>Marking Scheme: +4 for correct, -1 for incorrect, 0 for unattempted</li>
+                        <li>Do not refresh the page during the examination</li>
+                        <li>Read all the questions carefully</li>
+                        <li>take screenshot if feels any error in question</li>
+                        <li>Do not open any other app during test</li>
+                    </ul>
+                </div>
+                <button class="btn" onclick="startTest()">Start Examination</button>
+                <button class="btn btn-admin" onclick="openAdminModal()">Open Admin Panel</button>
+            </div>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+            <div class="exam-header">
+                <div class="exam-title">CUET PG Sectional Mock(political theory)</div>
+                <div class="timer-group">
+                    <button class="menu-toggle" onclick="togglePalette()">☰</button>
+                    <div class="timer-container" id="timerContainer">
+                        <div class="timer-label">TIME REMAINING</div>
+                        <div class="timer-display" id="timerDisplay">01:15:00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="quizInterface">
+                <div class="main-quiz-panel">
+                    
+                    <div id="userForm" class="user-form">
+                        <div class="profile-mockup">
+                            <div class="profile-pic">👤</div>
+                            <h3 style="color:#2c3e50;">Enter Candidate Name</h3>
+                        </div>
+                        <input type="text" id="userName" placeholder="Enter your Name" required>
+                        <button class="btn" onclick="startQuiz()" style="background:#28a745; width:80%; max-width: 300px; margin-top: 25px;">Begin Examination</button>
+                    </div>
+
+                    <div id="autoSubmitWarning" class="auto-submit-warning" style="display: none;">
+                        ⚠️ WARNING: Test will be automatically submitted in less than 10 minutes!
+                    </div>
+
+                    <div id="questionsContainer"></div>
+
+                    <div class="navigation" id="navigation" style="display: none;">
+                        <button class="btn-nav" id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+                        <div class="progress" id="progress">Question 1 of 13</div>
+                        <button class="btn-nav" id="nextBtn" onclick="nextQuestion()">Next</button>
+                        <button class="btn-nav" id="submitBtn" onclick="submitTest()" style="display: none;">Submit Test</button>
+                    </div>
+                </div>
+
+                <div id="palettePanel" class="question-palette">
+                    <div class="palette-header">Question Palette</div>
+                    <div class="palette-grid" id="paletteGrid">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="adminPanel" class="admin-panel">
+            <h2 style="color: #2c3e50; margin-bottom: 20px;">Admin Panel - User Responses</h2>
+            <div style="margin-bottom: 20px;">
+                <button class="btn" onclick="downloadRawDataCSV()" style="background: #3498db;">Download Raw Data (CSV)</button>
+                <button class="btn" onclick="downloadResultsCSV()" style="background: #27ae60;">Download Final Results (CSV)</button>
+                <button class="btn" onclick="clearAllResponses()" style="background: #e74c3c;">Clear All Data</button>
+                <button class="btn" onclick="goHome()">Back to Home</button>
+                <button class="btn" onclick="printReport()" style="background: #f39c12;">Print Report</button> 
+            </div>
+            <div id="responsesContainer">
+                <p>No responses yet.</p>
+            </div>
+            <div style="margin-top:12px;color:#666;font-size:13px;">
+                <strong>Note:</strong> Data is stored in JSONBin.
+            </div>
+        </div>
+        
+        <div id="successMessage" style="display: none;" class="success-message">
+            <h3>✅ Test Submitted Successfully!</h3>
+            <p>Your responses have been recorded successfully. <br>You can check your score on the admin panel.</p>
+            <button class="btn" onclick="goHome()" style="margin-top: 20px; background: white; color: #2c3e50;">Back to Home</button>
+        </div>
+    </div>
+
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('passwordModal')">&times;</span>
+            <h3 id="modalTitle">Enter Test PIN</h3>
+            <input type="password" id="testPinInput" placeholder="Enter 6-Digit PIN" maxlength="6">
+            <div id="pinError" class="error-message" style="display: none;">Incorrect 6-Digit PIN!</div>
+            <button class="btn" id="pinSubmitBtn" onclick="checkTestPin()">Start Test</button>
+        </div>
+    </div>
+
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('adminModal')">&times;</span>
+            <h3>Admin Access</h3>
+            <input type="password" id="adminPassword" placeholder="Enter admin password">
+            <div id="passwordError" class="error-message" style="display: none;">Incorrect password!</div>
+            <button class="btn" onclick="checkAdminPassword()">Login</button>
+        </div>
+    </div>
+
+   <script>
+        /************************
+         * JSONBin configuration
+         ************************/
+        const JSONBIN_ID = '68d903e243b1c97be952d590';
+        const JSONBIN_MASTER_KEY = '$2a$10$XZzc.4ipvMjGFeEh9J/7cuffWTZGYXoXCkJjMDjZ1wCgz.BGJ3Cse';
+        const JSONBIN_BASE = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
+        const TEST_PIN = '113388'; 
+        const SAVE_INTERVAL_SECONDS = 10;
+        const TOTAL_EXAM_TIME = 60 * 60; 
+        const CRITICAL_TIME_THRESHOLD = 5 * 60; 
+        
+       
+        // Questions data 
+        const questions = 
+            
+            [
+
+{
+"question": "Q1<br>Which of the following statements correctly distinguish negative liberty from positive liberty?<br>(A) Negative liberty refers to absence of external interference.<br>(B) Positive liberty emphasizes the capacity for self-mastery.<br>(C) Negative liberty requires collective control over political institutions.<br>(D) Positive liberty may justify state intervention for enabling individual development.",
+"options": [
+"A and B only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
+],
+"correct": 1,
+"ques_no": 1
+},
+{
+"question": "Q2<br>The argument that liberty must sometimes be restricted in order to prevent harm to others is most closely associated with:",
+"options": [
+"John Stuart Mill",
+"Thomas Hobbes",
+"Karl Marx",
+"Robert Nozick"
+],
+"correct": 0,
+"ques_no": 2
+},
+{
+"question": "Q3<br>Match List-I with List-II.<br>List-I (Concept) | List-II (Thinker)<br>A. Justice as fairness | I. John Rawls<br>B. Entitlement theory | II. Robert Nozick<br>C. Difference principle | III. John Rawls<br>D. Minimal state | IV. Robert Nozick",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-I, B-IV, C-II, D-III",
+"A-III, B-I, C-II, D-IV"
+],
+"correct": 0,
+"ques_no": 3
+},
+{
+"question": "Q4<br>Which of the following statements are correct regarding equality in political theory?<br>(A) Formal equality refers to equality before the law.<br>(B) Substantive equality focuses on outcomes rather than merely legal status.<br>(C) Equality of opportunity implies identical outcomes for all individuals.<br>(D) Social and economic inequalities may be justified if they benefit the least advantaged.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 4
+},
+{
+"question": "Q5<br>Which thinker argued that sovereignty must be absolute and indivisible to maintain political order?",
+"options": [
+"Jean Bodin",
+"John Locke",
+"Montesquieu",
+"Alexis de Tocqueville"
+],
+"correct": 0,
+"ques_no": 5
+},
+{
+"question": "Q6<br>Arrange the following concepts in the historical development of democratic theory:<br>(A) Direct democracy in classical city-states<br>(B) Liberal representative democracy<br>(C) Expansion of universal adult suffrage<br>(D) Contemporary participatory democracy debates",
+"options": [
+"A, B, C, D",
+"B, A, C, D",
+"A, C, B, D",
+"B, C, A, D"
+],
+"correct": 0,
+"ques_no": 6
+},
+{
+"question": "Q7<br>Which of the following statements correctly capture the idea of popular sovereignty?<br>(A) Political authority ultimately rests with the people.<br>(B) Sovereignty is exercised through constitutional institutions.<br>(C) Popular sovereignty rejects representation in all forms.<br>(D) Elections and participation can express the will of the people.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 7
+},
+{
+"question": "Q8<br>Match List-I with List-II.<br>List-I | List-II<br>A. Civil rights | I. Political participation<br>B. Political rights | II. Protection of individual freedoms<br>C. Social rights | III. Welfare and social security<br>D. Citizenship theory | IV. T. H. Marshall",
+"options": [
+"A-II, B-I, C-III, D-IV",
+"A-I, B-II, C-III, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-III, B-I, C-II, D-IV"
+],
+"correct": 0,
+"ques_no": 8
+},
+{
+"question": "Q9<br>Which feminist thinker argued that “the personal is political” as a critique of traditional liberal theory?",
+"options": [
+"Simone de Beauvoir",
+"Kate Millett",
+"Mary Wollstonecraft",
+"Hannah Arendt"
+],
+"correct": 1,
+"ques_no": 9
+},
+{
+"question": "Q10<br>Which of the following statements about human rights discourse are correct?<br>(A) Human rights claims universal moral validity.<br>(B) Human rights norms developed primarily after World War II.<br>(C) Human rights are entirely independent of political institutions.<br>(D) International conventions often institutionalize human rights standards.",
+"options": [
+"A and B only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
+],
+"correct": 1,
+"ques_no": 10
+},
+{
+"question": "Q11<br>The argument that the state emerges from a social contract to escape the state of nature is most closely associated with:",
+"options": [
+"Thomas Hobbes",
+"David Hume",
+"Edmund Burke",
+"Karl Marx"
+],
+"correct": 0,
+"ques_no": 11
+},
+{
+"question": "Q12<br>Which of the following statements about justice in Rawls’ theory are correct?<br>(A) Justice principles are chosen behind a veil of ignorance.<br>(B) The difference principle allows inequalities benefiting the least advantaged.<br>(C) Justice depends solely on market distribution.<br>(D) Equal basic liberties must be guaranteed to all citizens.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 12
+},
+{
+"question": "Q13<br>Match List-I with List-II.<br>List-I | List-II<br>A. Patriarchy | I. Male domination structures<br>B. Liberal feminism | II. Legal equality<br>C. Radical feminism | III. Structural gender oppression<br>D. Socialist feminism | IV. Gender and class analysis",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-III, B-II, C-IV, D-I"
+],
+"correct": 0,
+"ques_no": 13
+},
+{
+"question": "Q14<br>Which of the following statements correctly describe citizenship in modern political theory?<br>(A) Citizenship implies membership in a political community.<br>(B) Citizenship entails rights and duties.<br>(C) Citizenship necessarily requires ethnic homogeneity.<br>(D) Citizenship may be extended through legal and constitutional provisions.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 14
+},
+{
+"question": "Q15<br>The critique that liberal democracy privileges formal equality while ignoring structural inequalities is commonly associated with:",
+"options": [
+"Marxist theory",
+"Classical liberalism",
+"Conservative theory",
+"Libertarian theory"
+],
+"correct": 0,
+"ques_no": 15
+},
+{
+"question": "Q16<br>Arrange the following developments in feminist thought chronologically.<br>(A) Liberal feminism emergence<br>(B) Radical feminism debates<br>(C) Post-structural feminist theory<br>(D) Early feminist advocacy for women's rights",
+"options": [
+"D, A, B, C",
+"A, D, B, C",
+"D, B, A, C",
+"A, B, D, C"
+],
+"correct": 0,
+"ques_no": 16
+},
+{
+"question": "Q17<br>Which of the following statements about sovereignty are correct?<br>(A) Internal sovereignty refers to supreme authority within territory.<br>(B) External sovereignty relates to independence from external control.<br>(C) Globalization debates question the absolute nature of sovereignty.<br>(D) Sovereignty necessarily disappears under international law.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and C only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 17
+},
+{
+"question": "Q18<br>Which thinker associated democracy with polyarchy as an empirical model of democratic institutions?",
+"options": [
+"Robert Dahl",
+"Joseph Schumpeter",
+"John Rawls",
+"Amartya Sen"
+],
+"correct": 0,
+"ques_no": 18
+},
+{
+"question": "Q19<br>Match List-I with List-II.<br>List-I | List-II<br>A. Freedom from interference | I. Negative liberty<br>B. Self-mastery | II. Positive liberty<br>C. Capability approach | III. Amartya Sen<br>D. Justice as fairness | IV. John Rawls",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-III, B-II, C-I, D-IV"
+],
+"correct": 0,
+"ques_no": 19
+},
+{
+"question": "Q20<br>Which of the following statements about democratic participation are correct?<br>(A) Participation enhances political legitimacy.<br>(B) Participation may take institutional and non-institutional forms.<br>(C) Participation automatically eliminates political inequality.<br>(D) Democratic theory often links participation to civic engagement.",
+"options": [
+"A and B only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
+],
+"correct": 1,
+"ques_no": 20
+},
+{
+"question": "Q21<br>Which concept emphasizes expanding individuals’ capabilities rather than merely increasing income?",
+"options": [
+"Capability approach",
+"Libertarian equality",
+"Utilitarian welfare theory",
+"Procedural democracy"
+],
+"correct": 0,
+"ques_no": 21
+},
+{
+"question": "Q22<br>Which of the following statements about human rights and citizenship are correct?<br>(A) Human rights are universal claims.<br>(B) Citizenship rights depend on membership in a state.<br>(C) Human rights always override state sovereignty completely.<br>(D) Citizenship rights may include civil, political, and social rights.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 22
+},
+{
+"question": "Q23<br>Which feminist theory emphasizes dismantling patriarchy as a fundamental social structure?",
+"options": [
+"Liberal feminism",
+"Radical feminism",
+"Conservative feminism",
+"Post-liberal feminism"
+],
+"correct": 1,
+"ques_no": 23
+},
+{
+"question": "Q24<br>Match List-I with List-II.<br>List-I | List-II<br>A. Utilitarianism | I. Greatest happiness principle<br>B. Libertarianism | II. Minimal state<br>C. Egalitarian liberalism | III. Justice as fairness<br>D. Capability theory | IV. Human development",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-I, B-III, C-IV, D-II",
+"A-IV, B-II, C-I, D-III"
+],
+"correct": 0,
+"ques_no": 24
+},
+{
+"question": "Q25<br>Which of the following statements about the modern state are correct?<br>(A) It claims a monopoly over legitimate use of force.<br>(B) It exercises authority over a defined territory.<br>(C) It always eliminates social inequalities.<br>(D) It institutionalizes political authority.",
+"options": [
+"A and B only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
+],
+"correct": 1,
+"ques_no": 25
+},
+{
+"question": "Q26<br>Which thinker argued that justice should maximize overall happiness?",
+"options": [
+"Jeremy Bentham",
+"John Rawls",
+"Robert Nozick",
+"Hannah Arendt"
+],
+"correct": 0,
+"ques_no": 26
+},
+{
+"question": "Q27<br>Which of the following statements about libertarian political theory are correct?<br>(A) It prioritizes individual liberty over redistributive equality.<br>(B) It supports extensive welfare redistribution by the state.<br>(C) It emphasizes property rights.<br>(D) It advocates minimal state intervention.",
+"options": [
+"A and B only",
+"A, C and D only",
+"B and C only",
+"A, B, C and D"
+],
+"correct": 1,
+"ques_no": 27
+},
+{
+"question": "Q28<br>Match List-I with List-II.<br>List-I | List-II<br>A. John Rawls | I. Justice as fairness<br>B. Robert Nozick | II. Entitlement theory<br>C. Amartya Sen | III. Capability approach<br>D. Isaiah Berlin | IV. Two concepts of liberty",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-III, B-II, C-I, D-IV",
+"A-I, B-III, C-II, D-IV"
+],
+"correct": 0,
+"ques_no": 28
+},
+{
+"question": "Q29<br>The distinction between negative and positive liberty was famously articulated by:",
+"options": [
+"Isaiah Berlin",
+"John Locke",
+"Thomas Hobbes",
+"Jean-Jacques Rousseau"
+],
+"correct": 0,
+"ques_no": 29
+},
+{
+"question": "Q30<br>Arrange the following developments in the history of rights discourse chronologically.<br>(A) Natural rights theory<br>(B) Universal Declaration of Human Rights<br>(C) Welfare rights debates<br>(D) Contemporary human rights expansion",
+"options": [
+"A, B, C, D",
+"B, A, C, D",
+"A, C, B, D",
+"C, A, B, D"
+],
+"correct": 0,
+"ques_no": 30
+},
+{
+"question": "Q31<br>Which of the following statements about democracy are correct?<br>(A) Democracy involves political equality among citizens.<br>(B) Democracy requires competitive elections.<br>(C) Democracy eliminates all social inequalities automatically.<br>(D) Democracy may involve institutional checks and balances.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 31
+},
+{
+"question": "Q32<br>Match List-I with List-II.<br>List-I | List-II<br>A. Sovereign authority | I. Jean Bodin<br>B. General will | II. Rousseau<br>C. Minimal state | III. Robert Nozick<br>D. Harm principle | IV. John Stuart Mill",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-III, B-I, C-II, D-IV",
+"A-I, B-III, C-IV, D-II"
+],
+"correct": 0,
+"ques_no": 32
+},
+{
+"question": "Q33<br>Which of the following statements about citizenship and gender are correct?<br>(A) Feminist theorists argue that citizenship historically excluded women.<br>(B) Gender analysis highlights inequalities in public and private spheres.<br>(C) Citizenship rights have always been gender-neutral historically.<br>(D) Feminist theory critiques male-centric political institutions.",
+"options": [
+"A and B only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
+],
+"correct": 1,
+"ques_no": 33
+},
+{
+"question": "Q34<br>The concept that political rights include participation in elections and public office is associated with:",
+"options": [
+"Civil rights",
+"Political rights",
+"Social rights",
+"Cultural rights"
+],
+"correct": 1,
+"ques_no": 34
+},
+{
+"question": "Q35<br>Match List-I with List-II.<br>List-I | List-II<br>A. Utilitarianism | I. Jeremy Bentham<br>B. Liberal feminism | II. Mary Wollstonecraft<br>C. Radical feminism | III. Kate Millett<br>D. Capability theory | IV. Amartya Sen",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-III, B-II, C-IV, D-I"
+],
+"correct": 0,
+"ques_no": 35
+},
+{
+"question": "Q36<br>Which of the following statements about justice theories are correct?<br>(A) Utilitarianism evaluates actions by consequences.<br>(B) Rawls prioritizes fairness and equal liberties.<br>(C) Libertarianism rejects redistribution.<br>(D) All theories agree on identical principles of justice.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and C only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 36
+},
+{
+"question": "Q37<br>Which thinker criticized liberal democracy for masking class domination?",
+"options": [
+"Karl Marx",
+"John Locke",
+"Alexis de Tocqueville",
+"John Stuart Mill"
+],
+"correct": 0,
+"ques_no": 37
+},
+{
+"question": "Q38<br>Match List-I with List-II.<br>List-I | List-II<br>A. Patriarchy | I. Male dominance structures<br>B. Gender equality | II. Equal rights and opportunities<br>C. Intersectionality | III. Overlapping forms of oppression<br>D. Feminist theory | IV. Gender-based critique of power",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-III, B-II, C-I, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-III, D-I"
+],
+"correct": 0,
+"ques_no": 38
+},
+{
+"question": "Q39<br>Which of the following statements about the modern state are correct?<br>(A) It possesses defined territorial boundaries.<br>(B) It exercises legitimate authority over citizens.<br>(C) It necessarily eliminates political conflict.<br>(D) It institutionalizes governance structures.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 39
+},
+{
+"question": "Q40<br>Arrange the following thinkers chronologically.<br>(A) Hobbes<br>(B) Locke<br>(C) Marx<br>(D) Rawls",
+"options": [
+"A, B, C, D",
+"B, A, C, D",
+"A, C, B, D",
+"B, C, A, D"
+],
+"correct": 0,
+"ques_no": 40
+},
+{
+"question": "Q41<br>Which of the following statements about human rights are correct?<br>(A) Human rights are universal normative claims.<br>(B) International institutions may monitor rights violations.<br>(C) Human rights eliminate the role of national sovereignty entirely.<br>(D) Human rights frameworks evolved significantly after WWII.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 41
+},
+{
+"question": "Q42<br>Match List-I with List-II.<br>List-I | List-II<br>A. Equality before law | I. Formal equality<br>B. Redistribution | II. Substantive equality<br>C. Equal opportunity | III. Merit-based fairness<br>D. Capability expansion | IV. Amartya Sen",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-III, B-II, C-I, D-IV"
+],
+"correct": 0,
+"ques_no": 42
+},
+{
+"question": "Q43<br>Which of the following statements about democratic legitimacy are correct?<br>(A) Legitimacy arises from consent of the governed.<br>(B) Competitive elections contribute to legitimacy.<br>(C) Legitimacy eliminates political dissent.<br>(D) Democratic legitimacy depends partly on participation.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 43
+},
+{
+"question": "Q44<br>Which thinker emphasized capabilities rather than utility or resources in evaluating justice?",
+"options": [
+"Amartya Sen",
+"John Rawls",
+"Robert Nozick",
+"Jeremy Bentham"
+],
+"correct": 0,
+"ques_no": 44
+},
+{
+"question": "Q45<br>Match List-I with List-II.<br>List-I | List-II<br>A. Liberal democracy | I. Political equality and elections<br>B. Authoritarian state | II. Limited political freedoms<br>C. Welfare state | III. Social protection policies<br>D. Minimal state | IV. Libertarian theory",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-III, D-I"
+],
+"correct": 0,
+"ques_no": 45
+},
+{
+"question": "Q46<br>Which of the following statements about freedom of expression are correct?<br>(A) It is a fundamental civil liberty in democratic systems.<br>(B) It may be limited under certain legal restrictions.<br>(C) It automatically guarantees social equality.<br>(D) It contributes to democratic deliberation.",
+"options": [
+"A and B only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
+],
+"correct": 1,
+"ques_no": 46
+},
+{
+"question": "Q47<br>Which thinker developed the entitlement theory of justice?",
+"options": [
+"Robert Nozick",
+"John Rawls",
+"Karl Marx",
+"Jeremy Bentham"
+],
+"correct": 0,
+"ques_no": 47
+},
+{
+"question": "Q48<br>Match List-I with List-II.<br>List-I | List-II<br>A. Civil rights | I. Freedom of speech<br>B. Political rights | II. Voting rights<br>C. Social rights | III. Welfare guarantees<br>D. Cultural rights | IV. Identity protection",
+"options": [
+"A-I, B-II, C-III, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-III, B-II, C-I, D-IV",
+"A-I, B-III, C-II, D-IV"
+],
+"correct": 0,
+"ques_no": 48
+},
+{
+"question": "Q49<br>Which of the following statements about state authority are correct?<br>(A) The state exercises legitimate coercive power.<br>(B) The state operates through institutions.<br>(C) State authority eliminates political contestation.<br>(D) State authority is often justified through legal frameworks.",
+"options": [
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
+],
+"correct": 2,
+"ques_no": 49
+},
+{
+"question": "Q50<br>Which thinker defined democracy as a method of selecting leaders through competitive elections?",
+"options": [
+"Robert Dahl",
+"Arend Lijphart",
+"Joseph Schumpeter",
+"John Rawls"
+],
+"correct": 2,
+"ques_no": 50
+}
+];
+
+        // State variables
+        let currentQuestion = 0;
+        let userAnswers = {};
+        let userName = '';
+        let examTimer;
+        let progressSaver; // Periodic save interval
+        let timeRemaining = TOTAL_EXAM_TIME; 
+        let examStarted = false;
+
+        // NEW: Tracks all questions the user has landed on/viewed
+        let questionsVisited = new Set();
+
+        // --- PROGRESS RECOVERY KEYS ---
+        const PROGRESS_KEY = 'quiz_in_progress';
+        const ANSWERS_KEY = 'quiz_answers';
+        const VISITED_KEY = 'quiz_visited';
+        // ---------------------------------
+
+        // --- GLOBAL STATE FOR TIMING ---
+        let questionTimings = {}; // { index: totalTimeInSeconds }
+        let lastQuestionStartTime = 0; // Timestamp in milliseconds (Date.now())
+        // -----------------------------------
+
+        /***********************
+         * JSONBin helper funcs
+         ***********************/
+        async function fetchResponsesFromBin() {
+            try {
+                const resp = await fetch(`${JSONBIN_BASE}/latest`, {
+                    method: 'GET',
+                    headers: { 'X-Master-Key': JSONBIN_MASTER_KEY, 'Accept': 'application/json' }
+                });
+
+                if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`);
+                const json = await resp.json();
+                const payload = json?.record?.data ?? json?.record ?? json?.data ?? json;
+
+                if (Array.isArray(payload)) return payload;
+                if (Array.isArray(payload.quizResponses)) return payload.quizResponses;
+                if (Array.isArray(payload.responses)) return payload.responses;
+                
+                return payload?.quizResponses || payload?.responses || [];
+            } catch (err) {
+                return JSON.parse(localStorage.getItem('quizResponses') || '[]');
+            }
+        }
+
+        async function writeResponsesToBin(responsesArray) {
+            try {
+                const body = { data: { quizResponses: responsesArray } };
+                const resp = await fetch(`${JSONBIN_BASE}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_MASTER_KEY },
+                    body: JSON.stringify(body)
+                });
+                if (!resp.ok) throw new Error('JSONBin write failed');
+
+                try { localStorage.setItem('quizResponses', JSON.stringify(responsesArray)); } catch (e) { console.warn('Could not write to localStorage as cache:', e); }
+                return true;
+            } catch (err) {
+                return false;
+            }
+        }
+
+        async function appendResponseRemote(newResponse) {
+            const current = await fetchResponsesFromBin();
+            current.push(newResponse);
+            return { ok: await writeResponsesToBin(current), current };
+        }
+
+        // -------------------------
+        // DATA PERSISTENCE & RECOVERY
+        // -------------------------
+
+        function saveProgress() {
+            const progress = {
+                currentQuestion: currentQuestion,
+                timeRemaining: timeRemaining,
+                userName: userName,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+            localStorage.setItem(ANSWERS_KEY, JSON.stringify(userAnswers));
+            localStorage.setItem(VISITED_KEY, JSON.stringify(Array.from(questionsVisited)));
+        }
+
+        function recoverProgress() {
+            const progressStr = localStorage.getItem(PROGRESS_KEY);
+            const answersStr = localStorage.getItem(ANSWERS_KEY);
+            const visitedStr = localStorage.getItem(VISITED_KEY);
+
+            if (!progressStr || !answersStr || !questions.length) return false;
+
+            const progress = JSON.parse(progressStr);
+            const answers = JSON.parse(answersStr);
+            const visited = JSON.parse(visitedStr || '[]');
+
+            if (progress.timeRemaining <= 0) { clearLocalProgress(); return false; }
+
+            if (confirm(`A previous exam session was found for ${progress.userName}, started at ${new Date(progress.timestamp).toLocaleTimeString()}. Do you want to continue?`)) {
+                currentQuestion = progress.currentQuestion;
+                timeRemaining = progress.timeRemaining;
+                userName = progress.userName;
+                userAnswers = answers;
+                questionsVisited = new Set(visited);
+
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('quizContainer').style.display = 'block';
+                document.getElementById('userForm').style.display = 'none';
+                document.getElementById('navigation').style.display = 'flex';
+                document.getElementById('questionsContainer').style.display = 'block';
+                document.getElementById('palettePanel').style.display = 'flex';
+
+                document.getElementById('userName').value = userName;
+
+                generateQuestions();
+                
+                for (let index in userAnswers) {
+                    const optIndex = userAnswers[index];
+                    const optionElement = document.querySelector(`#question-${index} .option:nth-child(${optIndex + 1})`);
+                    if (optionElement) {
+                        optionElement.classList.add('selected');
+                        const radio = optionElement.querySelector('input[type="radio"]');
+                        if (radio) radio.checked = true;
+                    }
+                }
+
+                showQuestion(currentQuestion);
+                examStarted = true;
+                startTimer();
+
+                return true;
+            } else {
+                clearLocalProgress();
+                return false;
+            }
+        }
+
+        function clearLocalProgress() {
+            localStorage.removeItem(PROGRESS_KEY);
+            localStorage.removeItem(ANSWERS_KEY);
+            localStorage.removeItem(VISITED_KEY);
+        }
+
+        // -------------------------
+        // UI & NAVIGATION
+        // -------------------------
+
+        function startTimer() {
+            if (examTimer) clearInterval(examTimer);
+            if (progressSaver) clearInterval(progressSaver);
+
+            // Set the start time for the current session/question
+            lastQuestionStartTime = Date.now(); 
+
+            examTimer = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+
+                if (timeRemaining <= CRITICAL_TIME_THRESHOLD) { 
+                    document.getElementById('timerContainer').classList.add('timer-warning');
+                    document.getElementById('autoSubmitWarning').style.display = 'block';
+                }
+                if (timeRemaining <= 60) { 
+                    document.getElementById('timerContainer').classList.remove('timer-warning');
+                    document.getElementById('timerContainer').classList.add('timer-critical');
+                }
+
+                if (timeRemaining <= 0) {
+                    autoSubmitTest();
+                }
+            }, 1000);
+            
+            progressSaver = setInterval(saveProgress, SAVE_INTERVAL_SECONDS * 1000);
+        }
+
+        function stopTimer() {
+            if (examTimer) clearInterval(examTimer);
+            if (progressSaver) clearInterval(progressSaver);
+            examTimer = null;
+            progressSaver = null;
+        }
+
+        function updateTimerDisplay() {
+            const hours = Math.floor(timeRemaining / 3600);
+            const minutes = Math.floor((timeRemaining % 3600) / 60);
+            const seconds = timeRemaining % 60;
+            
+            const display = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('timerDisplay').textContent = display;
+        }
+
+        function autoSubmitTest() {
+            stopTimer();
+            submitTest(true);
+        }
+        
+        // NEW HELPER: Records time spent on the previous question
+        function recordQuestionTime(prevIndex) {
+            if (prevIndex !== null && examStarted) {
+                // Calculate time spent on the previous question (in seconds)
+                const timeSpent = (Date.now() - lastQuestionStartTime) / 1000;
+                
+                // Add time to the total time for that question index
+                questionTimings[prevIndex] = (questionTimings[prevIndex] || 0) + timeSpent;
+            }
+            // Set the start time for the current/next active question
+            lastQuestionStartTime = Date.now();
+        }
+
+
+        // --- PIN GATEWAY FUNCTIONS ---
+        function startTest() {
+            document.getElementById('modalTitle').textContent = 'Enter Test PIN';
+            document.getElementById('testPinInput').value = '';
+            document.getElementById('pinError').style.display = 'none';
+            document.getElementById('pinSubmitBtn').onclick = checkTestPin;
+            document.getElementById('passwordModal').style.display = 'block';
+        }
+
+        function checkTestPin() {
+            const enteredPin = document.getElementById('testPinInput').value;
+            const pinError = document.getElementById('pinError');
+
+            if (enteredPin === TEST_PIN) {
+                closeModal('passwordModal');
+                
+                document.getElementById('landingPage').style.display = 'none';
+                document.getElementById('quizContainer').style.display = 'block';
+                
+                // Show the sign-in form only, other elements remain hidden
+                document.getElementById('questionsContainer').style.display = 'none';
+                document.getElementById('navigation').style.display = 'none';
+                document.getElementById('palettePanel').style.display = 'none';
+                document.getElementById('userForm').style.display = 'flex'; 
+
+            } else {
+                pinError.textContent = 'Incorrect 6-Digit PIN!';
+                pinError.style.display = 'block';
+            }
+        }
+        // --- END PIN GATEWAY FUNCTIONS ---
+
+        function togglePalette() {
+            const palette = document.getElementById('palettePanel');
+            palette.classList.toggle('visible'); 
+        }
+
+        function startQuiz() {
+            userName = document.getElementById('userName').value.trim();
+
+            if (!userName) {
+                alert('Please enter your name');
+                return;
+            }
+
+            document.getElementById('userForm').style.display = 'none';
+            document.getElementById('navigation').style.display = 'flex';
+            document.getElementById('questionsContainer').style.display = 'block';
+            document.getElementById('palettePanel').style.display = 'flex'; 
+            
+            showQuestion(0);
+            
+            examStarted = true;
+            startTimer();
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function generateQuestions() {
+            const container = document.getElementById('questionsContainer');
+            const paletteGrid = document.getElementById('paletteGrid');
+            container.innerHTML = '';
+            paletteGrid.innerHTML = '';
+
+            questions.forEach((q, index) => {
+                // 1. Generate Question UI
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                questionDiv.id = `question-${index}`;
+                
+                let optionsHtml = '';
+                q.options.forEach((option, optIndex) => {
+                    const isChecked = userAnswers[index] === optIndex ? 'checked' : '';
+                    const isSelected = userAnswers[index] === optIndex ? ' selected' : '';
+                    
+                    optionsHtml += `
+                        <li class="option${isSelected}" onclick="selectOption(${index}, ${optIndex})">
+                            <label>
+                                <input type="radio" name="question-${index}" value="${optIndex}" ${isChecked}>
+                                (${String.fromCharCode(65 + optIndex)}) ${option}
+                            </label>
+                        </li>
+                    `;
+                });
+
+                questionDiv.innerHTML = `
+                    <div class="question">
+                        <div class="question-header">Question ${index + 1}</div>
+                        <div class="question-text">${q.question}</div>
+                        <ul class="options">${optionsHtml}</ul>
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+                
+                // 2. Generate Palette Item
+                const paletteItem = document.createElement('div');
+                paletteItem.className = `palette-item palette-default`;
+                paletteItem.textContent = index + 1;
+                paletteItem.onclick = () => showQuestion(index);
+                paletteGrid.appendChild(paletteItem);
+            });
+            
+            updatePalette();
+        }
+
+        function updatePalette() {
+            const paletteItems = document.querySelectorAll('#paletteGrid .palette-item');
+            
+            questions.forEach((q, index) => {
+                const item = paletteItems[index];
+                item.classList.remove('palette-answered', 'palette-unanswered', 'palette-current', 'palette-default');
+                
+                const isAnswered = userAnswers[index] !== undefined && userAnswers[index] !== null;
+                const isVisited = questionsVisited.has(index);
+                
+                if (index === currentQuestion) {
+                    item.classList.add('palette-current'); // Current: Yellow/Gold
+                } else if (isAnswered) {
+                    item.classList.add('palette-answered'); // Answered: Green
+                } else if (isVisited) {
+                    item.classList.add('palette-unanswered'); // Unanswered (Seen): Red
+                } else {
+                    item.classList.add('palette-default'); // Not Seen: White
+                }
+            });
+        }
+
+        function calculateScore(answers) {
+             let correct = 0;
+            let incorrect = 0;
+            let unattempted = 0;
+            let detailedResults = {};
+
+            for (let i = 0; i < questions.length; i++) {
+                const userAnswer = answers[i];
+                const correctAnswer = questions[i].correct;
+                
+                if (userAnswer === undefined || userAnswer === null) {
+                    unattempted++;
+                    detailedResults[i] = { status: 'unattempted', icon: '–', points: 0 };
+                } else if (userAnswer === correctAnswer) {
+                    correct++;
+                    detailedResults[i] = { status: 'correct', icon: '✅', points: 4 };
+                } else {
+                    incorrect++;
+                    detailedResults[i] = { status: 'incorrect', icon: '❌', points: -1 };
+                }
+            }
+
+            const totalScore = (correct * 4) + (incorrect * -1);
+            const accuracy = ((correct) / (questions.length - unattempted)) * 100;
+
+            return {
+                correct,
+                incorrect,
+                unattempted,
+                totalScore,
+                accuracy: accuracy.toFixed(2),
+                maxMarks: questions.length * 4,
+                detailedResults
+            };
+        }
+
+        function selectOption(questionIndex, optionIndex) {
+            const options = document.querySelectorAll(`#question-${questionIndex} .option`);
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            options[optionIndex].classList.add('selected');
+
+            userAnswers[questionIndex] = optionIndex;
+            
+            updatePalette(); 
+            saveProgress();
+        }
+
+        function showQuestion(index) {
+            if (index < 0 || index >= questions.length) return;
+
+            // CRITICAL FIX: Record time for the question being left BEFORE changing the index
+            recordQuestionTime(currentQuestion);
+
+            // Mark question as visited
+            questionsVisited.add(index);
+            
+            document.querySelectorAll('.question-container').forEach(q => {
+                q.classList.remove('active');
+            });
+            document.getElementById(`question-${index}`).classList.add('active');
+
+            currentQuestion = index; // Update index after recording time
+
+            document.getElementById('progress').textContent = `Question ${index + 1} of ${questions.length}`;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            if (prevBtn) prevBtn.disabled = (index === 0);
+            
+            if (index === questions.length - 1) {
+                if (nextBtn) nextBtn.style.display = 'none';
+                if (submitBtn) submitBtn.style.display = 'inline-block';
+            } else {
+                if (nextBtn) nextBtn.style.display = 'inline-block';
+                if (submitBtn) submitBtn.style.display = 'none';
+            }
+            
+            updatePalette(); 
+            MathJax.typeset(); 
+            saveProgress(); // Save after state change
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) showQuestion(currentQuestion - 1);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) showQuestion(currentQuestion + 1);
+        }
+
+        async function submitTest(isAutoSubmit = false) {
+            stopTimer(); 
+            
+            const confirmMessage = isAutoSubmit ? 
+                'Your test has been auto-submitted due to time expiry.' :
+                'Are you sure you want to submit your test? You cannot change your answers after submission.';
+                
+            if (!isAutoSubmit && !confirm(confirmMessage)) {
+                if (examStarted) startTimer();
+                return;
+            }
+
+            // CRITICAL FIX: Record time for the final active question
+            if (examStarted) {
+                recordQuestionTime(currentQuestion);
+            }
+
+            try {
+                const scoreData = calculateScore(userAnswers);
+                
+                const response = {
+                    name: userName,
+                    answers: userAnswers,
+                    scoreData: scoreData,
+                    timestamp: new Date().toISOString(),
+                    submittedAt: new Date().toLocaleString(),
+                    isAutoSubmitted: isAutoSubmit,
+                    timeSpent: TOTAL_EXAM_TIME - timeRemaining,
+                    questionTimings: questionTimings // NEW: Include per-question data
+                };
+
+                const { ok, current } = await appendResponseRemote(response);
+
+                if (ok) {
+                    console.log('Saved response to JSONBin successfully.');
+                } else {
+                    console.warn('Failed to save to JSONBin; final fallback to localStorage cache.');
+                }
+                
+                clearLocalProgress();
+
+                document.getElementById('quizContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error in final submission process:', error);
+                clearLocalProgress();
+                
+                document.getElementById('quizContainer').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                alert('Submission complete, though there was a server error.');
+            }
+        }
+        
+        // NEW HELPER: Records time spent on the previous question
+        function recordQuestionTime(prevIndex) {
+            if (prevIndex !== null && examStarted && questionsVisited.has(prevIndex)) {
+                // Calculate time spent on the previous question (in seconds)
+                const timeSpent = (Date.now() - lastQuestionStartTime) / 1000;
+                
+                // Add time to the total time for that question index
+                questionTimings[prevIndex] = (questionTimings[prevIndex] || 0) + timeSpent;
+            }
+            // Set the start time for the current/next active question
+            lastQuestionStartTime = Date.now();
+        }
+
+        // -------------------------
+        // ADMIN AND DOWNLOAD FUNCTIONS
+        // -------------------------
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function openAdminModal() {
+            document.getElementById('adminModal').style.display = 'block';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('passwordError').style.display = 'none';
+        }
+
+        function checkAdminPassword() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === 'AryanM@123M') {
+                closeModal('adminModal');
+                showAdminPanel();
+            } else {
+                document.getElementById('passwordError').style.display = 'block';
+            }
+        }
+
+        async function showAdminPanel() {
+            document.getElementById('landingPage').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            
+            await displayResponses();
+        }
+
+        async function displayResponses() {
+            const container = document.getElementById('responsesContainer');
+            if (typeof MathJax !== 'undefined') {
+                await MathJax.startup.promise;
+            }
+            const responses = await fetchResponsesFromBin();
+
+            if (!responses || responses.length === 0) {
+                container.innerHTML = '<p>No responses yet.</p>';
+                return;
+            }
+
+            let allResponsesHtml = '';
+
+            responses.forEach((response, responseIndex) => {
+                const scoreData = response.scoreData || calculateScore(response.answers || {});
+                const timings = response.questionTimings || {};
+                const totalAttempted = scoreData.correct + scoreData.incorrect;
+                
+                const timeSpentMinutes = Math.floor((response.timeSpent || 0) / 60);
+                const timeSpentSeconds = (response.timeSpent || 0) % 60;
+                const timeSpentDisplay = `${timeSpentMinutes}m ${timeSpentSeconds}s`;
+
+                // --- SUMMARY PANEL HTML ---
+                let summaryHtml = `
+                    <div class="report-summary">
+                        <h3 class="test-title">CUET PG Sectional Mock(political theory)</h3>
+                        <div class="summary-details">
+                            <p><strong>Name:</strong> ${response.name || '—'}</p>
+                            <p><strong>Date & Time:</strong> ${response.submittedAt}</p>
+                            <p><strong>Time Taken:</strong> ${timeSpentDisplay}</p>
+                            <p><strong>Score:</strong> ${scoreData.totalScore.toFixed(2)} / ${scoreData.maxMarks}</p>
+                            <p><strong>Accuracy:</strong> ${scoreData.accuracy}%</p>
+                            <p><strong>Correct:</strong> ${scoreData.correct}</p>
+                            <p><strong>Incorrect:</strong> ${scoreData.incorrect}</p>
+                            <p><strong>Unattempted:</strong> ${scoreData.unattempted}</p>
+                            <p><strong>Attempted:</strong> ${totalAttempted}</p>
+                        </div>
+                    </div>`;
+                // --- END SUMMARY PANEL HTML ---
+
+                // --- TOOLBAR (Updated with Solution and Chapter Checkbox) ---
+                let toolbarHtml = `
+                    <div class="toolbar" id="toolbar-${responseIndex}">
+                        <label><input type="checkbox" data-col="q-num" checked> Q#</label>
+                        <label><input type="checkbox" data-col="q-text" checked> Question</label>
+                        <label><input type="checkbox" data-col="q-options" checked> Options</label>
+                        <label><input type="checkbox" data-col="q-selection-letter" checked> Your Option</label>
+                        <label><input type="checkbox" data-col="q-correct-letter" checked> Correct Option</label>
+                        <label><input type="checkbox" data-col="q-result" checked> Result</label>
+                        <label><input type="checkbox" data-col="q-time" checked> Time</label>
+                        <label><input type="checkbox" data-col="q-solution" checked> Solution</label>
+                        <label><input type="checkbox" data-col="q-chapter" checked> Chapter</label> </div>
+                `;
+                
+                let tableHtml = '<div class="response-view"><div style="overflow-x: auto;"><table class="response-table" style="width: 100%; font-size: 12px;"><thead><tr>';
+                
+                // NEW COLUMN HEADERS AND ORDER & WIDTHS (Updated with Chapter Header)
+                tableHtml += '<th class="col-q-num" style="width: 4%;">Q#</th>';
+                tableHtml += '<th class="col-q-chapter" style="width: 10%;">Chapter</th>'; // NEW: Chapter Column - Header
+                tableHtml += '<th class="col-q-text" style="width: 20%;">Question</th>';
+                tableHtml += '<th class="col-q-options" style="width: 10%;">Options (with Text)</th>';
+                tableHtml += '<th class="col-q-selection-letter" style="width: 5%;">Your Opt.</th>';
+                tableHtml += '<th class="col-q-correct-letter" style="width: 5%;">Correct Opt.</th>';
+                tableHtml += '<th class="col-q-result" style="width: 7%;">Result</th>';
+                tableHtml += '<th class="col-q-time" style="width: 5%;">Time (s)</th>';
+                tableHtml += '<th class="col-q-solution" style="width: 29%;">Solution</th></tr></thead><tbody>'; 
+                // --- END TOOLBAR & TABLE SETUP ---
+
+                for (let i = 0; i < questions.length; i++) {
+                    const questionData = questions[i]; // Get question data
+                    const userAnswer = (response.answers || {})[i];
+                    const correctAnswer = questionData.correct;
+                    const result = scoreData.detailedResults[i];
+
+                    const fullQuestionText = questionData.question;
+                    const resultIcon = result?.icon || '–';
+                    const points = result?.points || 0;
+                    const timePerQ = (timings[i] || 0).toFixed(1);
+                    const solutionText = questionData.solution || 'N/A'; // Get solution text
+                    const chapterName = questionData.chapter || 'N/A'; // NEW: Chapter Column - Get Chapter Name
+
+                    const correctLetter = String.fromCharCode(65 + correctAnswer);
+                    let userAnswerLetter = '—';
+
+                    let allOptionsHtml = '<ul style="list-style: none; padding: 0; margin: 0;">';
+                    questionData.options.forEach((optionText, optIndex) => {
+                        const optionLetter = String.fromCharCode(65 + optIndex);
+                        const isUserSelection = optIndex === userAnswer;
+                        
+                        let optionClass = 'font-weight: normal;';
+                        let prefix = ''; 
+                        
+                        
+                        
+                        if (isUserSelection) {
+                            userAnswerLetter = `${optionLetter}`; 
+                            
+                        }
+                        
+                        allOptionsHtml += `<li style="${optionClass} font-size: 11px; margin-bottom: 2px; line-height: 1.2;">${prefix}${optionLetter}) ${optionText}</li>`;
+                    });
+                    allOptionsHtml += '</ul>';
+
+                    tableHtml += '<tr>';
+                    // NEW COLUMN DATA AND ORDER
+                    tableHtml += `<td class="col-q-num" style="font-size: 13px; font-weight: 170;">${i + 1}</td>`;
+                    tableHtml += `<td class="col-q-chapter" style="font-size: 13px; font-weight: 150;">${chapterName}</td>`; // NEW: Chapter Column - Data
+                    tableHtml += `<td class="col-q-text math-question" style="font-size: 15px; font-weight: 150;">${fullQuestionText}</td>`;
+                    tableHtml += `<td class="col-q-options" style="font-size: 17px; font-weight: 150;">${allOptionsHtml}</td>`;
+                    
+                    // New column: Your Option (only letter)
+                    tableHtml += `<td class="col-q-selection-letter" style="text-align: center; font-weight: bold; color: ${userAnswer === correctAnswer ? '#28a745' : userAnswer !== undefined ? '#e74c3c' : '#999'};">${userAnswerLetter}</td>`;
+                    
+                    // New column: Correct Option (only letter)
+                    tableHtml += `<td class="col-q-correct-letter" style="text-align: center; font-weight: bold; color: #28a745;">${correctLetter}</td>`;
+                    
+                    tableHtml += `<td class="col-q-result" style="font-weight: bold; font-size: 11px; text-align: center; color: ${points > 0 ? '#27ae60' : points < 0 ? '#e74c3c' : '#95a5a6'};">${resultIcon}<br>(${points > 0 ? '+' : ''}${points})</td>`;
+                    tableHtml += `<td class="col-q-time">${timePerQ}</td>`;
+                    tableHtml += `<td class="col-q-solution math-question" style="font-size: 14px;">${solutionText.replace(/\r<br>/g, '<br>')}</td>`; // Added Solution Data
+                    tableHtml += '</tr>';
+                }
+                
+                tableHtml += '</tbody></table></div></div>';
+                
+                allResponsesHtml += `<div class="response-report" id="response-report-${responseIndex}">` + summaryHtml + toolbarHtml + tableHtml + `</div>`;
+            });
+
+            container.innerHTML = allResponsesHtml;
+            
+            // Attach event listeners for the toolbars
+            document.querySelectorAll('.toolbar').forEach(toolbar => {
+                toolbar.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', toggleColumn);
+                });
+            });
+
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+        }
+
+        // New function to handle column visibility toggling
+        function toggleColumn(event) {
+            const checkbox = event.target;
+            const colClass = `col-${checkbox.getAttribute('data-col')}`;
+            
+            const report = checkbox.closest('.response-report');
+            if (!report) return;
+
+            const elementsToToggle = report.querySelectorAll(`.${colClass}`);
+            
+            elementsToToggle.forEach(el => {
+                if (checkbox.checked) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+        }
+
+
+        // New function to trigger native browser print (kept simple)
+        function printReport() {
+            // This relies on the @media print CSS rules to hide all buttons and controls.
+            window.print();
+        }
+        
+        // --- DOWNLOAD UTILITIES (Kept from previous functional code) ---
+        function cleanMathText(text) {
+            if (typeof text !== 'string') return String(text);
+            let cleaned = text;
+
+            // 1. Remove delimiters and environment commands
+            cleaned = cleaned.replace(/\$/g, '');
+            cleaned = cleaned.replace(/\\left|\\right/g, ''); 
+            cleaned = cleaned.replace(/\\cdot/g, '*');
+            cleaned = cleaned.replace(/\\quad|\\qquad/g, ' '); 
+
+            // 2. Simplify fractions and roots
+            cleaned = cleaned.replace(/\\frac{(.*?)}{(.*?)}/g, '($1/$2)'); 
+            cleaned = cleaned.replace(/\\sqrt{(.*?)}/g, 'sqrt($1)'); 
+            cleaned = cleaned.replace(/(\\w+)\^\{(.*?)\}/g, '$1^($2)'); // x^{2} -> x^(2)
+            cleaned = cleaned.replace(/(\w+)\^([a-zA-Z0-9])/g, '$1^$2'); // x^2 -> x^2
+
+            // 3. Handle Greek letters and functions (e.g., \sin, \theta)
+            cleaned = cleaned.replace(/\\cos/g, 'cos');
+            cleaned = cleaned.replace(/\\sin/g, 'sin');
+            cleaned = cleaned.replace(/\\tan/g, 'tan');
+            cleaned = cleaned.replace(/\\cot/g, 'cot');
+            cleaned = cleaned.replace(/\\sec/g, 'sec');
+            cleaned = cleaned.replace(/\\csc/g, 'csc');
+            cleaned = cleaned.replace(/\\theta/g, 'θ');
+            cleaned = cleaned.replace(/\\alpha/g, 'α');
+            cleaned = cleaned.replace(/\\beta/g, 'β');
+
+            // 4. Handle operators and units
+            cleaned = cleaned.replace(/\\pm/g, '+/-');
+            cleaned = cleaned.replace(/\\text{(.*?)}/g, '$1'); // \text{cm} -> cm
+            cleaned = cleaned.replace(/\\circ/g, ' deg'); // \circ -> deg
+            cleaned = cleaned.replace(/\\triangle/g, '∆'); 
+            cleaned = cleaned.replace(/\\ge/g, '>=');
+            cleaned = cleaned.replace(/\\le/g, '<=');
+            cleaned = cleaned.replace(/\\equiv/g, '≡');
+            cleaned = cleaned.replace(/\<br>e/g, '≠');
+            
+            // 5. Clean up any remaining backslashes that don't represent a known command
+            cleaned = cleaned.replace(/\\/g, ''); 
+
+            return cleaned.trim();
+        }
+
+        function escapeForCSV(text) {
+            if (text === null || text === undefined) return '';
+            const str = String(text).replace(/"/g, '""').replace(/\r<br>|<br>|\r/g, ' '); // Replace newlines for CSV
+            return `"${str}"`;
+        }
+
+        function triggerDownload(data, filename) {
+            const blob = new Blob([data], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            
+            if (link.download !== undefined) { 
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('Your browser does not support direct downloading. Please copy and paste the data.');
+            }
+        }
+
+        /** DOWNLOAD FINAL RESULTS (CSV) - Per Question Row (Updated with Chapter Column) */
+        async function downloadResultsCSV() {
+            const responses = await fetchResponsesFromBin();
+            
+            if (!responses || responses.length === 0) {
+                alert('No results to download');
+                return;
+            }
+
+            const questionHeaders = ["User Status", "Q#", "Chapter", "Result", "Time (s)", "Points", "Question Text", "User Answer", "Correct Answer", "Solution"]; // NEW: Chapter Column - Header in CSV
+            let csvContent = questionHeaders.map(escapeForCSV).join(",") + "<br>";
+
+            responses.forEach(response => {
+                let scoreData = response.scoreData || calculateScore(response.answers || {});
+                const timeSpentMinutes = ((response.timeSpent || 0) / 60).toFixed(2);
+                const timings = response.questionTimings || {}; 
+
+                const userHeader = [
+                    `USER: ${response.name}`, 
+                    `SCORE: ${scoreData.totalScore.toFixed(2)}/${scoreData.maxMarks}`,
+                    `ACCURACY: ${scoreData.accuracy}%`, 
+                    `CORRECT: ${scoreData.correct}`, 
+                    `INCORRECT: ${scoreData.incorrect}`, 
+                    `UNATTEMPTED: ${scoreData.unattempted}`,
+                    `TIME TAKEN: ${timeSpentMinutes} min`, 
+                    `SUBMITTED: ${response.submittedAt}`, 
+                    `AUTO-SUBMIT: ${response.isAutoSubmitted ? 'Yes' : 'No'}`
+                ];
+                csvContent += userHeader.map(escapeForCSV).join(",") + "<br>";
+
+                for (let i = 0; i < questions.length; i++) {
+                    const question = questions[i];
+                    const userAnswerIndex = (response.answers || {})[i];
+                    const correctAnswerIndex = question.correct;
+                    const result = scoreData.detailedResults[i];
+
+                    const userStatus = result?.status.toUpperCase() || 'UNATTEMPTED';
+                    const timePerQ = (timings[i] || 0).toFixed(1); 
+                    const chapterName = question.chapter || 'N/A'; // NEW: Chapter Column - Get Chapter Name
+
+                    let userAnswerText = 'Not Answered';
+                    if (userAnswerIndex !== undefined && userAnswerIndex !== null) {
+                        const optionLetter = String.fromCharCode(65 + userAnswerIndex);
+                        userAnswerText = `${optionLetter}) ${cleanMathText(question.options[userAnswerIndex])}`;
+                    }
+
+                    const correctLetter = String.fromCharCode(65 + correctAnswerIndex);
+                    const correctAnswerText = `${correctLetter}) ${cleanMathText(question.options[correctAnswerIndex])}`;
+                    const solutionText = cleanMathText(question.solution || 'N/A'); 
+
+                    const questionRow = [
+                        userStatus,
+                        i + 1,
+                        chapterName, // NEW: Chapter Column - Data in CSV
+                        userStatus === 'CORRECT' ? 'C' : userStatus === 'INCORRECT' ? 'I' : 'U',
+                        timePerQ, 
+                        result?.points || 0,
+                        cleanMathText(question.question), 
+                        userAnswerText,
+                        correctAnswerText,
+                        solutionText 
+                    ];
+                    
+                    csvContent += questionRow.map(escapeForCSV).join(",") + "<br>";
+                }
+            });
+
+            triggerDownload(csvContent, `ssc_chsl_final_results_${new Date().toISOString().split('T')[0]}.csv`);
+        }
+
+        /** DOWNLOAD RAW DATA (CSV) - Per Question Row (Updated with Chapter Column) */
+        async function downloadRawDataCSV() {
+            const responses = await fetchResponsesFromBin();
+            
+            if (!responses || responses.length === 0) {
+                alert('No raw data to download');
+                return;
+            }
+            
+            const rawHeaders = ["User Name", "Q#", "Chapter", "Question Text", "All Options", "User Selection"]; // NEW: Chapter Column - Header in Raw CSV
+            let csvContent = rawHeaders.map(escapeForCSV).join(",") + "<br>";
+            
+            responses.forEach(response => {
+                const userNameHeader = [`USER: ${response.name}`]; 
+                csvContent += userNameHeader.map(escapeForCSV).join(",") + "<br>";
+                
+                for (let i = 0; i < questions.length; i++) {
+                    const question = questions[i];
+                    const userAnswerIndex = (response.answers || {})[i];
+                    const chapterName = question.chapter || 'N/A'; // NEW: Chapter Column - Get Chapter Name
+                    
+                    const allOptions = question.options.map((opt, idx) => 
+                        `${String.fromCharCode(65 + idx)}) ${cleanMathText(opt)}`
+                    ).join(' | ');
+                    
+                    let userAnswerText = 'Not Answered';
+                    if (userAnswerIndex !== undefined && userAnswerIndex !== null) {
+                        const optionLetter = String.fromCharCode(65 + userAnswerIndex);
+                        const optionText = cleanMathText(question.options[userAnswerIndex]);
+                        userAnswerText = `${optionLetter}) ${optionText}`;
+                    }
+                    
+                    const questionRow = [
+                        response.name,
+                        i + 1,
+                        chapterName, // NEW: Chapter Column - Data in Raw CSV
+                        cleanMathText(question.question),
+                        allOptions,
+                        userAnswerText
+                    ];
+                    
+                    csvContent += questionRow.map(escapeForCSV).join(",") + "<br>";
+                }
+            });
+
+            triggerDownload(csvContent, `ssc_chsl_raw_data_${new Date().toISOString().split('T')[0]}.csv`);
+        }
+
+        async function clearAllResponses() {
+            if (!confirm('Are you sure you want to delete all user responses? This cannot be undone.')) return;
+
+            localStorage.removeItem('quizResponses');
+
+            const ok = await writeResponsesToBin([]);
+
+            if (ok) {
+                await displayResponses();
+                alert('All responses have been cleared from the server and local cache.');
+            } else {
+                alert('Failed to clear responses on server. Local responses cleared only.');
+                await displayResponses();
+            }
+        }
+
+        function goHome() {
+            stopTimer(); 
+            clearLocalProgress();
+            
+            document.getElementById('landingPage').style.display = 'block';
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            currentQuestion = 0;
+            timeRemaining = TOTAL_EXAM_TIME; 
+            examStarted = false;
+            updateTimerDisplay();
+            document.getElementById('userName').value = '';
+            document.getElementById('userForm').style.display = 'block';
+            document.getElementById('navigation').style.display = 'none';
+            document.getElementById('autoSubmitWarning').style.display = 'none';
+            document.getElementById('timerContainer').classList.remove('timer-warning', 'timer-critical');
+        }
+
+        // -------------------------
+        // INITIALIZATION & EVENT LISTENERS
+        // -------------------------
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const recovered = recoverProgress();
+
+            if (!recovered) {
+                document.getElementById('adminPassword').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') checkAdminPassword();
+                });
+
+                document.getElementById('testPinInput').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') checkTestPin();
+                });
+            }
+            
+            updateTimerDisplay();
+            
+            if (!recovered) {
+                generateQuestions();
+            }
+        });
+
+        window.addEventListener('beforeunload', function (e) {
+            if (examStarted && timeRemaining > 0) {
+                saveProgress(); 
+
+                if (timeRemaining <= 300) { 
+                    autoSubmitTest(); 
+                }
+                
+                const message = 'Your exam progress has been saved. You can continue later.';
+                e.preventDefault();
+                e.returnValue = message;
+                return message;
+            }
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('adminModal');
+            if (event.target === modal) closeModal('adminModal');
+            
+            const pinModal = document.getElementById('passwordModal');
+            if (event.target === pinModal) closeModal('passwordModal');
+        }
+
+        document.addEventListener('contextmenu', function(e) { if (examStarted) e.preventDefault(); });
+        document.addEventListener('keydown', function(e) { 
+            if (examStarted) {
+                if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || e.key === 'F12') {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
