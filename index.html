@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>CUET PG – Full Mock 5</title>
+    <title>CUET PG Sectional Mock(Comparative Government & Politics)</title>
     
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -537,14 +537,14 @@
             <div class="header">
                <div class="govt-logo" style="background:#003366;border-radius:0;">NTA</div>
                 <h1>National Testing Agency (NTA)</h1>
-                <h2>CUET PG – Full Mock 5</h2>
+                <h2>CUET PG Sectional Mock(Comparative Government & Politics)</h2>
                 <p class="subtitle">Common University Entrance Test (Postgraduate)</p>
                 <div class="exam-info">
                     <h3>Examination Instructions:</h3>
                     <ul>
-                        <li>Total Questions: 75</li>
-                        <li>Maximum Marks: 300</li>
-                        <li>Time Duration: <strong>1 Hour 30 Minutes</strong></li>
+                        <li>Total Questions: 50</li>
+                        <li>Maximum Marks: 200</li>
+                        <li>Time Duration: <strong>1 Hour</strong></li>
                         <li><strong style="color: #dc3545;">⚠️ Test will auto-submit when time expires</strong></li>
                         <li>Marking Scheme: +4 for correct, -1 for incorrect, 0 for unattempted</li>
                         <li>Do not refresh the page during the examination</li>
@@ -560,7 +560,7 @@
 
         <div id="quizContainer" class="quiz-container">
             <div class="exam-header">
-                <div class="exam-title">CUET PG Full Mock 5</div>
+                <div class="exam-title">CUET PG Sectional Mock(Comparative Government & Politics)</div>
                 <div class="timer-group">
                     <button class="menu-toggle" onclick="togglePalette()">☰</button>
                     <div class="timer-container" id="timerContainer">
@@ -583,7 +583,7 @@
                     </div>
 
                     <div id="autoSubmitWarning" class="auto-submit-warning" style="display: none;">
-                        ⚠️ WARNING: Test will be automatically submitted in less than 2 minutes!
+                        ⚠️ WARNING: Test will be automatically submitted in less than 10 minutes!
                     </div>
 
                     <div id="questionsContainer"></div>
@@ -655,10 +655,10 @@
         const JSONBIN_ID = '68d903e243b1c97be952d590';
         const JSONBIN_MASTER_KEY = '$2a$10$XZzc.4ipvMjGFeEh9J/7cuffWTZGYXoXCkJjMDjZ1wCgz.BGJ3Cse';
         const JSONBIN_BASE = `https://api.jsonbin.io/v3/b/${JSONBIN_ID}`;
-        const TEST_PIN = '112277'; 
+        const TEST_PIN = '112299'; 
         const SAVE_INTERVAL_SECONDS = 10;
-        const TOTAL_EXAM_TIME = 90 * 60; 
-        const CRITICAL_TIME_THRESHOLD = 10 * 60; 
+        const TOTAL_EXAM_TIME = 60 * 60; 
+        const CRITICAL_TIME_THRESHOLD = 5 * 60; 
         
        
         // Questions data 
@@ -667,831 +667,555 @@
             [
 
 {
-"question": "1. Which of the following statements are CORRECT about Marx’s concept of historical materialism?<br>(A) The term historical materialism refers to the materialist conception of history.<br>(B) Engels credited Marx with being the originator of historical materialism.<br>(C) Marx contends that the political structure of society, constituted by its relations of production, is the real foundation of society.<br>(D) The society’s relations of production ‘corresponds to a definite stage of development of material productive forces.’<br>Choose the correct answer from the options given below:",
+"question": "1. In comparative political analysis, the structural–functional approach attempted to move beyond traditional institutionalism mainly by:",
 "options": [
-"(A), (B) and (D) only.",
-"(A), (B) and (C) only.",
-"(A), (B), (C) and (D).",
-"(B), (C) and (D) only."
+"analysing political systems through the functions performed by political structures",
+"limiting analysis to constitutional provisions of Western states",
+"rejecting empirical political research",
+"focusing only on legal institutions of the state"
 ],
 "correct": 0,
 "ques_no": 1
 },
 {
-"question": "2. Who among the following advocated the concept of relative autonomy of State?",
+"question": "2. Which of the following statements are correct regarding the concept of political culture?<br>(A) It refers to orientations toward political objects and institutions.<br>(B) It helps explain variations in regime legitimacy and stability.<br>(C) Political culture is entirely determined by constitutional arrangements.<br>(D) Political culture may vary across regions within the same state.",
 "options": [
-"Ralph Miliband",
-"Nicos Poulantzas",
-"Louis Althusser",
-"Antonio Gramsci"
+"A and C only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
 ],
 "correct": 1,
 "ques_no": 2
 },
 {
-"question": "3. According to Locke, following are the natural rights of the people:",
+"question": "3. Duverger’s argument regarding the relationship between electoral systems and party systems suggests that plurality electoral systems tend to produce:",
 "options": [
-"Right to equality, self-preservation and right to property.",
-"Right to self-preservation and right to property.",
-"Right to life, equality and right to property.",
-"Right to life, liberty and property."
+"multiparty systems with coalition governments",
+"fragmented party competition with ideological extremism",
+"two-party competition through mechanical and psychological effects",
+"proportional representation of all parties"
 ],
-"correct": 3,
+"correct": 2,
 "ques_no": 3
 },
 {
-"question": "4. In which of Marx’s writings is it said, ”The history of all hitherto existing society is the history of class struggles”?",
+"question": "4. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Giovanni Sartori<br>I. Polyarchy<br>B. Robert Dahl<br>II. Party system typology<br>C. Gabriel Almond<br>III. Civic culture<br>D. Arend Lijphart<br>IV. Consensus democracy",
 "options": [
-"The Communist Manifesto",
-"Social Reform or Revolution?",
-"The State in Capitalist Society",
-"Socialism for a Sceptical Age"
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-III, B-IV, C-I, D-II",
+"A-II, B-III, C-I, D-IV"
 ],
-"correct": 0,
+"correct": 1,
 "ques_no": 4
 },
 {
-"question": "5. The earlier known example of direct democracy is found in:",
+"question": "5. A political system in which one party repeatedly wins elections while opposition parties remain legally permitted is generally described as:",
 "options": [
-"Syracuse",
-"Sparta",
-"Athens",
-"Rome"
+"a one-party system",
+"a dominant-party system",
+"an atomized party system",
+"a military regime"
 ],
-"correct": 2,
+"correct": 1,
 "ques_no": 5
 },
 {
-"question": "6. Who among the following is the author of the book ‘Statesman’?",
+"question": "6. Arrange the following developments in comparative political analysis chronologically.<br>(A) Dominance of institutional approach<br>(B) Behavioural revolution<br>(C) Structural-functionalism<br>(D) Post-behavioural critique",
 "options": [
-"Thomas Hobbes",
-"Aristotle",
-"Plato",
-"Montesquieu"
+"A, B, C, D",
+"B, A, D, C",
+"A, C, B, D",
+"C, A, B, D"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 6
 },
 {
-"question": "7. Who among the following is not a Realist thinker?",
+"question": "7. Which of the following statements are correct regarding consensus democracy?<br>(A) Executive power sharing is common.<br>(B) Coalition governments are frequent.<br>(C) Majoritarian electoral rules dominate.<br>(D) Proportional representation is commonly used.",
 "options": [
-"Thomas Hobbes",
-"Kenneth Waltz",
-"Woodrow Wilson",
-"Hans J. Morgenthau"
+"A, B and D only",
+"B and C only",
+"A and C only",
+"A, B, C and D"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 7
 },
 {
-"question": "8. Chronologically arrange the SAARC Specialized bodies according to the year of their establishment.<br>(A) SAARC Development Fund<br>(B) SAARC Arbitration Council<br>(C) South Asian Regional Standards Organisations<br>(D) SAARC Agriculture Centre<br>Choose the correct answer from the options below:",
+"question": "8. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Parochial political culture<br>I. Passive orientation toward authority<br>B. Subject political culture<br>II. Minimal awareness of politics<br>C. Participant political culture<br>III. Active involvement in politics<br>D. Civic culture<br>IV. Balanced mixture of orientations",
 "options": [
-"(A), (B), (C), (D)",
-"(A), (C), (B), (D)",
-"(D), (A), (B), (C)",
-"(C), (B), (D), (A)"
+"A-II, B-I, C-III, D-IV",
+"A-III, B-I, C-II, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-IV, B-II, C-III, D-I"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 8
 },
 {
-"question": "9. Chronologically arrange the books of Mahatma Gandhi according to their year of publication.<br>(A) The Story of My Experiments With Truth<br>(B) Hind Swaraj<br>(C) India of My Dreams<br>(D) Satyagraha in South Africa<br>Choose the correct answer from the options below:",
+"question": "9. Which electoral system allows voters to rank candidates in order of preference and permits vote transfers between candidates?",
 "options": [
-"(A), (B), (D), (C)",
-"(B), (A), (D), (C)",
-"(A), (B), (C), (D)",
-"(B), (C), (D), (A)"
+"First-past-the-post",
+"Closed-list proportional representation",
+"Single transferable vote",
+"Two-round system"
 ],
-"correct": 1,
+"correct": 2,
 "ques_no": 9
 },
 {
-"question": "10. Which among the following countries is not a member of SAARC?",
+"question": "10. Which of the following statements are correct regarding Robert Dahl’s concept of polyarchy?<br>(A) It emphasises political contestation and participation.<br>(B) It represents an empirical model of democracy.<br>(C) It assumes complete political equality in practice.<br>(D) It identifies institutional guarantees of democratic competition.",
 "options": [
-"Afghanistan",
-"Myanmar",
-"India",
-"Sri Lanka"
+"A and C only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
 ],
 "correct": 1,
 "ques_no": 10
 },
 {
-"question": "11. What were the main reasons for the collapse of communism and the end of the Cold War?<br>(A) The structural weaknesses of Soviet-style communism<br>(B) Soviet invasion of Afghanistan<br>(C) The impact of Gorbachev’s reform process<br>(D) Economic and Cultural Globalization<br>Choose the correct answer from the options below:",
+"question": "11. A regime in which democratic institutions exist but incumbents systematically abuse state resources to maintain power is commonly described as:",
 "options": [
-"(A) and (B) only.",
-"(A), (B) and (C) only.",
-"(A), (C) and (D) only.",
-"(C) and (D) only."
+"liberal democracy",
+"competitive authoritarianism",
+"totalitarian regime",
+"absolute monarchy"
 ],
-"correct": 2,
+"correct": 1,
 "ques_no": 11
 },
 {
-"question": "12. Which of the following books has not been written by Dr. B. R. Ambedkar?",
+"question": "12. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Juan Linz<br>I. Political order theory<br>B. Samuel Huntington<br>II. Breakdown of democratic regimes<br>C. Ronald Inglehart<br>III. Post-materialist values<br>D. Giovanni Sartori<br>IV. Party system classification",
 "options": [
-"Thoughts on Pakistan",
-"Annihilation of Caste",
-"Gandhi, Nehru and Tagore",
-"The Problem of Rupee: Origin and Solution"
+"A-II, B-I, C-III, D-IV",
+"A-III, B-IV, C-I, D-II",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-III, D-I"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 12
 },
 {
-"question": "13. Chronologically arrange the following events related to the global environment.<br>(A) Kyoto Protocol<br>(B) Rio Earth Summit<br>(C) Copenhagen Summit<br>(D) Johannesburg Summit",
+"question": "13. In Sartori’s classification, a party system characterised by strong ideological polarization and multiple relevant parties is called:",
 "options": [
-"(A), (B), (C), (D)",
-"(B), (A), (C), (D)",
-"(B), (A), (D), (C)",
-"(C), (B), (D), (A)"
+"dominant party system",
+"moderate pluralism",
+"polarized pluralism",
+"two-party system"
 ],
 "correct": 2,
 "ques_no": 13
 },
 {
-"question": "14. Arrange the following events of the Cold War in a chronological manner.<br>(A) Soviet invasion of Afghanistan<br>(B) Korean War<br>(C) Berlin War<br>(D) Soviet invasion of Hungary",
+"question": "14. Which of the following statements are correct regarding Huntington’s concept of political institutionalization?<br>(A) Institutionalization involves adaptability of political organizations.<br>(B) Institutionalization necessarily weakens political authority.<br>(C) Institutionalization implies complexity and autonomy of institutions.<br>(D) Political decay may occur when participation grows faster than institutions.",
 "options": [
-"(A), (B), (D), (C)",
-"(A), (C), (D), (B)",
-"(B), (D), (C), (A)",
-"(A), (B), (C), (D)"
+"A and B only",
+"B and C only",
+"A, C and D only",
+"A, B, C and D"
 ],
 "correct": 2,
 "ques_no": 14
 },
 {
-"question": "15. Match List-I with List-II.<br>List-I (Book)<br>A. The Republic<br>B. Leviathan<br>C. Florentine History<br>D. Two Treatises of Government<br>List-II (Author)<br>I. Machiavelli<br>II. Hobbes<br>III. Plato<br>IV. Locke",
+"question": "15. Which electoral formula allocates seats using a highest-average divisor method widely used in proportional representation systems?",
 "options": [
-"(A) - (I), (B) - (II), (C) - (III), (D) - (IV)",
-"(A) - (III), (B) - (II), (C) - (I), (D) - (IV)",
-"(A) - (III), (B) - (IV), (C) - (I), (D) - (II)",
-"(A) - (III), (B) - (II), (C) - (IV), (D) - (I)"
+"Hare quota",
+"Largest remainder method",
+"Alternative vote",
+"D’Hondt method"
 ],
-"correct": 1,
+"correct": 3,
 "ques_no": 15
 },
 {
-"question": "16. Match List-I with List-II.<br>List-I (Author)<br>List-II (Books)<br>A. John Rawls<br>I. Walth of Nations<br>B. Robert Nozick<br>II. A Theory of Justice<br>C. Adam Smith<br>III. The End of History<br>D. Francis Fukuyama<br>IV. State and Utopia",
+"question": "16. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Majoritarian democracy<br>I. Concentration of executive power<br>B. Consensus democracy<br>II. Broad power-sharing<br>C. Proportional representation<br>III. Multiparty representation<br>D. First-past-the-post<br>IV. Disproportionate seat allocation",
 "options": [
-"(A) - (II), (B) - (IV), (C) - (I), (D) - (III)",
-"(A) - (II), (B) - (III), (C) - (I), (D) - (IV)",
-"(A) - (IV), (B) - (III), (C) - (I), (D) - (II)",
-"(A) - (III), (B) - (IV), (C) - (II), (D) - (I)"
+"A-III, B-II, C-IV, D-I",
+"A-I, B-II, C-III, D-IV",
+"A-II, B-III, C-I, D-IV",
+"A-IV, B-I, C-III, D-II"
 ],
-"correct": 0,
+"correct": 1,
 "ques_no": 16
 },
 {
-"question": "17. List the following events in chronological order.<br>(A) Cuban Missile Crisis<br>(B) Kargil War<br>(C) Indian Peace Keeping Force (IPKF) to Sri Lanka<br>(D) Japanese attack on Pearl Harbor, USA",
+"question": "17. Which concept explains the shift from material concerns such as economic security to values emphasizing participation, self-expression and quality of life?",
 "options": [
-"(D), (A), (C), (B)",
-"(A), (B), (C), (D)",
-"(B), (A), (D), (C)",
-"(C), (B), (D), (A)"
+"Democratic corporatism",
+"Civic republicanism",
+"Post-materialism",
+"Political socialization"
 ],
-"correct": 0,
+"correct": 2,
 "ques_no": 17
 },
 {
-"question": "18. Chronologically arrange the tenure of the following Presidents:<br>(A) Neelam Sanjiva Reddy<br>(B) Dr. Zakir Hussain<br>(C) Dr. A.P.J Abdul Kalam<br>(D) Pranab Mukherjee<br>Choose the correct answer from the options given below:",
+"question": "18. Which of the following statements are correct regarding electoral authoritarian regimes?<br>(A) Elections occur regularly.<br>(B) Opposition parties may exist but compete under unequal conditions.<br>(C) Electoral competition is entirely absent.<br>(D) State institutions often favour incumbents.",
 "options": [
-"(A), (B), (C), (D)",
-"(B), (A), (C), (D)",
-"(B), (A), (D), (C)",
-"(C), (B), (A), (D)"
+"A and C only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
 ],
-"correct": 1,
+"correct": 2,
 "ques_no": 18
 },
 {
-"question": "19. Which of the following events are matching with their year of occurrence?<br>(A) Mumbai Terror Attack by Kasab in 2007<br>(B) Terror Attack on Indian Parliament in 2013<br>(C) Pulwama Terror Attack in 2014<br>(D) Uri Terror Attack in 2016<br>Choose the correct answer from the options given below:",
+"question": "19. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Two-party system<br>I. Ideological extremes<br>B. Dominant-party system<br>II. Alternating party competition<br>C. Atomized party system<br>III. Numerous weak parties<br>D. Polarized pluralism<br>IV. Repeated electoral victory of one party",
 "options": [
-"(A), (B), and (D) only",
-"(A) and (C) only",
-"(B) and (D) only",
-"(B), (C), and (A) only"
+"A-II, B-IV, C-III, D-I",
+"A-IV, B-III, C-I, D-II",
+"A-III, B-I, C-IV, D-II",
+"A-II, B-III, C-I, D-IV"
 ],
-"correct": -1,
+"correct": 0,
 "ques_no": 19
 },
 {
-"question": "20. The President can dissolve Lok Sabha on-",
+"question": "20. Arrange the following political developments chronologically.<br>(A) Expansion of universal suffrage<br>(B) Emergence of mass political parties<br>(C) Development of written constitutions<br>(D) Institutionalization of competitive party systems",
 "options": [
-"the recommendation of Chief Justice of India",
-"the recommendation of Rajya Sabha",
-"the recommendation of the Council of Ministers",
-"the recommendation of the Lok Sabha"
+"C, A, B, D",
+"A, C, B, D",
+"B, C, A, D",
+"C, B, A, D"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 20
 },
 {
-"question": "21. Arrange the following organizations chronologically according to their year of establishment:<br>(A) ASEAN<br>(B) NAM<br>(C) UNO<br>(D) SAARC<br>Choose the correct answer from the options given below:",
+"question": "21. Which analytical framework conceptualizes political systems in terms of inputs, outputs and feedback mechanisms?",
 "options": [
-"(A), (C), (B), (D)",
-"(B), (A), (C), (D)",
-"(C), (A), (B), (D)",
-"(C), (B), (A), (D)"
+"Systems approach",
+"Behavioural approach",
+"Rational choice approach",
+"Institutional approach"
 ],
-"correct": 3,
+"correct": 0,
 "ques_no": 21
 },
 {
-"question": "22. Which of the following statements are CORRECT about the Council of States?<br>(A) The Council of States is not subject to dissolution.<br>(B) One-fourth of the members of the Council of States retire on the expiration of every second year.<br>(C) The Council of States has abandoned the system of proportional representation.<br>(D) The order of retirement of the members is governed by the Council of States (Term of Office of Members) Order, 1952.<br>Choose the correct answer from the options given below:",
+"question": "22. Which electoral system is most commonly associated with consensus democracies and coalition governments?",
 "options": [
-"(A), (B), and (D) only",
-"(A) and (D) only",
-"(B) and (D) only",
-"(A), (B), and (C) only"
+"First-past-the-post",
+"Proportional representation",
+"Alternative vote",
+"Two-round system"
 ],
 "correct": 1,
 "ques_no": 22
 },
 {
-"question": "23. Which of the following statements are CORRECT about theories on global justice?<br>(A) Thomas Pogge in his work ”The Law of Peoples” has addressed some of the issues of global justice.<br>(B) In his eight principles, John Rawls seeks respect for human rights and duty.<br>(C) Rawls distinguishes between domestic and global society.<br>(D) Thomas Pogge argues that there is a gap between global poor and rich due to the global institutional order.<br>Choose the correct answer from the options given below:",
+"question": "23. Which of the following statements are correct regarding hybrid regimes?<br>(A) They combine democratic and authoritarian features.<br>(B) Elections may exist but are not fully competitive.<br>(C) Civil liberties are always fully protected.<br>(D) Institutional checks on executive power may be weak.",
 "options": [
-"(A), (B) and (D) only.",
-"(A), (B) and (C) only.",
-"(A), (B), (C) and (D).",
-"(B), (C) and (D) only."
+"A and C only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
 ],
-"correct": 3,
+"correct": 2,
 "ques_no": 23
 },
 {
-"question": "24. Match List-I with List-II:<br>List-I (Author/Thinker)<br>List-II (Books)<br>A. Thomas Pogge<br>I. Principles of Social Justice<br>B. Charles Beitz<br>II. The Possibility of Altruism<br>C. Thomas Nagel<br>III. The Idea of Human Rights<br>D. David Miller<br>IV. World Poverty and Human Rights",
+"question": "24. Which regime type is characterized by a single ideology, mass mobilization and extensive control over society?",
 "options": [
-"(A) - (I), (B) - (II), (C) - (III), (D) - (IV)",
-"(A) - (I), (B) - (III), (C) - (II), (D) - (IV)",
-"(A) - (IV), (B) - (III), (C) - (II), (D) - (I)",
-"(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
+"Authoritarian regime",
+"Military regime",
+"Hybrid regime",
+"Totalitarian regime"
 ],
-"correct": 2,
+"correct": 3,
 "ques_no": 24
 },
 {
-"question": "25. Who among the following thinkers wrote ”Sexual Politics”?",
+"question": "25. Which of the following statements are correct regarding party institutionalization?<br>(A) Parties develop stable organizational structures.<br>(B) Parties build deep social roots.<br>(C) Party competition becomes predictable.<br>(D) Party legitimacy among citizens increases.",
 "options": [
-"Kate Millett",
-"Mary Wollstonecraft",
-"Carol Pateman",
-"J.S. Mill"
+"A, B and C only",
+"B and D only",
+"A and C only",
+"A, B, C and D"
 ],
-"correct": 0,
+"correct": 3,
 "ques_no": 25
 },
 {
-"question": "26. Who among the following linked political development with administrative development?",
+"question": "26. In comparative politics literature, Giovanni Sartori argues that the relevance of political parties for classifying party systems depends primarily on:",
 "options": [
-"James Coleman",
-"Lucian Pye",
-"David Easton",
-"Max Weber"
+"the absolute number of registered parties in a country",
+"the electoral vote share of parties only",
+"their coalition potential and blackmail potential",
+"their ideological proximity to ruling elites"
 ],
-"correct": 3,
+"correct": 2,
 "ques_no": 26
 },
 {
-"question": "27. Latin America – the region of the world where presidential institutions have dominated since the nineteenth century, is also the region with-",
+"question": "27. Which of the following statements are correct regarding proportional representation systems?<br>(A) They generally encourage multiparty competition.<br>(B) They tend to reduce disproportionality between votes and seats.<br>(C) They always produce stable single-party governments.<br>(D) They may increase the representation of smaller parties.",
 "options": [
-"Highest numbers of Women as Presidents.",
-"Highest numbers of elections take place.",
-"The highest level of regime instability.",
-"Highest level of economic development has taken place."
+"A and C only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
 ],
-"correct": 2,
+"correct": 1,
 "ques_no": 27
 },
 {
-"question": "28. Who among the following thinkers wrote the book, ”The Spirit of Laws”?",
+"question": "28. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Seymour Martin Lipset<br>I. Social requisites of democracy<br>B. Juan Linz<br>II. Authoritarian regime analysis<br>C. Giovanni Sartori<br>III. Party system typology<br>D. Ronald Inglehart<br>IV. Post-materialist values",
 "options": [
-"Montesquieu",
-"David Easton",
-"Carl J. Friedrich",
-"James Bryce"
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-IV, D-III",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-I, D-III"
 ],
 "correct": 0,
 "ques_no": 28
 },
 {
-"question": "29. Consider the following statements:<br>(A). The President cannot send back a Constitutional amendment bill for recommendation to the Parliament.<br>(B). The Judiciary also have the power to amend the Constitution.<br>(C). The State legislatures cannot initiate any Bill for amendment of the Constitution.<br>(D). The Parliament cannot amend the ’basic features’ of the Constitution.<br>Choose the correct answer from the options given below:",
+"question": "29. In comparative electoral studies, the Droop quota is primarily associated with:",
 "options": [
-"(A), (B) and (D) only.",
-"(A), (C) and (D) only.",
-"(A), (B), (C) and (D).",
-"(B), (C) and (D) only."
+"Single Transferable Vote systems",
+"Mixed-member proportional systems",
+"Two-round electoral systems",
+"First-past-the-post elections"
 ],
-"correct": 1,
+"correct": 0,
 "ques_no": 29
 },
 {
-"question": "30. Chronologically arrange the provisions of the Constitution according to the order of its appearance:<br>(A). Equality of opportunity in matters of public employment<br>(B). Protection of life and personal liberty<br>(C). Protection against arbitrary arrest<br>(D). Freedom of speech and expression<br>Choose the correct answer from the options given below:",
+"question": "30. Arrange the following developments in comparative political methodology chronologically.<br>(A) Behavioural revolution<br>(B) Rational choice approaches<br>(C) Institutionalism dominance<br>(D) New institutionalism",
 "options": [
-"(A), (B), (C), (D).",
-"(A), (D), (B), (C).",
-"(B), (A), (D), (C).",
-"(C), (B), (D), (A)."
+"C, A, B, D",
+"A, C, D, B",
+"C, B, A, D",
+"B, C, A, D"
 ],
-"correct": 1,
+"correct": 0,
 "ques_no": 30
 },
 {
-"question": "31. Which among the following political thinkers argued that ‘man is by nature a political animal’?",
+"question": "31. Which of the following statements are correct regarding Juan Linz’s distinction between authoritarian and totalitarian regimes?<br>(A) Totalitarian regimes rely on an overarching ideology.<br>(B) Authoritarian regimes typically allow limited pluralism.<br>(C) Totalitarian regimes avoid mass mobilization.<br>(D) Authoritarian regimes often rely on bureaucratic or military elites.",
 "options": [
-"Socrates",
-"Plato",
-"Thucydides",
-"Aristotle"
+"A, B and D only",
+"A and C only",
+"B and C only",
+"A, B, C and D"
 ],
-"correct": 3,
+"correct": 0,
 "ques_no": 31
 },
 {
-"question": "32. Who said that ‘politics is the authoritative allocation of values’ because values are allocated through implementing decisions, not just by making them?",
+"question": "32. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Closed list PR<br>I. Party leadership controls candidate order<br>B. Open list PR<br>II. Voters influence candidate ranking<br>C. STV<br>III. Preferential ranking of candidates<br>D. FPTP<br>IV. Single-member plurality winner",
 "options": [
-"David Easton",
-"Max Weber",
-"Talcott Parsons",
-"Almond & Verba"
+"A-II, B-I, C-III, D-IV",
+"A-I, B-II, C-III, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-I, D-III"
 ],
-"correct": 0,
+"correct": 1,
 "ques_no": 32
 },
 {
-"question": "33. Legal theory of sovereignty in modern times was first propounded by",
+"question": "33. In comparative political theory, the concept of cleavages shaping party systems was most systematically developed by:",
 "options": [
-"John Austin",
-"Harold J. Laski",
-"T. H. Green",
-"Jean Bodin"
+"Maurice Duverger",
+"Lipset and Rokkan",
+"Giovanni Sartori",
+"Samuel Huntington"
 ],
-"correct": 0,
+"correct": 1,
 "ques_no": 33
 },
 {
-"question": "34. Which among the following was the reason for calling off the Non-Cooperation Movement?",
+"question": "34. Which of the following statements are correct regarding Lipset’s modernization theory?<br>(A) Economic development supports democratic stability.<br>(B) Higher levels of education strengthen democratic participation.<br>(C) Economic inequality automatically guarantees democracy.<br>(D) Urbanization and industrialization may encourage political participation.",
 "options": [
-"Second Round Table Conference",
-"Arrest of Gandhiji",
-"Chauri-Chaura incident",
-"First Round Table Conference"
+"A and B only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
 ],
 "correct": 2,
 "ques_no": 34
 },
 {
-"question": "35.Who among the following were not exponents of Positive Liberty?",
+"question": "35. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Two-round electoral system<br>I. Majority runoff<br>B. Alternative vote<br>II. Preferential ranking<br>C. Mixed-member proportional<br>III. Combination of PR and plurality<br>D. List PR<br>IV. Party-based proportional allocation",
 "options": [
-"Rousseau",
-"T. H. Green",
-"Harold Laski",
-"Robert Nozick"
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-III, D-I"
 ],
-"correct": 3,
+"correct": 0,
 "ques_no": 35
 },
 {
-"question": "36. Who among the following political thinkers said: ”Equal should be treated as equals and unequal should be treated as unequals”?",
+"question": "36. Which regime type is characterized by limited political pluralism, absence of guiding ideology, and predictable leadership succession within elites?",
 "options": [
-"J.S. Mill",
-"Aristotle",
-"John Locke",
-"Plato"
+"Totalitarian regime",
+"Authoritarian regime",
+"Liberal democracy",
+"Hybrid regime"
 ],
 "correct": 1,
 "ques_no": 36
 },
 {
-"question": "37. Latin America provides the best instances of the technocratic culture. The ’techno-boys’ were a cohort of European- or American-trained graduates (mainly in economics or engineering) who influenced economic policymaking in much of the continent, notably Chile, in the final decades of which century?",
+"question": "37. Which of the following statements are correct regarding electoral volatility?<br>(A) It measures changes in party vote shares across elections.<br>(B) High volatility may indicate weak party institutionalization.<br>(C) It is unrelated to party system stability.<br>(D) It can signal voter realignment.",
 "options": [
-"Eighteenth and nineteenth century.",
-"Eighteenth century.",
-"Nineteenth century.",
-"Twentieth century."
+"A and C only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
 ],
-"correct": 3,
+"correct": 2,
 "ques_no": 37
 },
 {
-"question": "38. T.H. Marshall divides citizenship into three parts. What are these?",
+"question": "38. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Arend Lijphart<br>I. Patterns of Democracy<br>B. Robert Dahl<br>II. Polyarchy<br>C. Samuel Huntington<br>III. Political Order in Changing Societies<br>D. Seymour Martin Lipset<br>IV. Political Man",
 "options": [
-"Civil and political",
-"Economic, political and cultural",
-"Civil, political and social",
-"Social, human and cultural"
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-IV, D-III",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-I, D-III"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 38
 },
 {
-"question": "39. Which of the following Committee recommended for Panchayati Raj system in India?",
+"question": "39. In electoral studies, malapportionment refers to:",
 "options": [
-"Sarkaria Committee",
-"Balwant Rai Committee",
-"Singhvi Committee",
-"Administrative Reform Committee"
+"unequal distribution of seats relative to population across districts",
+"proportional seat allocation errors",
+"manipulation of electoral boundaries only",
+"ideological polarization in party competition"
 ],
-"correct": 1,
+"correct": 0,
 "ques_no": 39
 },
 {
-"question": "40. The Marxian Theory of surplus value is largely derived from the theory of",
+"question": "40. Arrange the following regime types from highest degree of political competition to lowest.<br>(A) Liberal democracy<br>(B) Electoral authoritarian regime<br>(C) Totalitarian regime<br>(D) Authoritarian regime",
 "options": [
-"Adam Smith",
-"Thomas Malthus",
-"David Ricardo",
-"J.S. Mill"
+"A, B, D, C",
+"B, A, D, C",
+"A, D, B, C",
+"A, B, C, D"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 40
 },
 {
-"question": "41. Match the following leaders with their roles in the making of Indian Constitution:<br><br>List-I (leaders)<br>A. Sarojini Naidu<br>B. Dr. B.R. Ambedkar<br>C. Rajendra Prasad<br>D. Motilal Nehru<br><br>List-II (Role in Constitution Making)<br>I President of Constituent Assembly<br>II Member of Constituent Assembly<br>III Chairman of the Drafting Committee<br>IV Prepared a Constitution for India in 1928<br>Choose the correct answer from the options given below:",
+"question": "41. Which of the following statements are correct regarding party system institutionalization?<br>(A) Stable patterns of party competition develop.<br>(B) Parties acquire legitimacy among voters.<br>(C) Electoral volatility declines.<br>(D) Parties lose organizational coherence.",
 "options": [
-"(A) - (II), (B) - (I), (C) - (IV), (D) - (III)",
-"(A) - (I), (B) - (III), (C) - (II), (D) - (IV)",
-"(A) - (II), (B) - (III), (C) - (I), (D) - (IV)",
-"(A) - (I), (B) - (IV), (C) - (III), (D) - (II)"
+"A and B only",
+"B and C only",
+"A, B and C only",
+"A, B, C and D"
 ],
 "correct": 2,
 "ques_no": 41
 },
 {
-"question": "42. Whose regime in Indian politics is popularly known as one-party-dominant system?",
+"question": "42. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Political socialization<br>I. Transmission of political values<br>B. Political recruitment<br>II. Selection of political leaders<br>C. Interest articulation<br>III. Expression of group demands<br>D. Interest aggregation<br>IV. Combining interests into policy programs",
 "options": [
-"Indira Gandhi",
-"Manmohan Singh",
-"Jawaharlal Nehru",
-"Atal Bihari Vajpayee"
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-III, D-IV",
+"A-I, B-III, C-II, D-IV",
+"A-IV, B-II, C-III, D-I"
 ],
-"correct": 2,
+"correct": 0,
 "ques_no": 42
 },
 {
-"question": "43. Which of the following writs is issued by Supreme Court in case of illegal detention of a person?",
+"question": "43. Which scholar strongly criticized the political culture approach for its conceptual vagueness and lack of explanatory precision?",
 "options": [
-"Habeas Corpus",
-"Mandamus",
-"Quo-warranto",
-"Certiorari"
+"Brian Barry",
+"Gabriel Almond",
+"Sidney Verba",
+"Ronald Inglehart"
 ],
 "correct": 0,
 "ques_no": 43
 },
 {
-"question": "44. Chronologically arrange the events related to the history of United Nations:<br>(A) UN Charter approved in San Francisco by 50 states<br>(B) First UN Peacekeeping force sent to Suez Canal<br>(C) Trygve Lie appointed Secretary General<br>(D) UNDP was established<br>Choose the correct answer from the options given below:",
+"question": "44. Which of the following statements are correct regarding electoral thresholds in proportional representation systems?<br>(A) Thresholds limit representation of very small parties.<br>(B) They may increase party system stability.<br>(C) They guarantee perfect proportionality.<br>(D) They may reduce fragmentation in legislatures.",
 "options": [
-"(A), (B), (C), (D)",
-"(A), (D), (B), (C)",
-"(B), (A), (D), (C)",
-"(A), (C), (B), (D)"
+"A and C only",
+"B and C only",
+"A, B and D only",
+"A, B, C and D"
 ],
-"correct": 3,
+"correct": 2,
 "ques_no": 44
 },
 {
-"question": "45. ’Command Capitalism’ was introduced with which five-year plan in India?",
+"question": "45. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Hybrid regime<br>I. Combination of democratic and authoritarian traits<br>B. Totalitarian regime<br>II. Ideological mass mobilization<br>C. Electoral democracy<br>III. Competitive elections with civil liberties<br>D. Military regime<br>IV. Political control by armed forces",
 "options": [
-"The First Five-Year Plan",
-"The Second Five-Year Plan",
-"The Third Five-Year Plan",
-"The Fifth Five-Year Plan"
+"A-I, B-II, C-III, D-IV",
+"A-II, B-I, C-IV, D-III",
+"A-III, B-IV, C-II, D-I",
+"A-I, B-III, C-II, D-IV"
 ],
-"correct": 1,
+"correct": 0,
 "ques_no": 45
 },
 {
-"question": "46: Match List-I with List-II<br>List-I (Agreements)<br>List-II (Year)<br>A. Tashkent Agreement<br>I. 1971<br>B. Shimla Accord<br>II. 1966<br>C. Indo-US Nuclear Deal<br>III. 1996<br>D. Ganga Water Sharing<br>Agreement<br>IV. 2005<br>Options:",
+"question": "46. In comparative political analysis, new institutionalism differs from classical institutionalism mainly because it:",
 "options": [
-"(A) - (I), (B) - (II), (C) - (III), (D) - (IV)",
-"(A) - (I), (B) - (III), (C) - (II), (D) - (IV)",
-"(A) - (II), (B) - (I), (C) - (IV), (D) - (III)",
-"(A) - (II), (B) - (I), (C) - (III), (D) - (IV)"
+"studies only formal constitutional structures",
+"ignores political behaviour entirely",
+"incorporates informal institutions and political incentives",
+"rejects empirical political research"
 ],
-"correct": 3,
+"correct": 2,
 "ques_no": 46
 },
 {
-"question": "47: Which of the following is not a type of party system according to Giovanni Sartori’s classification?",
+"question": "47. Which of the following statements are correct regarding coalition governments?<br>(A) They are more common in proportional representation systems.<br>(B) They may enhance power-sharing among political actors.<br>(C) They always produce unstable governments.<br>(D) They often arise in fragmented party systems.",
 "options": [
-"Single-party system",
-"Limited or moderate pluralism",
-"Balanced or affective pluralism",
-"Extreme or polarized pluralism"
+"A and B only",
+"A, B and D only",
+"B and C only",
+"A, B, C and D"
 ],
-"correct": 2,
+"correct": 1,
 "ques_no": 47
 },
 {
-"question": "48: Who among the following described democracy as the ’tyranny of the majority’?",
+"question": "48. Match List-I with List-II.<br><br>List-I<br>List-II<br>A. Mechanical effect<br>I. Seat allocation bias in electoral systems<br>B. Psychological effect<br>II. Strategic voting behaviour<br>C. Electoral threshold<br>III. Minimum vote share for representation<br>D. District magnitude<br>IV. Number of representatives per constituency",
 "options": [
-"J. Rousseau",
-"John Dunning",
-"James Madison",
-"De Tocqueville"
+"A-II, B-I, C-IV, D-III",
+"A-I, B-II, C-III, D-IV",
+"A-III, B-I, C-IV, D-II",
+"A-I, B-III, C-II, D-IV"
 ],
-"correct": 3,
+"correct": 1,
 "ques_no": 48
 },
 {
-"question": "49: In the context of Savarkar’s idea of Hindutva, identify the incorrect statement.",
+"question": "49. Which of the following statements are correct regarding democratic consolidation?<br>(A) Democratic rules become widely accepted by elites and citizens.<br>(B) Democratic breakdown becomes highly unlikely.<br>(C) Authoritarian institutions dominate political competition.<br>(D) Political actors resolve conflicts through institutional procedures.",
 "options": [
-"Savarkar did not identify India in terms of territorial or political nationalism.",
-"His definition of Hindutva included the faiths that had an origin outside the territorial geography of India.",
-"An essential of Hindutva is the existence of a common culture.",
-"He identified India in religio-cultural terms, with a distinct civilizational boundary."
+"A, B and D only",
+"A and C only",
+"B and C only",
+"A, B, C and D"
 ],
-"correct": 1,
+"correct": 0,
 "ques_no": 49
 },
 {
-"question": "50: Who described India as a ’soft state’ lacking the capacity to act against the vested interests?",
+"question": "50. Which of the following scholars argued that “democracy is a method for selecting leaders through competitive elections”?",
 "options": [
-"Gunnar Myrdal",
-"Atul Kohli",
-"Rajni Kothari",
-"Paul Brass"
+"Robert Dahl",
+"Arend Lijphart",
+"Joseph Schumpeter",
+"Samuel Huntington"
 ],
-"correct": 0,
+"correct": 2,
 "ques_no": 50
-},
-{
-"question": "51: Which of the following statements is/are NOT CORRECT?<br>(A) First past the post system is followed for all the elections in India.<br>(B) Election Commission of India does not supervise Panchayat and municipal elections.<br>(C) President of India cannot remove the Election Commissioner.<br>(D) Appointment of more than one Election Commissioners in the Election Commission is mandatory.",
-"options": [
-"(A) and (C) only.",
-"(A), (B) and (C) only.",
-"(A), (B), (C) and (D).",
-"(B), (C) and (D) only."
-],
-"correct": 0,
-"ques_no": 51
-},
-{
-"question": "52: Which of the following is not a type of political culture according to Almond?",
-"options": [
-"Parochial political culture.",
-"Objective political culture.",
-"Participant political culture.",
-"Subjective political culture."
-],
-"correct": 1,
-"ques_no": 52
-},
-{
-"question": "53: Match List-I with List-II:<br><br>List-I (Books)<br>A. Making Democracy<br>Work<br>B. Towards a New Public<br>Administration<br>C. Administration: The Art<br>and Science of Organiza-<br>tion and Management<br>D. Public Administration<br>and Public Management<br><br>List-II (Authors)<br>I. Frank Marini<br>II. Jan-Erick Lane<br>III. Albert Lepawsky<br>IV. Robert D. Putnam<br><br>Options:",
-"options": [
-"(A) - (II), (B) - (III), (C) - (I), (D) - (IV).",
-"(A) - (IV), (B) - (I), (C) - (III), (D) - (II).",
-"(A) - (IV), (B) - (III), (C) - (IV), (D) - (II).",
-"(A) - (III), (B) - (I), (C) - (II), (D) - (IV)."
-],
-"correct": 1,
-"ques_no": 53
-},
-{
-"question": "54: Match List-I with List-II:<br>List-I List-II<br>A. Communist Party I. Gramsci<br>B. Hegemony II. Lenin<br>C. Dictatorship of Prole- tariat III. Marx<br>D. Polycentrism IV. Togliatti",
-"options": [
-"(A) - (I), (B) - (II), (C) - (IV), (D) - (III).",
-"(A) - (II), (B) - (I), (C) - (III), (D) - (IV).",
-"(A) - (I), (B) - (III), (C) - (IV), (D) - (II).",
-"(A) - (III), (B) - (IV), (C) - (I), (D) - (II)."
-],
-"correct": 1,
-"ques_no": 54
-},
-{
-"question": "55: Who among the following political thinkers established the Atmiya Sabha?",
-"options": [
-"Raja Ram Mohan Roy",
-"Dayanand Saraswati",
-"V.D. Savarkar",
-"B.R. Ambedkar"
-],
-"correct": 0,
-"ques_no": 55
-},
-{
-"question": "56: Which among the following political thinkers is the author of the book ’Manoeuvres’?",
-"options": [
-"Jean Elshtain",
-"Cynthia Enloe",
-"J. Ann Tickner",
-"Susan George"
-],
-"correct": 1,
-"ques_no": 56
-},
-{
-"question": "57: Which Water Treaty between India and Pakistan is one of the bone of contention between two neighbours?",
-"options": [
-"The Ganga Water Treaty",
-"The Indus Water Treaty",
-"The Indus and Ganga Water Treaty",
-"The Satluj Water Treaty"
-],
-"correct": 1,
-"ques_no": 57
-},
-{
-"question": "58: How many members are nominated to Rajya Sabha by the President of India?",
-"options": [
-"14",
-"12",
-"16",
-"20"
-],
-"correct": 1,
-"ques_no": 58
-},
-{
-"question": "59: Which of the following country is an example of ’coming together federation’?",
-"options": [
-"Spain",
-"Belgium",
-"Switzerland",
-"Nepal"
-],
-"correct": 2,
-"ques_no": 59
-},
-{
-"question": "60: In the 1971 India-Pakistan war, USA sent which of its aircraft carrier to the Bay of Bengal in support of Pakistan?",
-"options": [
-"George Blink 19",
-"5th fleet",
-"7th fleet",
-"Washington 12"
-],
-"correct": 2,
-"ques_no": 60
-},
-{
-"question": "61: Which among the following is NOT covered under Article 21 of the Indian Constitution?",
-"options": [
-"Right to livelihood",
-"Right against solitary confinement",
-"Right to freedom from noise pollution",
-"Right to active euthanasia"
-],
-"correct": 3,
-"ques_no": 61
-},
-{
-"question": "62: Which of the following are the principal organs of the United Nations Organizations?<br>(A) Security Council<br>(B) Trusteeship Council<br>(C) United Nations Educational, Scientific and Cultural Organization (UNESCO)<br>(D) International Court of Justice",
-"options": [
-"(A), (B) and (D) only.",
-"(A), (B) and (C) only.",
-"(A), (B), (C) and (D).",
-"(B), (C) and (D) only."
-],
-"correct": 0,
-"ques_no": 62
-},
-{
-"question": "63: In which year was the ’Make in India’ policy adopted by the Government of India?",
-"options": [
-"2016",
-"2014",
-"2020",
-"2018"
-],
-"correct": 1,
-"ques_no": 63
-},
-{
-"question": "64: Match List-I with List-II:<br>List-I (Author)<br>List-II (Book)<br>A. J.S. Mill<br>I. A Theory of Justice<br>B. Robert Nozick<br>II. On Liberty<br>C. John Rawls<br>III. Anarchy, State and Utopia<br>D. Machiavelli<br>IV. The Prince",
-"options": [
-"(A) - (I), (B) - (II), (C) - (III), (D) - (IV).",
-"(A) - (II), (B) - (III), (C) - (I), (D) - (IV).",
-"(A) - (I), (B) - (II), (C) - (IV), (D) - (III).",
-"(A) - (III), (B) - (IV), (C) - (I), (D) - (II)."
-],
-"correct": 1,
-"ques_no": 64
-},
-{
-"question": "65: Who conceptualised the idea of ’bounded rationality’?",
-"options": [
-"A. Etzioni",
-"Herbert Simon",
-"Max Weber",
-"F.W. Riggs"
-],
-"correct": 1,
-"ques_no": 65
-},
-{
-"question": "Question 66: Match List-I with List-II:<br>List-I (Book)<br>List-II (Author)<br>A. An Unwritten Future: Realism and Uncertainty in World Politics<br>I. Jonathan Kirshner<br>B. Globalization of World Politics<br>I. Baylis John, Steve Smith, Patricia Owens<br>C. Power: A Radical View<br>III. Steven Lukes<br>D. Regions and Powers: The Structure IV. Barry Buzan<br>of International Security",
-"options": [
-"(A) - (I), (B) - (III), (C) - (II), (D) - (IV).",
-"(A) - (III), (B) - (II), (C) - (IV), (D) - (I).",
-"(A) - (II), (B) - (I), (C) - (IV), (D) - (III).",
-"(A) - (III), (B) - (IV), (C) - (I), (D) - (II)."
-],
-"correct": 0,
-"ques_no": 66
-},
-{
-"question": "Question 67: Thucydides’ text on the Peloponnesian War is a story between which ancient states?",
-"options": [
-"Greek and Roman",
-"Austria and Hungary",
-"Athens and Sparta",
-"Tibet and Taiwan"
-],
-"correct": 2,
-"ques_no": 67
-},
-{
-"question": "Question 68: Which of the following statements is/are CORRECT regarding the basic assumptions of realism?<br>(A) Realism explains power politics in terms of egoism.<br>(B) Dependency theory is a key aspect of Realism.<br>(C) Statecraft and national interest are key aspects of Realism.<br>(D) Balance of power is essential to preserve the liberty of states.",
-"options": [
-"(A), (B) and (D) only.",
-"(A), (C) and (D) only.",
-"(A), (B), (C) and (D).",
-"(B), (C) and (D) only."
-],
-"correct": 1,
-"ques_no": 68
-},
-{
-"question": "Question 69: Who among the following political thinkers was the author of ”The Precepts of Jesus, the Guide to Peace and Happiness”?",
-"options": [
-"Ram Mohan Roy",
-"M.K. Gandhi",
-"B.R. Ambedkar",
-"V.D. Savarkar"
-],
-"correct": 0,
-"ques_no": 69
-},
-{
-"question": "Question 70: Among the following statements, which are true regarding United Nations’ Sustainable Development Goals or 2030 Agenda?<br>(A) The Agenda is a broad Intergovernmental agreement that acts post-2015 Developmental Agenda.<br>(B) It does not distinguish between developed and developing nations.<br>(C) It is based on the United Nations resolution entitled ”the future we want”.<br>(D) The role of global civil society is significantly restricted in this Agenda.",
-"options": [
-"A and B only.",
-"C and D only.",
-"A, B and C only.",
-"B and D only."
-],
-"correct": 2,
-"ques_no": 70
-},
-{
-"question": "Question 71: The ’Pahal Scheme’ started by the Government of India is related with:",
-"options": [
-"Direct transfer of LPG Subsidy",
-"Women Education",
-"Child Education",
-"Agricultural Loan"
-],
-"correct": 0,
-"ques_no": 71
-},
-{
-"question": "Question 72: The constitution of Local Body Ombudsman was recommended by which of the following bodies?",
-"options": [
-"Niti Aayog",
-"Second Administrative Reform Commission",
-"L.M. Singhvi Committee",
-"Sarkaria Commission"
-],
-"correct": 1,
-"ques_no": 72
-},
-{
-"question": "Question 73: Rousseau’s political philosophy furnished the basis for:",
-"options": [
-"Popular Sovereignty",
-"Absolute Sovereignty",
-"Limited Sovereignty",
-"Political Sovereignty"
-],
-"correct": 0,
-"ques_no": 73
-},
-{
-"question": "Question 74: Chronologically arrange the writings of Karl Marx according to the year of publication:<br>(A) The Communist Manifesto<br>(B) Critique of Gotha Programme<br>(C) The German Ideology<br>(D) The Eighteenth Brumaire of Louis Bonaparte",
-"options": [
-"(A), (B), (C), (D)",
-"(C), (A), (D), (B)",
-"(B), (C), (A), (D)",
-"(B), (C), (D) only"
-],
-"correct": 1,
-"ques_no": 74
-},
-{
-"question": "Question 75: Match List-I with List-II:<br>List-I (Author)<br>List-II (Book)<br>A. Almond & Sidney Verba<br>I. Comparative Politics: A Developmental Approach<br>B. Gabriel Almond & Powell<br>II. Capitalism and Underdevelopment in Latin America<br>C. Andre Gunder Frank<br>III. How Europe underdeveloped Africa<br>D. Walter Rodney<br>IV. The Civic Culture",
-"options": [
-"(A) - (I), (B) - (II), (C) - (III), (D) - (IV)",
-"(A) - (IV), (B) - (I), (C) - (II), (D) - (III)",
-"(A) - (I), (B) - (II), (C) - (IV), (D) - (III)",
-"(A) - (III), (B) - (IV), (C) - (I), (D) - (II)"
-],
-"correct": 1,
-"ques_no": 75
 }
-
 ];
 
         // State variables
@@ -2053,7 +1777,7 @@
                 // --- SUMMARY PANEL HTML ---
                 let summaryHtml = `
                     <div class="report-summary">
-                        <h3 class="test-title">CUET PG Full Mock 5</h3>
+                        <h3 class="test-title">CUET PG Sectional Mock(Comparative Government & Politics)</h3>
                         <div class="summary-details">
                             <p><strong>Name:</strong> ${response.name || '—'}</p>
                             <p><strong>Date & Time:</strong> ${response.submittedAt}</p>
